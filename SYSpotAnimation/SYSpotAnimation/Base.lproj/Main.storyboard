@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgF-o6-jwi">
+                                <rect key="frame" x="277" y="120" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="wdU-Hi-uTt"/>
+                                </constraints>
+                                <state key="normal" title="1"/>
+                                <connections>
+                                    <action selector="action1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WaB-8K-Qpf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yw3-TA-zgH">
+                                <rect key="frame" x="277" y="208" width="46" height="30"/>
+                                <state key="normal" title="2"/>
+                                <connections>
+                                    <action selector="action2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7zB-zQ-d00"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjc-3b-zwp">
+                                <rect key="frame" x="277" y="310" width="46" height="30"/>
+                                <state key="normal" title="3"/>
+                                <connections>
+                                    <action selector="action3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Df1-N0-MP2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Yw3-TA-zgH" firstAttribute="trailing" secondItem="rjc-3b-zwp" secondAttribute="trailing" id="8Nh-1i-01q"/>
+                            <constraint firstItem="Yw3-TA-zgH" firstAttribute="leading" secondItem="rjc-3b-zwp" secondAttribute="leading" id="9qD-ZZ-LZx"/>
+                            <constraint firstItem="TgF-o6-jwi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HdQ-Kz-RAd"/>
+                            <constraint firstItem="Yw3-TA-zgH" firstAttribute="leading" secondItem="TgF-o6-jwi" secondAttribute="leading" id="Raf-bH-Wle"/>
+                            <constraint firstItem="rjc-3b-zwp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Zxw-Xv-UGE"/>
+                            <constraint firstItem="Yw3-TA-zgH" firstAttribute="top" secondItem="TgF-o6-jwi" secondAttribute="bottom" constant="58" id="a6g-MY-Ccm"/>
+                            <constraint firstItem="rjc-3b-zwp" firstAttribute="top" secondItem="Yw3-TA-zgH" secondAttribute="bottom" constant="72" id="gls-Io-val"/>
+                            <constraint firstItem="TgF-o6-jwi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="jdx-tU-yRH"/>
+                            <constraint firstItem="TgF-o6-jwi" firstAttribute="trailing" secondItem="Yw3-TA-zgH" secondAttribute="trailing" id="ofY-uz-xfZ"/>
+                            <constraint firstItem="Yw3-TA-zgH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qMY-YS-FlY"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>

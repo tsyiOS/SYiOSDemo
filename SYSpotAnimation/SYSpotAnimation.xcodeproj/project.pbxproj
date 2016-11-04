@@ -1,0 +1,313 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F03CDCF81DCC2CE00072DA01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F03CDCF71DCC2CE00072DA01 /* main.m */; };
+		F03CDCFB1DCC2CE00072DA01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F03CDCFA1DCC2CE00072DA01 /* AppDelegate.m */; };
+		F03CDCFE1DCC2CE00072DA01 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F03CDCFD1DCC2CE00072DA01 /* ViewController.m */; };
+		F03CDD011DCC2CE00072DA01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03CDCFF1DCC2CE00072DA01 /* Main.storyboard */; };
+		F03CDD031DCC2CE00072DA01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F03CDD021DCC2CE00072DA01 /* Assets.xcassets */; };
+		F03CDD061DCC2CE00072DA01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03CDD041DCC2CE00072DA01 /* LaunchScreen.storyboard */; };
+		F03CDD0F1DCC2D090072DA01 /* SYSpotAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F03CDD0E1DCC2D090072DA01 /* SYSpotAnimation.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F03CDCF31DCC2CE00072DA01 /* SYSpotAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SYSpotAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F03CDCF71DCC2CE00072DA01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F03CDCF91DCC2CE00072DA01 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F03CDCFA1DCC2CE00072DA01 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F03CDCFC1DCC2CE00072DA01 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F03CDCFD1DCC2CE00072DA01 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F03CDD001DCC2CE00072DA01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F03CDD021DCC2CE00072DA01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F03CDD051DCC2CE00072DA01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F03CDD071DCC2CE00072DA01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F03CDD0D1DCC2D090072DA01 /* SYSpotAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYSpotAnimation.h; sourceTree = "<group>"; };
+		F03CDD0E1DCC2D090072DA01 /* SYSpotAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYSpotAnimation.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F03CDCF01DCC2CE00072DA01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F03CDCEA1DCC2CE00072DA01 = {
+			isa = PBXGroup;
+			children = (
+				F03CDCF51DCC2CE00072DA01 /* SYSpotAnimation */,
+				F03CDCF41DCC2CE00072DA01 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F03CDCF41DCC2CE00072DA01 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F03CDCF31DCC2CE00072DA01 /* SYSpotAnimation.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F03CDCF51DCC2CE00072DA01 /* SYSpotAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				F03CDCF91DCC2CE00072DA01 /* AppDelegate.h */,
+				F03CDCFA1DCC2CE00072DA01 /* AppDelegate.m */,
+				F03CDCFC1DCC2CE00072DA01 /* ViewController.h */,
+				F03CDCFD1DCC2CE00072DA01 /* ViewController.m */,
+				F03CDCFF1DCC2CE00072DA01 /* Main.storyboard */,
+				F03CDD021DCC2CE00072DA01 /* Assets.xcassets */,
+				F03CDD041DCC2CE00072DA01 /* LaunchScreen.storyboard */,
+				F03CDD071DCC2CE00072DA01 /* Info.plist */,
+				F03CDCF61DCC2CE00072DA01 /* Supporting Files */,
+				F03CDD0D1DCC2D090072DA01 /* SYSpotAnimation.h */,
+				F03CDD0E1DCC2D090072DA01 /* SYSpotAnimation.m */,
+			);
+			path = SYSpotAnimation;
+			sourceTree = "<group>";
+		};
+		F03CDCF61DCC2CE00072DA01 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F03CDCF71DCC2CE00072DA01 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F03CDCF21DCC2CE00072DA01 /* SYSpotAnimation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F03CDD0A1DCC2CE00072DA01 /* Build configuration list for PBXNativeTarget "SYSpotAnimation" */;
+			buildPhases = (
+				F03CDCEF1DCC2CE00072DA01 /* Sources */,
+				F03CDCF01DCC2CE00072DA01 /* Frameworks */,
+				F03CDCF11DCC2CE00072DA01 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SYSpotAnimation;
+			productName = SYSpotAnimation;
+			productReference = F03CDCF31DCC2CE00072DA01 /* SYSpotAnimation.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F03CDCEB1DCC2CE00072DA01 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = tsy;
+				TargetAttributes = {
+					F03CDCF21DCC2CE00072DA01 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = F03CDCEE1DCC2CE00072DA01 /* Build configuration list for PBXProject "SYSpotAnimation" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F03CDCEA1DCC2CE00072DA01;
+			productRefGroup = F03CDCF41DCC2CE00072DA01 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F03CDCF21DCC2CE00072DA01 /* SYSpotAnimation */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F03CDCF11DCC2CE00072DA01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F03CDD061DCC2CE00072DA01 /* LaunchScreen.storyboard in Resources */,
+				F03CDD031DCC2CE00072DA01 /* Assets.xcassets in Resources */,
+				F03CDD011DCC2CE00072DA01 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F03CDCEF1DCC2CE00072DA01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F03CDCFE1DCC2CE00072DA01 /* ViewController.m in Sources */,
+				F03CDCFB1DCC2CE00072DA01 /* AppDelegate.m in Sources */,
+				F03CDD0F1DCC2D090072DA01 /* SYSpotAnimation.m in Sources */,
+				F03CDCF81DCC2CE00072DA01 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F03CDCFF1DCC2CE00072DA01 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F03CDD001DCC2CE00072DA01 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F03CDD041DCC2CE00072DA01 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F03CDD051DCC2CE00072DA01 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F03CDD081DCC2CE00072DA01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F03CDD091DCC2CE00072DA01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F03CDD0B1DCC2CE00072DA01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SYSpotAnimation/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = sy.team.SYSpotAnimation;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F03CDD0C1DCC2CE00072DA01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SYSpotAnimation/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = sy.team.SYSpotAnimation;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F03CDCEE1DCC2CE00072DA01 /* Build configuration list for PBXProject "SYSpotAnimation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F03CDD081DCC2CE00072DA01 /* Debug */,
+				F03CDD091DCC2CE00072DA01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F03CDD0A1DCC2CE00072DA01 /* Build configuration list for PBXNativeTarget "SYSpotAnimation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F03CDD0B1DCC2CE00072DA01 /* Debug */,
+				F03CDD0C1DCC2CE00072DA01 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F03CDCEB1DCC2CE00072DA01 /* Project object */;
+}
