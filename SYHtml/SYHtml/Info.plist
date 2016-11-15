@@ -26,6 +26,11 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>App Transport SecuritySettings</key>
+	<dict>
+		<key>Allow Arbitray Loads</key>
+		<true/>
+	</dict>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -37,20 +42,9 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
     <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSExceptionDomains</key>
-        <dict>
-            <key>qq.com</key>
-            <dict>
-                <key>NSIncludesSubdomains</key>
-                <true/>
-            </dict>
-            <key>sina.com.cn</key>
-            <dict>
-                <key>NSIncludesSubdomains</key>
-                <true/>
-            </dict>
-        </dict>
-    </dict>
+<dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+</dict>
 </dict>
 </plist>

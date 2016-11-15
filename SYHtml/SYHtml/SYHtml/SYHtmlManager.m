@@ -12,14 +12,13 @@
 SYSingleton_implementation(SYHtmlManager)
 
 - (void)requestData {
-    NSURL *url = [NSURL URLWithString:@"https://www.aa924.com/htm/vodlist1"];
+    NSURL *url = [NSURL URLWithString:@"http://www.aa924.com/htm/novel1/87029.htm"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10];
-//   NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//       NSLog(@"%@----%@",response,data);
-//   }];
-//    __strong self = self;
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue mainQueue]];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request];
+   NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+       NSLog(@"%@----%@",response,data);
+   }];
+//    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+//    NSURLSessionDataTask *task = [session dataTaskWithRequest:request];
     [task resume];
 }
 
