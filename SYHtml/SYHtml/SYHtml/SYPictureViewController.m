@@ -81,12 +81,13 @@
     
     UILabel *label = [cell.contentView viewWithTag:11];
     if (label == nil) {
-        label = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, 50, 50)];
+        label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, 50)];
         label.textAlignment = NSTextAlignmentCenter;
         label.tag = 11;
+        label.numberOfLines = 0;
         [cell.contentView addSubview:label];
     }
-    label.text = [NSString stringWithFormat:@"%zd",indexPath.row];
+    label.text = self.list[indexPath.item];
     
     return cell;
 }
