@@ -111,6 +111,9 @@ didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
     NSString *html = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSLog(@"%@",html);
     NSRange contentStartRange = [html rangeOfString:@"<script type=\"text/javascript\">document.writeln(listad);</script>"];
+    if (contentStartRange.length == 0) {
+        return;
+    }
     NSString *sub = [html substringFromIndex:contentStartRange.location];
     NSString *listContent = [self contentBetweenStart:@"<script type=\"text/javascript\">document.writeln(listad);</script>" andEnd:@"</ul>" inString:sub];
     NSArray *list = [listContent componentsSeparatedByString:@"<li>"];

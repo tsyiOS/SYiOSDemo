@@ -10,6 +10,7 @@
 #import "SYArticleModel.h"
 #import "SYArticleViewController.h"
 #import "SYPictureViewController.h"
+#import "SYPhotoBrowserViewController.h"
 
 @interface SYListViewController ()
 @property (nonatomic, strong) NSArray *list;
@@ -104,10 +105,14 @@
         articleVC.urlString = model.url;
         [self.navigationController pushViewController:articleVC animated:YES];
     }else if (self.type == SYHtmlTypePictureList) {
-        SYPictureViewController *pictureVC = [[SYPictureViewController alloc] initWithNibName:NSStringFromClass([SYPictureViewController class]) bundle:nil];
+//        SYPictureViewController *pictureVC = [[SYPictureViewController alloc] initWithNibName:NSStringFromClass([SYPictureViewController class]) bundle:nil];
+//        SYArticleModel *model = self.list[indexPath.row];
+//        pictureVC.urlString = model.url;
+//        [self.navigationController pushViewController:pictureVC animated:YES];
+        SYPhotoBrowserViewController *pictureVC = [[SYPhotoBrowserViewController alloc] init];
         SYArticleModel *model = self.list[indexPath.row];
-        pictureVC.urlString = model.url;
-        [self.navigationController pushViewController:pictureVC animated:YES];
+        pictureVC.url = model.url;
+        [self presentViewController:pictureVC animated:YES completion:nil];
     }
     
 }
