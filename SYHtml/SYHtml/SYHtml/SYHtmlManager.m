@@ -7,62 +7,166 @@
 //
 
 #import "SYHtmlManager.h"
+#import "SYArticleModel.h"
+
+#define SYBaseUrl @"https://www.aa924.com"
+#define SYCacheKey @"SYHtmlManagerKey"
+
+
+@interface SYHtmlManager ()<NSURLSessionTaskDelegate>
+@property (nonatomic, strong) NSURLSession *session;
+
+@end
 
 @implementation SYHtmlManager
 SYSingleton_implementation(SYHtmlManager)
 
-- (void)requestData {
-    NSURL *url = [NSURL URLWithString:@"http://www.aa924.com/htm/novel1/87029.htm"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10];
-   NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-       NSLog(@"%@----%@",response,data);
-   }];
-//    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue mainQueue]];
-//    NSURLSessionDataTask *task = [session dataTaskWithRequest:request];
-    [task resume];
+- (void)requestDataWithUrl:(NSString *)urlString andType:(SYHtmlType)type completion:(void(^)(id response))completion {
+    
+    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:SYCacheKey];
+    if ([dict.allKeys containsObject:urlString]) {
+        NSData *data = [dict objectForKey:urlString];
+        if (type == SYHtmlTypeArticleList) {
+            [self articleListData:data completion:completion];
+        }else if(type == SYHtmlTypeArticle) {
+            [self articleData:data completion:completion];
+        }else if (type == SYHtmlTypePictureList) {
+            [self pictureListData:data completion:completion];
+        }else if (type == SYHtmlTypePicture) {
+            [self pictureData:data completion:completion];
+        }
+    }else {
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",SYBaseUrl,urlString]];
+        NSURLSessionTask *task = [self.session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            if (data) {
+                [self handelData:data];
+                NSDictionary *dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:SYCacheKey];
+                NSMutableDictionary *tempDict = [NSMutableDictionary dictionaryWithDictionary:dict];
+                [tempDict setObject:data forKey:urlString];
+                [[NSUserDefaults standardUserDefaults] setObject:tempDict forKey:SYCacheKey];
+                if (type == SYHtmlTypeArticleList) {
+                    [self articleListData:data completion:completion];
+                }else if(type == SYHtmlTypeArticle) {
+                    [self articleData:data completion:completion];
+                }else if (type == SYHtmlTypePictureList) {
+                    [self pictureListData:data completion:completion];
+                }else if (type == SYHtmlTypePicture) {
+                    [self pictureData:data completion:completion];
+                }
+            }
+        }];
+         [task resume];
+    }
 }
 
-- (void)URLSession:(NSURLSession *)session
+/*
+ 在此代理方法里面挑战服务器
+ 如果发送的是https,这个代理方法会自动去接收服务器发送给客户端的受保护空间
+ challenge : 存放受保护空间的
+ */
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
 didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
- completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
+ completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * __nullable credential))completionHandler
 {
-    //AFNetworking中的处理方式
-    NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
-    __block NSURLCredential *credential = nil;
-    //判断服务器返回的证书是否是服务器信任的
+    // 1.判断信任服务器的方式是否是依据安全证书
     if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-        credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
-        /*disposition：如何处理证书
-         NSURLSessionAuthChallengePerformDefaultHandling:默认方式处理
-         NSURLSessionAuthChallengeUseCredential：使用指定的证书    NSURLSessionAuthChallengeCancelAuthenticationChallenge：取消请求
-         */
-        if (credential) {
-            disposition = NSURLSessionAuthChallengeUseCredential;
-        } else {
-            disposition = NSURLSessionAuthChallengePerformDefaultHandling;
-        }
-    } else {
-        disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;
-    }
-    //安装证书
-    if (completionHandler) {
-        completionHandler(disposition, credential);
+        
+        // 2.从受保护空间里面拿到受信任的证书
+        NSURLCredential *cre = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+        
+        // 3.把证书回调给服务器,告诉服务器,我信任你
+        completionHandler(NSURLSessionAuthChallengeUseCredential,cre);
     }
 }
-// 接收到服务器的响应
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler
-{
-    NSLog(@"didReceiveResponse");
-    completionHandler(NSURLSessionResponseAllow);
+
+- (void)handelData:(NSData *)data {
+    NSString *html = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",html);
 }
-// 接收到服务器返回的数据
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data
-{
-    NSLog(@"didReceiveData");
+
+- (void)articleListData:(NSData *)data completion:(void(^)(id response))completion{
+    [self listData:data completion:completion];
 }
-// 请求完毕
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
-{
-    NSLog(@"didCompleteWithError");
+
+- (void)pictureListData:(NSData *)data completion:(void(^)(id response))completion{
+    [self listData:data completion:completion];
 }
+
+- (void)listData:(NSData *)data completion:(void(^)(id response))completion{
+    
+    NSString *html = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",html);
+    NSRange contentStartRange = [html rangeOfString:@"<script type=\"text/javascript\">document.writeln(listad);</script>"];
+    NSString *sub = [html substringFromIndex:contentStartRange.location];
+    NSString *listContent = [self contentBetweenStart:@"<script type=\"text/javascript\">document.writeln(listad);</script>" andEnd:@"</ul>" inString:sub];
+    NSArray *list = [listContent componentsSeparatedByString:@"<li>"];
+    NSMutableArray *tempArray = [NSMutableArray array];
+    for (int i = 1; i < list.count; i++) {
+        NSString *content = list[i];
+        NSString *url = [self contentBetweenStart:@"<a href=\"" andEnd:@"\" target" inString:content];
+        NSString *title = [self contentBetweenStart:@"</span>" andEnd:@"</a></li>" inString:content];
+        SYArticleModel *model = [[SYArticleModel alloc] init];
+        model.url = url;
+        model.title = title;
+        [tempArray addObject:model];
+    }
+    //    [tempArray sy_saveModelsByArchive];
+    if (completion) {
+        completion(tempArray);
+    }
+}
+
+- (void)pictureData:(NSData *)data completion:(void(^)(id response))completion {
+
+    NSString *html = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",html);
+    NSString *content = [self contentBetweenStart:@"<div id=\"picTopAds\"></div>" andEnd:@"<div id=\"picFootAds\"></div>" inString:html];
+    NSArray *list = [content componentsSeparatedByString:@"<br>"];
+    NSLog(@"%@",list);
+    NSMutableArray *tempArray = [NSMutableArray array];
+    for (int i = 0; i < list.count - 1; i++) {
+        NSString *content = list[i];
+        NSString *url = [self contentBetweenStart:@"src=\"" andEnd:@"\">" inString:content];
+        [tempArray addObject:url];
+    }
+    completion(tempArray);
+}
+
+- (void)articleData:(NSData *)data completion:(void(^)(id response))completion{
+
+    NSString *html = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSRange titleRange = [html rangeOfString:@"<div class=\"page_title\">"];
+    NSString *sub = [html substringFromIndex:titleRange.location];
+    NSString *title = [self contentBetweenStart:@"<div class=\"page_title\">" andEnd:@"</div>" inString:sub];
+    NSString *text = [self contentBetweenStart:@"</div><BR><BR>" andEnd:@"</p><p>" inString:html];
+    if (text == nil) {
+        text = [self contentBetweenStart:@"<div id=\"picTopAds\">" andEnd:@"<div id=\"picFootAds\">" inString:html];
+    }
+    SYArticleModel *model = [[SYArticleModel alloc] init];
+    model.title = title;
+    model.text = text;
+    if (completion) {
+        completion(model);
+    }
+}
+
+- (NSString *)contentBetweenStart:(NSString *)start andEnd:(NSString *)end inString:(NSString *)string{
+    NSRange startRange = [string rangeOfString:start];
+    NSRange endRnage = [string rangeOfString:end];
+    if (startRange.length > 0 && endRnage.length > 0) {
+        NSString *text = [string substringWithRange:NSMakeRange(startRange.location+startRange.length, endRnage.location - startRange.location - startRange.length)];
+        return text;
+    }else {
+        return nil;
+    }
+}
+
+- (NSURLSession *)session{
+    if (_session == nil) {
+        NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+        _session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+    }
+    return _session;
+}
+
 @end

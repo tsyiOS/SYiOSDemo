@@ -1,0 +1,177 @@
+//
+//  HomeBannerView.m
+//  wybxg
+//
+//  Created by leju_Liangjun on 15/3/20.
+//  Copyright (c) 2015年 Tips4app Inc. All rights reserved.
+//
+
+#import "HomeBannerView.h"
+#import "Banner.h"
+#import "HomeBannerCell.h"
+#import "NSTimer+Block.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
+
+static NSString *cellIdentifier = @"HomeBannerCell";
+static const CGFloat duration = 5.0;
+
+@interface HomeBannerView (){
+    __weak NSTimer *_timer;
+    NSMutableArray *_mBanners;
+}
+
+- (void)startPagingTimer;
+- (void)stopPagingTimer;
+
+@end
+
+@implementation HomeBannerView
+
+- (void)dealloc
+{
+    _collectionView.delegate = nil;
+}
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    [_collectionView registerNib:[UINib nibWithNibName:@"HomeBannerCell" bundle:nil] forCellWithReuseIdentifier:cellIdentifier];
+    _collectionView.scrollsToTop = NO;
+}
+
++ (instancetype)homeBannerView
+{
+    UINib *nib = [UINib nibWithNibName:@"HomeBannerView" bundle:nil];
+    return [[nib instantiateWithOwner:nil options:nil] lastObject];
+}
+
+- (void)setBanners:(NSArray *)banners
+{
+//    [self stopPagingTimer];
+    _banners = banners;
+
+    _mBanners = [NSMutableArray arrayWithCapacity:_banners.count + 2];
+    
+    if (banners.count) {
+        [_mBanners addObject: [banners lastObject]];
+        [_mBanners addObjectsFromArray:banners];
+        [_mBanners addObject:[banners firstObject]];
+    }
+    
+    [_collectionView reloadData];
+    _pageControl.hidden = (_banners.count < 2);
+    
+    [_collectionView setContentOffset:CGPointMake(_collectionView.frame.size.width, 0)];
+//    [self startPagingTimer];
+    
+//    _countLabel.text = [NSString stringWithFormat:@"共%lu张",(unsigned long)banners.count];
+}
+
+#pragma mark -
+
+- (IBAction)didChangePage:(UIPageControl *)sender
+{
+//    NSInteger page = sender.currentPage;
+//    [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:page inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+}
+
+#pragma mark - collection
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    _pageControl.numberOfPages = [_banners count];
+    return [_mBanners count];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    HomeBannerCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    Banner *banner = _mBanners[indexPath.row];
+//    [cell.imageView setImageWithURL:[NSURL URLWithString:banner.middleURL] placeholderImage:[UIImage imageNamed:@"placeholder-big"]];
+    return cell;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return self.bounds.size;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    HomeBannerCell *cell = (HomeBannerCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    if ([_delegate respondsToSelector:@selector(bannerView:selectCell:didSelectBanner:)]) {
+        [_delegate bannerView:self selectCell:cell didSelectBanner:_mBanners[indexPath.row]];
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    NSInteger page = scrollView.contentOffset.x / scrollView.bounds.size.width -1;
+//    NSInteger page = floor((scrollView.contentOffset.x - scrollView.frame.size.width
+//                                   / _mBanners.count) / scrollView.frame.size.width) + 1;
+    if (page != _pageControl.currentPage &&
+        page < _pageControl.numberOfPages &&
+        page >= 0) {
+        [_pageControl setCurrentPage:page];
+    }
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    NSInteger currentPage = floor((scrollView.contentOffset.x - scrollView.frame.size.width
+                                       / _mBanners.count) / scrollView.frame.size.width) + 1;
+    if (currentPage==0) {
+        //go last but 1 page
+        [scrollView scrollRectToVisible:CGRectMake(scrollView.frame.size.width * [_banners count],0,scrollView.frame.size.width,scrollView.frame.size.height) animated:NO];
+    } else {
+        if (currentPage == ([_banners count]+1)) {
+            //如果是最后+1,也就是要开始循环的第一个
+            [scrollView scrollRectToVisible:CGRectMake(scrollView.frame.size.width,0,scrollView.frame.size.width,scrollView.frame.size.height) animated:NO];
+        }
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+//    [self startPagingTimer];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+//    [self stopPagingTimer];
+}
+
+- (void)startPagingTimer
+{
+    if (!_timer && [_banners count] > 1) {
+        __weak typeof(self) weakSelf = self;
+        _timer = [NSTimer scheduledTimerWithTimeInterval:duration action:^(NSTimer *timer) {
+            NSInteger page = weakSelf.pageControl.currentPage + 1;
+            if (page >= weakSelf.pageControl.numberOfPages) {
+                page = 0;
+            }
+            if (page < weakSelf.pageControl.numberOfPages) {
+                if (page > 0) {
+                    [weakSelf.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:page inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+                }
+                else {
+                    [weakSelf.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+                }
+            }
+        } repeats:YES];
+    }
+}
+
+- (void)stopPagingTimer
+{
+    if (_timer) {
+        [_timer invalidate];
+        _timer = nil;
+    }
+}
+
+- (void)stopAnimation
+{
+    [self stopPagingTimer];
+}
+
+@end

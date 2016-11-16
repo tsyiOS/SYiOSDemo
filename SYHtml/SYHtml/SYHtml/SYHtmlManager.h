@@ -9,7 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "SYCoder.h"
 
+typedef NS_ENUM(NSUInteger, SYHtmlType) {
+    SYHtmlTypeAllList,
+    SYHtmlTypeArticleList,
+    SYHtmlTypeArticle,
+    SYHtmlTypePictureList,
+    SYHtmlTypePicture
+};
+
 @interface SYHtmlManager : NSObject
 SYSingleton_interface(SYHtmlManager)
-- (void)requestData;
+
+- (void)requestDataWithUrl:(NSString *)urlString andType:(SYHtmlType)type completion:(void(^)(id response))completion;
 @end

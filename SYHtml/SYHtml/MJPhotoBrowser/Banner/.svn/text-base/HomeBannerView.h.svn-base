@@ -1,0 +1,34 @@
+//
+//  HomeBannerView.h
+//  wybxg
+//
+//  Created by leju_Liangjun on 15/3/20.
+//  Copyright (c) 2015年 Tips4app Inc. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@class Banner;
+@class HomeBannerCell;
+@protocol HomeBannerViewDelegate;
+
+@interface HomeBannerView : UIView <UICollectionViewDataSource, UICollectionViewDelegate>
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet UILabel *countLabel;
+
+@property (nonatomic) NSArray *banners;
+@property (nonatomic) IBOutlet id<HomeBannerViewDelegate> delegate;
+- (IBAction)didChangePage:(UIPageControl *)sender;
+
+- (void)stopAnimation;
+
++ (instancetype)homeBannerView;
+
+@end
+
+@protocol HomeBannerViewDelegate <NSObject>
+
+- (void)bannerView:(HomeBannerView *)bannerView selectCell:(HomeBannerCell *)cell didSelectBanner:(Banner *)banner;
+
+@end

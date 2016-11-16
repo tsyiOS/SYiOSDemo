@@ -1,0 +1,25 @@
+//
+//  Banner.m
+//  RoomPrice
+//
+//  Created by leju_esf on 16/4/29.
+//  Copyright © 2016年 leju. All rights reserved.
+//
+
+#import "Banner.h"
+
+@implementation Banner
+
+- (void)setType:(BannerType)type {
+    _type = type;
+    switch (type) {
+        case BannerTypeHX:
+            self.title = @"户型图";
+            break;
+        case BannerTypeXQ:
+            self.title = @"小区图";
+            break;
+    }
+}
+
+@end
