@@ -34,6 +34,7 @@
 #pragma mark - 暂停按钮响应方法
 - (IBAction)stopPlayer:(id)sender {
     [self.videoView pause];
+    self.videoView.videoUrl = @"http://v.jxvdy.com/sendfile/w5bgP3A8JgiQQo5l0hvoNGE2H16WbN09X-ONHPq3P3C1BISgf7C-qVs6_c8oaw3zKScO78I--b0BGFBRxlpw13sf2e54QA";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,7 +44,7 @@
 
 - (SYVideoView *)videoView {
     if (_videoView == nil) {
-        _videoView = [[SYVideoView alloc] initWithFrame:CGRectMake(0, 20,self.view.frame.size.width , 200)];
+        _videoView = [[SYVideoView alloc] initWithFrame:CGRectMake(0, 20,self.view.frame.size.width , 200*self.view.frame.size.width/320)];
     }
     return _videoView;
 }

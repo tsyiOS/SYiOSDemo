@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SYVideoView : UIView
+@property (nonatomic, copy) NSString *videoUrl;
 - (void)play;
 - (void)pause;
 @end
