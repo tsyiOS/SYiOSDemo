@@ -9,14 +9,14 @@
 #import "SYVideoView.h"
 #import <AVKit/AVKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import "SYVideoToolBar.h"
+#import "UIView+SYExtension.h"
 
-#define video1 @"http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4"
-//#define video1 @"http://www.aa337.com/video3-mp4_water_m3u8/36298/36298.m3u8"
-#define video2 @"http://v.jxvdy.com/sendfile/w5bgP3A8JgiQQo5l0hvoNGE2H16WbN09X-ONHPq3P3C1BISgf7C-qVs6_c8oaw3zKScO78I--b0BGFBRxlpw13sf2e54QA"
-
-@interface SYVideoView ()
+@interface SYVideoView ()<SYVideoToolBarDelegate>
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) AVPlayerLayer *playerLayer;
+@property (nonatomic, strong) SYVideoToolBar *toolBar;
+@property (nonatomic, assign) CGRect lastFrame;
 @end
 
 @implementation SYVideoView
@@ -24,8 +24,14 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self.layer addSublayer:self.playerLayer];
+        [self addSubview:self.toolBar];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChange) name:UIDeviceOrientationDidChangeNotification object:nil];
     }
     return self;
+}
+
+- (void)orientationChange {
+    NSLog(@"=======%ld",[UIDevice currentDevice].orientation);
 }
 
 - (void)play {
@@ -37,8 +43,73 @@
 
 - (void)setVideoUrl:(NSString *)videoUrl {
     _videoUrl = videoUrl;
-    [self.player replaceCurrentItemWithPlayerItem:[AVPlayerItem playerItemWithURL:[NSURL URLWithString:videoUrl]]];
+    
+    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:[NSURL URLWithString:videoUrl] options:nil];
+    NSArray *requestKeys = @[@"playable"];
+    [asset loadValuesAsynchronouslyForKeys:requestKeys completionHandler:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self prepareToPlayAsset:asset withKeys:requestKeys];
+        });
+    }];
+}
+
+- (void)prepareToPlayAsset:(AVURLAsset *)asset withKeys:(NSArray *)requestKeys {
+    for (NSString *key in requestKeys) {
+        NSError *error = nil;
+        AVKeyValueStatus keyValueStatus = [asset statusOfValueForKey:key error:&error];
+        if (keyValueStatus == AVKeyValueStatusFailed) {
+            NSLog(@"无法播放");
+            return;
+        }
+    }
+    NSInteger second = [asset duration].value/[asset duration].timescale;
+    self.toolBar.totalTime = second;
+    [self.player replaceCurrentItemWithPlayerItem:[AVPlayerItem playerItemWithURL:asset.URL]];
+    
+    __weak typeof(self) weakSelf = self;
+    [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1.0, 1.0) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+        CGFloat currentTime = CMTimeGetSeconds(time);
+        weakSelf.toolBar.currentTime = (NSInteger)currentTime;
+    }];
+
     [self.player play];
+}
+
+#pragma mark - SYVideoToolBarDelegate
+- (void)playAction:(BOOL)play {
+    if (play) {
+        [self.player play];
+    }else {
+        [self.player pause];
+    }
+}
+
+- (void)fullScreenAction:(BOOL)fullScreen {
+    if (fullScreen) {
+        self.lastFrame = self.frame;
+        NSNumber *orientationUnknown = [NSNumber numberWithInt:UIDeviceOrientationUnknown];
+        [[UIDevice currentDevice] setValue:orientationUnknown forKey:@"orientation"];
+        NSNumber *orientationTarget = [NSNumber numberWithInt:UIDeviceOrientationLandscapeLeft];
+        [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
+        
+        self.frame = CGRectMake(0, 0, ScreenH, ScreenW);
+    }else {
+        self.frame = self.lastFrame;
+        NSNumber *orientationUnknown = [NSNumber numberWithInt:UIDeviceOrientationUnknown];
+        [[UIDevice currentDevice] setValue:orientationUnknown forKey:@"orientation"];
+        NSNumber *orientationTarget = [NSNumber numberWithInt:UIDeviceOrientationPortrait];
+        [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
+    }
+}
+
+#pragma mark - 懒加载
+- (SYVideoToolBar *)toolBar {
+    if (_toolBar == nil) {
+        CGFloat h = 25;
+        _toolBar = [[SYVideoToolBar alloc] initWithFrame:CGRectMake(0, self.frame.size.height - h - 5, self.frame.size.width, h)];
+        _toolBar.delegate = self;
+    }
+    return _toolBar;
 }
 
 - (AVPlayerLayer *)playerLayer {
@@ -53,7 +124,7 @@
 
 - (AVPlayer *)player {
     if (_player == nil) {
-        _player = [AVPlayer playerWithURL:[NSURL URLWithString:video2]];
+        _player = [[AVPlayer alloc] init];
     }
     return _player;
 }
