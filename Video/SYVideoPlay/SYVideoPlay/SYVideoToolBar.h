@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, SYVideoToolBarStatus) {
+    SYVideoToolBarStatusPlay,
+    SYVideoToolBarStatusPause,
+    SYVideoToolBarStatusFullScreen,
+    SYVideoToolBarStatusSmall
+};
+
 @protocol SYVideoToolBarDelegate <NSObject>
 
 @required
@@ -21,6 +28,7 @@
 
 @property (nonatomic, assign) NSInteger totalTime;
 @property (nonatomic, assign) NSInteger currentTime;
+@property (nonatomic, assign) SYVideoToolBarStatus type;
 
 @property (nonatomic, weak) id<SYVideoToolBarDelegate>delegate;
 @end

@@ -30,6 +30,7 @@
     [super viewDidLoad];
     [self.view addSubview:self.videoView];
     self.videoView.videoUrl = video1;
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
 }
 
 -(void)viewWillAppear:(BOOL)animated{

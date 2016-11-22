@@ -23,11 +23,22 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        [self.layer addSublayer:self.playerLayer];
-        [self addSubview:self.toolBar];
+        [self setUpUI];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChange) name:UIDeviceOrientationDidChangeNotification object:nil];
     }
     return self;
+}
+
+
+
+- (void)setUpUI {
+    [self.layer addSublayer:self.playerLayer];
+    [self addSubview:self.toolBar];
+    self.toolBar.translatesAutoresizingMaskIntoConstraints = NO;
+    NSArray *constraintV = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[toolBar]|" options:NSLayoutFormatAlignmentMask metrics:nil views:@{@"toolBar":self.toolBar}];
+    NSArray *constraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[toolBar(25)]-10-|" options:NSLayoutFormatAlignmentMask metrics:nil views:@{@"toolBar":self.toolBar}];
+    [self addConstraints:constraintV];
+    [self addConstraints:constraintH];
 }
 
 - (void)orientationChange {
@@ -73,6 +84,7 @@
     }];
 
     [self.player play];
+    self.toolBar.type = SYVideoToolBarStatusPlay;
 }
 
 #pragma mark - SYVideoToolBarDelegate
@@ -84,18 +96,26 @@
     }
 }
 
+//- (void)screenShot {
+//    UIImage *image = [self.player re]
+//}
+
 - (void)fullScreenAction:(BOOL)fullScreen {
     if (fullScreen) {
-        self.lastFrame = self.frame;
+        [[UIApplication sharedApplication] setStatusBarHidden:NO];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
         NSNumber *orientationUnknown = [NSNumber numberWithInt:UIDeviceOrientationUnknown];
         [[UIDevice currentDevice] setValue:orientationUnknown forKey:@"orientation"];
         NSNumber *orientationTarget = [NSNumber numberWithInt:UIDeviceOrientationLandscapeLeft];
         [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
+        self.lastFrame = self.frame;
         self.frame = [UIScreen mainScreen].bounds;
-        self.playerLayer.frame = self.frame;
+        self.playerLayer.frame = self.bounds;
         NSLog(@"%@",NSStringFromCGRect(self.frame));
     }else {
         self.frame = self.lastFrame;
+        self.playerLayer.frame = self.bounds;
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
         NSNumber *orientationUnknown = [NSNumber numberWithInt:UIDeviceOrientationUnknown];
         [[UIDevice currentDevice] setValue:orientationUnknown forKey:@"orientation"];
         NSNumber *orientationTarget = [NSNumber numberWithInt:UIDeviceOrientationPortrait];
@@ -106,8 +126,9 @@
 #pragma mark - 懒加载
 - (SYVideoToolBar *)toolBar {
     if (_toolBar == nil) {
-        CGFloat h = 25;
-        _toolBar = [[SYVideoToolBar alloc] initWithFrame:CGRectMake(0, self.frame.size.height - h - 5, self.frame.size.width, h)];
+//        CGFloat h = 25;
+//        _toolBar = [[SYVideoToolBar alloc] initWithFrame:CGRectMake(0, self.sy_height - h - 5, self.sy_width, h)];
+        _toolBar = [[SYVideoToolBar alloc] init];
         _toolBar.delegate = self;
     }
     return _toolBar;
