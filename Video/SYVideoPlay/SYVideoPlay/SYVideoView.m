@@ -91,8 +91,9 @@
         [[UIDevice currentDevice] setValue:orientationUnknown forKey:@"orientation"];
         NSNumber *orientationTarget = [NSNumber numberWithInt:UIDeviceOrientationLandscapeLeft];
         [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
-        
-        self.frame = CGRectMake(0, 0, ScreenH, ScreenW);
+        self.frame = [UIScreen mainScreen].bounds;
+        self.playerLayer.frame = self.frame;
+        NSLog(@"%@",NSStringFromCGRect(self.frame));
     }else {
         self.frame = self.lastFrame;
         NSNumber *orientationUnknown = [NSNumber numberWithInt:UIDeviceOrientationUnknown];
