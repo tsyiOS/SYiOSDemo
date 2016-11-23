@@ -18,13 +18,14 @@
 		F08995EB1DE4209900CF209F /* UIView+SYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F08995EA1DE4209900CF209F /* UIView+SYExtension.m */; };
 		F08995EE1DE44A4300CF209F /* SYVideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = F08995ED1DE44A4300CF209F /* SYVideoController.m */; };
 		F08995F11DE5742700CF209F /* UIImage+SYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F08995F01DE5742700CF209F /* UIImage+SYExtension.m */; };
+		F08995F41DE5968100CF209F /* SYLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F08995F31DE5968100CF209F /* SYLiveViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F08995BF1DE2EA8D00CF209F /* SYVideoPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SYVideoPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F08995C31DE2EA8D00CF209F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F08995C51DE2EA8D00CF209F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		F08995C61DE2EA8D00CF209F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F08995C61DE2EA8D00CF209F /* AppDelegate.m */ = {isa = PBXFileReference; indentWidth = 5; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F08995C81DE2EA8D00CF209F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		F08995C91DE2EA8D00CF209F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F08995CC1DE2EA8D00CF209F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -41,6 +42,8 @@
 		F08995ED1DE44A4300CF209F /* SYVideoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYVideoController.m; sourceTree = "<group>"; };
 		F08995EF1DE5742700CF209F /* UIImage+SYExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SYExtension.h"; sourceTree = "<group>"; };
 		F08995F01DE5742700CF209F /* UIImage+SYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SYExtension.m"; sourceTree = "<group>"; };
+		F08995F21DE5968100CF209F /* SYLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYLiveViewController.h; sourceTree = "<group>"; };
+		F08995F31DE5968100CF209F /* SYLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYLiveViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,8 @@
 				F08995DA1DE2FF5900CF209F /* SYVideoView.m */,
 				F08995EC1DE44A4300CF209F /* SYVideoController.h */,
 				F08995ED1DE44A4300CF209F /* SYVideoController.m */,
+				F08995F21DE5968100CF209F /* SYLiveViewController.h */,
+				F08995F31DE5968100CF209F /* SYLiveViewController.m */,
 				F08995EF1DE5742700CF209F /* UIImage+SYExtension.h */,
 				F08995F01DE5742700CF209F /* UIImage+SYExtension.m */,
 				F08995E61DE3F53300CF209F /* SYVideoToolBar.h */,
@@ -180,6 +185,7 @@
 				F08995C71DE2EA8D00CF209F /* AppDelegate.m in Sources */,
 				F08995EB1DE4209900CF209F /* UIView+SYExtension.m in Sources */,
 				F08995EE1DE44A4300CF209F /* SYVideoController.m in Sources */,
+				F08995F41DE5968100CF209F /* SYLiveViewController.m in Sources */,
 				F08995E81DE3F53300CF209F /* SYVideoToolBar.m in Sources */,
 				F08995F11DE5742700CF209F /* UIImage+SYExtension.m in Sources */,
 				F08995DB1DE2FF5900CF209F /* SYVideoView.m in Sources */,

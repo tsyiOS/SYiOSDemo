@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "SYVideoController.h"
+#import "SYLiveViewController.h"
+#import "UIView+SYExtension.h"
 
 @interface ViewController ()
 
@@ -16,7 +18,7 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    
 }
 
 - (IBAction)videoAction {
@@ -25,7 +27,8 @@
 }
 
 - (IBAction)liveAction {
-    
+    SYLiveViewController *liveVc = [[SYLiveViewController alloc] init];
+    [self.navigationController pushViewController:liveVc animated:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated{

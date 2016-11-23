@@ -10,6 +10,7 @@
 #import "SYVideoView.h"
 #import "UIImage+SYExtension.h"
 #import "UIView+SYExtension.h"
+#import "AppDelegate.h"
 
 #define video1 @"http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4"
 #define video2 @"http://v.jxvdy.com/sendfile/w5bgP3A8JgiQQo5l0hvoNGE2H16WbN09X-ONHPq3P3C1BISgf7C-qVs6_c8oaw3zKScO78I--b0BGFBRxlpw13sf2e54QA"
@@ -36,6 +37,20 @@
     
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"截屏" style:UIBarButtonItemStylePlain target:self action:@selector(rightTapAction)];;
     self.navigationItem.rightBarButtonItem = item;
+    
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.allowRotation = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.videoView pause];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.allowRotation = NO;
 }
 
 - (void)rightTapAction {
@@ -67,7 +82,7 @@
 }
 
 - (void)dealloc {
-    NSLog(@"我消失了");
+    NSLog(@"视频消失");
 }
 
 @end

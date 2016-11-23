@@ -41,6 +41,8 @@
         self.barStyle = [UIApplication sharedApplication].statusBarStyle;
         self.barHidden = [UIApplication sharedApplication].isStatusBarHidden;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChange) name:UIDeviceOrientationDidChangeNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(becomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
+         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(enterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
     }
     return self;
 }
@@ -56,6 +58,7 @@
     [self addConstraints:constraintH];
 }
 
+#pragma mark - 处理通知
 - (void)orientationChange {
     if ([UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeLeft||[UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeRight) {
         self.fullScreen = YES;
@@ -64,6 +67,17 @@
     }
 }
 
+- (void)becomeActive {
+    
+}
+
+- (void)enterForeground {
+    if (self.toolBar.playing) {
+        [self.player play];
+    }
+}
+
+#pragma mark - 对象方法
 - (void)play {
     [self.player play];
 }
@@ -72,7 +86,7 @@
 }
 
 - (UIImage *)screenShot {
-    NSURL *url = [NSURL fileURLWithPath:self.videoUrl];
+//    NSURL *url = [NSURL fileURLWithPath:self.videoUrl];
 //    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:url options:nil];
 //    AVAssetImageGenerator *gen = [[AVAssetImageGenerator alloc] initWithAsset:asset];
 //    CMTime time = CMTimeMakeWithSeconds(self.toolBar.currentTime*1.0, self.player.currentItem.duration.timescale);
@@ -120,7 +134,7 @@
 
     [self.player play];
     [self.timer fire];
-    self.toolBar.type = SYVideoToolBarStatusPlay;
+    self.toolBar.playing = YES;
 }
 
 #pragma mark - SYVideoToolBarDelegate
@@ -157,7 +171,7 @@
 - (void)setFullScreen:(BOOL)fullScreen {
     _fullScreen = fullScreen;
     
-    self.toolBar.type = fullScreen?SYVideoToolBarStatusFullScreen:SYVideoToolBarStatusSmall;
+    self.toolBar.fullScreen = fullScreen;
     if (fullScreen) {
         
         [[UIApplication sharedApplication] setStatusBarHidden:!self.showToolBar];
@@ -198,7 +212,6 @@
         [self.timer fire];
     }
 }
-
 
 /**
  快进或快退
@@ -323,6 +336,11 @@
         _pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)];
     }
     return _pan;
+}
+
+- (void)dealloc {
+    NSLog(@"播放器消失");
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

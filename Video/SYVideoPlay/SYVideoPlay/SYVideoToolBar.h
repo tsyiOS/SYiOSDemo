@@ -30,7 +30,8 @@ typedef NS_ENUM(NSUInteger, SYVideoToolBarStatus) {
 
 @property (nonatomic, assign) NSInteger totalTime;
 @property (nonatomic, assign) NSInteger currentTime;
-@property (nonatomic, assign) SYVideoToolBarStatus type;
+@property (nonatomic, assign) BOOL fullScreen;
+@property (nonatomic, assign) BOOL playing;
 
 @property (nonatomic, weak) id<SYVideoToolBarDelegate>delegate;
 @end
