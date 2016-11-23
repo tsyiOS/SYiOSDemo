@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11517.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,25 +19,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqw-zJ-vCS">
-                                <state key="normal" title="播放"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSk-MI-XKy">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="FVK-4e-r4E"/>
+                                </constraints>
+                                <state key="normal" title="视  频"/>
                                 <connections>
-                                    <action selector="startPlayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JRK-7r-rmn"/>
+                                    <action selector="videoAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="L5u-wm-RrY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A6m-1x-5M5">
-                                <state key="normal" title="暂停"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90R-iT-0ia">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="G9m-Xv-YKB"/>
+                                </constraints>
+                                <state key="normal" title="直  播"/>
                                 <connections>
-                                    <action selector="stopPlayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dDG-yS-8cB"/>
+                                    <action selector="liveAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="i6z-dM-xFv"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="cqw-zJ-vCS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="1e6-me-FPd"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cqw-zJ-vCS" secondAttribute="bottom" constant="100" id="BrG-7N-3ds"/>
-                            <constraint firstAttribute="trailing" secondItem="A6m-1x-5M5" secondAttribute="trailing" constant="50" id="dbn-ru-G7g"/>
-                            <constraint firstItem="A6m-1x-5M5" firstAttribute="centerY" secondItem="cqw-zJ-vCS" secondAttribute="centerY" id="ij0-6j-9hv"/>
+                            <constraint firstItem="90R-iT-0ia" firstAttribute="leading" secondItem="FSk-MI-XKy" secondAttribute="trailing" constant="52" id="2pR-ST-FEX"/>
+                            <constraint firstItem="FSk-MI-XKy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="48" id="Dm9-Vt-Ajr"/>
+                            <constraint firstItem="FSk-MI-XKy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="21" id="MB3-B8-XXE"/>
+                            <constraint firstItem="FSk-MI-XKy" firstAttribute="baseline" secondItem="90R-iT-0ia" secondAttribute="baseline" id="Vvm-Zc-8jt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CEH-EM-Pe1"/>

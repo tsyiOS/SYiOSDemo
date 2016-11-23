@@ -17,6 +17,7 @@
 		F08995E81DE3F53300CF209F /* SYVideoToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F08995E71DE3F53300CF209F /* SYVideoToolBar.m */; };
 		F08995EB1DE4209900CF209F /* UIView+SYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F08995EA1DE4209900CF209F /* UIView+SYExtension.m */; };
 		F08995EE1DE44A4300CF209F /* SYVideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = F08995ED1DE44A4300CF209F /* SYVideoController.m */; };
+		F08995F11DE5742700CF209F /* UIImage+SYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F08995F01DE5742700CF209F /* UIImage+SYExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		F08995EA1DE4209900CF209F /* UIView+SYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SYExtension.m"; sourceTree = "<group>"; };
 		F08995EC1DE44A4300CF209F /* SYVideoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYVideoController.h; sourceTree = "<group>"; };
 		F08995ED1DE44A4300CF209F /* SYVideoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYVideoController.m; sourceTree = "<group>"; };
+		F08995EF1DE5742700CF209F /* UIImage+SYExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SYExtension.h"; sourceTree = "<group>"; };
+		F08995F01DE5742700CF209F /* UIImage+SYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SYExtension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,8 @@
 				F08995DA1DE2FF5900CF209F /* SYVideoView.m */,
 				F08995EC1DE44A4300CF209F /* SYVideoController.h */,
 				F08995ED1DE44A4300CF209F /* SYVideoController.m */,
+				F08995EF1DE5742700CF209F /* UIImage+SYExtension.h */,
+				F08995F01DE5742700CF209F /* UIImage+SYExtension.m */,
 				F08995E61DE3F53300CF209F /* SYVideoToolBar.h */,
 				F08995E71DE3F53300CF209F /* SYVideoToolBar.m */,
 				F08995E91DE4209900CF209F /* UIView+SYExtension.h */,
@@ -176,6 +181,7 @@
 				F08995EB1DE4209900CF209F /* UIView+SYExtension.m in Sources */,
 				F08995EE1DE44A4300CF209F /* SYVideoController.m in Sources */,
 				F08995E81DE3F53300CF209F /* SYVideoToolBar.m in Sources */,
+				F08995F11DE5742700CF209F /* UIImage+SYExtension.m in Sources */,
 				F08995DB1DE2FF5900CF209F /* SYVideoView.m in Sources */,
 				F08995C41DE2EA8D00CF209F /* main.m in Sources */,
 			);

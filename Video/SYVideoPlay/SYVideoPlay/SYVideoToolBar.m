@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UILabel *totalTimeLabel;
 @property (nonatomic, strong) UISlider *slider;
 @property (nonatomic, strong) UIButton *fullScreenBtn;
+@property (nonatomic, assign,readonly) BOOL operationing;
 @end
 
 @implementation SYVideoToolBar
@@ -73,7 +74,9 @@
 - (void)setCurrentTime:(NSInteger)currentTime {
     _currentTime = currentTime;
     self.currentTimeLabel.text = [self handelTime:currentTime];
-    self.slider.value = _currentTime*1.0/self.totalTime;
+    if (!self.operationing) {
+        self.slider.value = _currentTime*1.0/self.totalTime;
+    }
 }
 
 - (void)palyAction {
@@ -105,20 +108,36 @@
     }
 }
 
+- (void)tapDown {
+    _operationing = YES;
+    if ([self.delegate respondsToSelector:@selector(slideTaped:value:)]) {
+        [self.delegate slideTaped:_operationing value:self.slider.value];
+    }
+    NSLog(@"按下");
+}
+
+- (void)tapCancel {
+    _operationing = NO;
+    if ([self.delegate respondsToSelector:@selector(slideTaped:value:)]) {
+        [self.delegate slideTaped:_operationing value:self.slider.value];
+    }
+    NSLog(@"抬起");
+}
+
 #pragma mark - 懒加载
 
 - (UISlider *)slider {
     if (_slider == nil) {
-//        _slider = [[UISlider alloc] initWithFrame:CGRectMake(self.currentTimeLabel.sy_right, 0, self.sy_width - self.currentTimeLabel.sy_right * 2, self.sy_height)];
         _slider = [[UISlider alloc] init];
         [_slider setThumbImage:[UIImage imageNamed:@"video_toolbar_thumb"] forState:UIControlStateNormal];
+        [_slider addTarget:self action:@selector(tapDown) forControlEvents:UIControlEventTouchDown];
+        [_slider addTarget:self action:@selector(tapCancel) forControlEvents:UIControlEventTouchUpInside];
     }
     return _slider;
 }
 
 - (UILabel *)currentTimeLabel {
     if (_currentTimeLabel == nil) {
-//        _currentTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.palyBtn.sy_right, 0, 50, self.sy_height)];
         _currentTimeLabel = [[UILabel alloc] init];
         _currentTimeLabel.text = @"00:00";
         _currentTimeLabel.font = [UIFont systemFontOfSize:10];
@@ -130,7 +149,6 @@
 
 - (UILabel *)totalTimeLabel {
     if (_totalTimeLabel == nil) {
-//        _totalTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.slider.sy_right, 0, 50, self.sy_height)];
         _totalTimeLabel = [[UILabel alloc] init];
         _totalTimeLabel.text = @"00:00";
         _totalTimeLabel.font = [UIFont systemFontOfSize:10];
@@ -143,7 +161,6 @@
 - (UIButton *)palyBtn {
     if (_palyBtn == nil) {
         _palyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        _palyBtn.frame = CGRectMake(15, 0, self.sy_height, self.sy_height);
         [_palyBtn setBackgroundImage:[UIImage imageNamed:@"video_toolbar_play"] forState:UIControlStateNormal];
         [_palyBtn setBackgroundImage:[UIImage imageNamed:@"video_toolbar_pause"] forState:UIControlStateSelected];
         [_palyBtn addTarget:self action:@selector(palyAction) forControlEvents:UIControlEventTouchUpInside];
@@ -154,7 +171,6 @@
 - (UIButton *)fullScreenBtn {
     if (_fullScreenBtn == nil) {
         _fullScreenBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        _fullScreenBtn.frame = CGRectMake(self.sy_width - 15 - self.sy_height, 0, self.sy_height, self.sy_height);
         [_fullScreenBtn setBackgroundImage:[UIImage imageNamed:@"video_toolbar_zoomOut"] forState:UIControlStateNormal];
         [_fullScreenBtn setBackgroundImage:[UIImage imageNamed:@"video_toolbar_zoomIn"] forState:UIControlStateSelected];
         [_fullScreenBtn addTarget:self action:@selector(fullScreenAction) forControlEvents:UIControlEventTouchUpInside];

@@ -18,10 +18,12 @@ typedef NS_ENUM(NSUInteger, SYVideoToolBarStatus) {
 @protocol SYVideoToolBarDelegate <NSObject>
 
 @required
+
 - (void)playAction:(BOOL)play;
 
 - (void)fullScreenAction:(BOOL)fullScreen;
 
+- (void)slideTaped:(BOOL)taped value:(CGFloat)value;
 @end
 
 @interface SYVideoToolBar : UIView

@@ -11,29 +11,44 @@
 #import <AVFoundation/AVFoundation.h>
 #import "SYVideoToolBar.h"
 #import "UIView+SYExtension.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface SYVideoView ()<SYVideoToolBarDelegate>
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) AVPlayerLayer *playerLayer;
 @property (nonatomic, strong) SYVideoToolBar *toolBar;
 @property (nonatomic, assign) CGRect lastFrame;
+@property (nonatomic, assign) UIStatusBarStyle barStyle;
+@property (nonatomic, assign) BOOL barHidden;
+@property (nonatomic, assign) BOOL showToolBar;
+@property (nonatomic, assign) BOOL fullScreen;
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, assign) CMTime seekTime;
+@property (nonatomic, assign) NSInteger time;//清屏时间,默认15秒
+@property (nonatomic, strong) UITapGestureRecognizer *tap;
+@property (nonatomic, strong) UIPanGestureRecognizer *pan;
+@property (nonatomic, assign) CGPoint startPoint;
 @end
 
 @implementation SYVideoView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
+        self.lastFrame = frame;
         [self setUpUI];
+        [self addGestureRecognizer:self.tap];
+        [self addGestureRecognizer:self.pan];
+        self.barStyle = [UIApplication sharedApplication].statusBarStyle;
+        self.barHidden = [UIApplication sharedApplication].isStatusBarHidden;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChange) name:UIDeviceOrientationDidChangeNotification object:nil];
     }
     return self;
 }
 
-
-
 - (void)setUpUI {
     [self.layer addSublayer:self.playerLayer];
     [self addSubview:self.toolBar];
+    self.showToolBar = YES;
     self.toolBar.translatesAutoresizingMaskIntoConstraints = NO;
     NSArray *constraintV = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[toolBar]|" options:NSLayoutFormatAlignmentMask metrics:nil views:@{@"toolBar":self.toolBar}];
     NSArray *constraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[toolBar(25)]-10-|" options:NSLayoutFormatAlignmentMask metrics:nil views:@{@"toolBar":self.toolBar}];
@@ -42,7 +57,11 @@
 }
 
 - (void)orientationChange {
-    NSLog(@"=======%ld",[UIDevice currentDevice].orientation);
+    if ([UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeLeft||[UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeRight) {
+        self.fullScreen = YES;
+    }else if ([UIDevice currentDevice].orientation == UIDeviceOrientationPortrait) {
+        self.fullScreen = NO;
+    }
 }
 
 - (void)play {
@@ -50,6 +69,21 @@
 }
 - (void)pause {
     [self.player pause];
+}
+
+- (UIImage *)screenShot {
+    NSURL *url = [NSURL fileURLWithPath:self.videoUrl];
+//    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:url options:nil];
+//    AVAssetImageGenerator *gen = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+//    CMTime time = CMTimeMakeWithSeconds(self.toolBar.currentTime*1.0, self.player.currentItem.duration.timescale);
+//    NSError *error = nil;
+//    CMTime actualTime;
+//    CGImageRef image = [gen copyCGImageAtTime:time actualTime:&actualTime error:&error];
+//    UIImage *img = [[UIImage alloc] initWithCGImage:image];
+//    UIImage *image = [self thumbnailImageForVideo:url atTime:self.toolBar.currentTime];
+//    UIImage *image = [self cutVideoGetImageArrayWithURl:url Second:self.toolBar.currentTime*1.0].firstObject;
+//    return image;
+    return nil;
 }
 
 - (void)setVideoUrl:(NSString *)videoUrl {
@@ -75,6 +109,7 @@
     }
     NSInteger second = [asset duration].value/[asset duration].timescale;
     self.toolBar.totalTime = second;
+    
     [self.player replaceCurrentItemWithPlayerItem:[AVPlayerItem playerItemWithURL:asset.URL]];
     
     __weak typeof(self) weakSelf = self;
@@ -84,6 +119,7 @@
     }];
 
     [self.player play];
+    [self.timer fire];
     self.toolBar.type = SYVideoToolBarStatusPlay;
 }
 
@@ -96,38 +132,162 @@
     }
 }
 
-//- (void)screenShot {
-//    UIImage *image = [self.player re]
-//}
-
 - (void)fullScreenAction:(BOOL)fullScreen {
+    self.fullScreen = fullScreen;
     if (fullScreen) {
-        [[UIApplication sharedApplication] setStatusBarHidden:NO];
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+
         NSNumber *orientationUnknown = [NSNumber numberWithInt:UIDeviceOrientationUnknown];
         [[UIDevice currentDevice] setValue:orientationUnknown forKey:@"orientation"];
         NSNumber *orientationTarget = [NSNumber numberWithInt:UIDeviceOrientationLandscapeLeft];
         [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
-        self.lastFrame = self.frame;
-        self.frame = [UIScreen mainScreen].bounds;
-        self.playerLayer.frame = self.bounds;
-        NSLog(@"%@",NSStringFromCGRect(self.frame));
+        
     }else {
-        self.frame = self.lastFrame;
-        self.playerLayer.frame = self.bounds;
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+       
         NSNumber *orientationUnknown = [NSNumber numberWithInt:UIDeviceOrientationUnknown];
         [[UIDevice currentDevice] setValue:orientationUnknown forKey:@"orientation"];
         NSNumber *orientationTarget = [NSNumber numberWithInt:UIDeviceOrientationPortrait];
         [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
+
+    }
+    
+    self.time = 0;
+    [self.timer fire];
+}
+
+- (void)setFullScreen:(BOOL)fullScreen {
+    _fullScreen = fullScreen;
+    
+    self.toolBar.type = fullScreen?SYVideoToolBarStatusFullScreen:SYVideoToolBarStatusSmall;
+    if (fullScreen) {
+        
+        [[UIApplication sharedApplication] setStatusBarHidden:!self.showToolBar];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        
+        [UIView animateWithDuration:0.25 animations:^{
+            self.frame = [UIScreen mainScreen].bounds;
+            self.playerLayer.frame = self.bounds;
+        }];
+        
+    }else {
+        
+        [[UIApplication sharedApplication] setStatusBarHidden:self.barHidden];
+        [[UIApplication sharedApplication] setStatusBarStyle:self.barStyle];
+        
+        [UIView animateWithDuration:0.25 animations:^{
+            self.frame = self.lastFrame;
+            self.playerLayer.frame = self.bounds;
+        }];
+        
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(sy_fullScreen:)]) {
+        [self.delegate sy_fullScreen:fullScreen];
+    }
+}
+
+- (void)slideTaped:(BOOL)taped value:(CGFloat)value{
+    if (taped) {
+        [self.timer invalidate];
+        self.timer = nil;
+        self.tap.enabled = NO;
+        self.pan.enabled = NO;
+    }else {
+        [self scrollToTime:self.toolBar.totalTime*value];
+        self.tap.enabled = YES;
+        self.pan.enabled = YES;
+        [self.timer fire];
+    }
+}
+
+
+/**
+ 快进或快退
+
+ @param time 时间
+ */
+- (void)scrollToTime:(CGFloat)time {
+    CMTime curremtTime = CMTimeMakeWithSeconds(time, self.player.currentItem.duration.timescale);
+    [self.player seekToTime:curremtTime completionHandler:^(BOOL finished) {
+        [self.player play];
+    }];
+}
+
+#pragma mark - 页面操作
+/**
+ 页面空白点击
+ */
+- (void)tapAction:(UITapGestureRecognizer *)tap {
+    if (!CGRectContainsPoint(self.toolBar.frame, [tap locationInView:self])) {
+        self.showToolBar = !self.showToolBar;
+    }
+}
+
+- (void)panAction:(UIPanGestureRecognizer *)pan {
+    if (CGRectContainsPoint(self.toolBar.frame, [pan locationInView:self])) {
+        return;
+    }
+    if (pan.state == UIGestureRecognizerStateBegan) {
+        self.startPoint = [pan locationInView:self];
+    }
+    if (pan.state == UIGestureRecognizerStateEnded) {
+        [self changeVideoScheduleWithPoint:[pan locationInView:self]];
+    }
+}
+
+- (void)changeVideoScheduleWithPoint:(CGPoint)point {
+//    NSLog(@"%f",point.x - self.startPoint.x);
+    [self scrollToTime:self.toolBar.currentTime + (point.x - self.startPoint.x)*0.1];
+}
+
+- (void)remainTime {
+    self.time ++;
+    if (self.time == 15) {
+        self.showToolBar = NO;
+    }
+}
+
+- (void)setShowToolBar:(BOOL)showToolBar {
+    _showToolBar = showToolBar;
+    if (showToolBar) {
+        [UIView animateWithDuration:0.25 animations:^{
+            self.toolBar.alpha = 1;
+        }completion:^(BOOL finished) {
+            [self.timer fire];
+            if (self.fullScreen) {
+                [[UIApplication sharedApplication] setStatusBarHidden:NO];
+                [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+            }else {
+                [[UIApplication sharedApplication] setStatusBarHidden:self.barHidden];
+                [[UIApplication sharedApplication] setStatusBarStyle:self.barStyle];
+            }
+        }];
+    }else {
+        [UIView animateWithDuration:0.25 animations:^{
+            self.toolBar.alpha = 0;
+        }completion:^(BOOL finished) {
+            [self.timer invalidate];
+            self.timer = nil;
+            self.time = 0;
+            if (self.fullScreen) {
+                [[UIApplication sharedApplication] setStatusBarHidden:YES];
+            }else {
+                [[UIApplication sharedApplication] setStatusBarHidden:self.barHidden];
+                [[UIApplication sharedApplication] setStatusBarStyle:self.barStyle];
+            }
+        }];
     }
 }
 
 #pragma mark - 懒加载
+- (NSTimer *)timer {
+    if (_timer == nil) {
+        _timer =[NSTimer scheduledTimerWithTimeInterval:1.f target:self selector:@selector(remainTime) userInfo:nil repeats:YES];
+    }
+    return _timer;
+}
+
 - (SYVideoToolBar *)toolBar {
     if (_toolBar == nil) {
-//        CGFloat h = 25;
-//        _toolBar = [[SYVideoToolBar alloc] initWithFrame:CGRectMake(0, self.sy_height - h - 5, self.sy_width, h)];
         _toolBar = [[SYVideoToolBar alloc] init];
         _toolBar.delegate = self;
     }
@@ -149,6 +309,20 @@
         _player = [[AVPlayer alloc] init];
     }
     return _player;
+}
+
+- (UITapGestureRecognizer *)tap {
+    if (_tap == nil) {
+       _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    }
+    return _tap;
+}
+
+- (UIPanGestureRecognizer *)pan {
+    if (_pan == nil) {
+        _pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)];
+    }
+    return _pan;
 }
 
 @end

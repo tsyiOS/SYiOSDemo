@@ -7,9 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
+
+@protocol SYVideoViewDelegate <NSObject>
+
+@optional
+- (void)sy_fullScreen:(BOOL)fullScreen;
+
+@end
 
 @interface SYVideoView : UIView
+@property (nonatomic, weak) id<SYVideoViewDelegate>delegate;
 @property (nonatomic, copy) NSString *videoUrl;
+
 - (void)play;
 - (void)pause;
+- (UIImage *)screenShot;
 @end
