@@ -90,6 +90,7 @@
             NSArray *dicts = self.listDict.allValues[indexPath.section];
             NSDictionary *dict = dicts[indexPath.row];
             listVC.urlSring = dict[@"url"];
+            listVC.title = dict[@"title"];
             [self.navigationController pushViewController:listVC animated:YES];
         }else if(indexPath.section == 1){
             SYListViewController *listVC = [[SYListViewController alloc] initWithNibName:NSStringFromClass([SYListViewController class]) bundle:nil];
@@ -97,6 +98,7 @@
             NSArray *dicts = self.listDict.allValues[indexPath.section];
             NSDictionary *dict = dicts[indexPath.row];
             listVC.urlSring = dict[@"url"];
+            listVC.title = dict[@"title"];
             [self.navigationController pushViewController:listVC animated:YES];
         }
     }else if (self.type == SYHtmlTypeArticleList) {

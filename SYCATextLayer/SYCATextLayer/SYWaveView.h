@@ -22,9 +22,11 @@
  */
 @property (nonatomic ,assign) CGFloat waveSpeed;
 /**
- *  波纹颜色 默认红色
+ *  波纹颜色 默认橙色
  */
 @property (nonatomic, strong) UIColor *waveColor;
-
+/**
+ *  数值 默认0.5 范围0~1.0
+ */
 @property (nonatomic, assign) CGFloat value;
 @end

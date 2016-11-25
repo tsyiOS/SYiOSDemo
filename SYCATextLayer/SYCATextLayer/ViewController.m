@@ -18,6 +18,7 @@
 @property (nonatomic, strong) UIButton *startBtn;
 @property (nonatomic, strong) CATextLayer *textLayer;
 @property (nonatomic, strong) CAGradientLayer *gradientLayer;
+@property (nonatomic, strong) SYWaveView *wave;
 @end
 
 @implementation ViewController
@@ -28,10 +29,15 @@
     wave.waveAmplitude = 10;
     wave.waveCycle = 100;
     wave.layer.cornerRadius = 100;
-    wave.value = 1;
-    wave.waveColor = [UIColor brownColor];
+    wave.value = 0.8;
+//    wave.waveColor = [UIColor brownColor];
     wave.clipsToBounds = YES;
+    self.wave = wave;
     [self.view addSubview:wave];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    self.wave.value -= 0.1;
 }
 
 - (void)demo2 {

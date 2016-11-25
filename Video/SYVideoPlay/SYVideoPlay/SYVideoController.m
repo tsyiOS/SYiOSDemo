@@ -81,6 +81,8 @@
     return _imageView;
 }
 
+
+
 - (void)dealloc {
     NSLog(@"视频消失");
 }

@@ -10,7 +10,7 @@
 #import <AVKit/AVKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "SYVideoToolBar.h"
-#import "UIView+SYExtension.h"
+//#import "UIView+SYExtension.h"
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface SYVideoView ()<SYVideoToolBarDelegate>
