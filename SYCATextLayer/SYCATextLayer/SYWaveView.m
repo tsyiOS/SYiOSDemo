@@ -34,6 +34,7 @@
         self.layer.borderWidth = 0.5;
         self.layer.borderColor = [UIColor blackColor].CGColor;
         self.clipsToBounds = YES;
+        self.layer.cornerRadius = self.frame.size.height*0.5;
        
         [self.layer addSublayer:self.waveLayer];
         [self.layer addSublayer:self.textLayer];
@@ -52,9 +53,7 @@
 
 - (void)setValue:(CGFloat)value {
     self.lastValue = value >= 0?(value>1.0?1.0:value):0;
-    NSLog(@"%f---%f",self.lastValue,self.value);
     self.valueMargin = (self.lastValue - self.value)/100;
-    NSLog(@"valueMargin=%f",self.valueMargin);
 }
 
 - (void)startWave {
@@ -124,6 +123,12 @@
         _textLayer.contentsScale = [UIScreen mainScreen].scale;
     }
     return _textLayer;
+}
+
+- (void)removeFromSuperview {
+    [super removeFromSuperview];
+    [self.waveDisplaylink invalidate];
+    self.waveDisplaylink = nil;
 }
 
 @end

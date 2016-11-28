@@ -10,6 +10,7 @@
 #import "UIColor+SYExtension.h"
 #import "SYLabel.h"
 #import "SYWaveView.h"
+#import "SYWaveViewController.h"
 
 #define ScreenW [UIScreen mainScreen].bounds.size.width
 #define ScreenH [UIScreen mainScreen].bounds.size.height
@@ -18,26 +19,13 @@
 @property (nonatomic, strong) UIButton *startBtn;
 @property (nonatomic, strong) CATextLayer *textLayer;
 @property (nonatomic, strong) CAGradientLayer *gradientLayer;
-@property (nonatomic, strong) SYWaveView *wave;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    SYWaveView *wave = [[SYWaveView alloc] initWithFrame:CGRectMake(60, 100, 200, 200)];
-    wave.waveAmplitude = 10;
-    wave.waveCycle = 100;
-    wave.layer.cornerRadius = 100;
-    wave.value = 0.8;
-//    wave.waveColor = [UIColor brownColor];
-    wave.clipsToBounds = YES;
-    self.wave = wave;
-    [self.view addSubview:wave];
-}
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    self.wave.value -= 0.1;
+   
 }
 
 - (void)demo2 {
@@ -75,6 +63,10 @@
     animation2.repeatCount = MAXFLOAT;
     [self.gradientLayer addAnimation:animation2 forKey:nil];
 
+}
+- (IBAction)waveAction {
+    SYWaveViewController *waveVc = [[SYWaveViewController alloc] init];
+    [self.navigationController pushViewController:waveVc animated:YES];
 }
 
 - (CATextLayer *)textLayer {
