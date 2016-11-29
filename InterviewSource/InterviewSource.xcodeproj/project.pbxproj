@@ -1,0 +1,534 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F06A83F01DED0E3E00EC19BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F06A83EF1DED0E3E00EC19BB /* main.m */; };
+		F06A83F31DED0E3E00EC19BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F06A83F21DED0E3E00EC19BB /* AppDelegate.m */; };
+		F06A83F61DED0E3E00EC19BB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F06A83F51DED0E3E00EC19BB /* ViewController.m */; };
+		F06A83F91DED0E3E00EC19BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F06A83F71DED0E3E00EC19BB /* Main.storyboard */; };
+		F06A83FB1DED0E3E00EC19BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F06A83FA1DED0E3E00EC19BB /* Assets.xcassets */; };
+		F06A83FE1DED0E3E00EC19BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F06A83FC1DED0E3E00EC19BB /* LaunchScreen.storyboard */; };
+		F06A84301DED1B8700EC19BB /* 100道面试题及答案.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A84071DED1B8700EC19BB /* 100道面试题及答案.txt */; };
+		F06A84311DED1B8700EC19BB /* iOS性能优化01.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A84081DED1B8700EC19BB /* iOS性能优化01.txt */; };
+		F06A84321DED1B8700EC19BB /* iOS性能优化02.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A84091DED1B8700EC19BB /* iOS性能优化02.txt */; };
+		F06A84331DED1B8700EC19BB /* OC特有语法问题总结.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A840A1DED1B8700EC19BB /* OC特有语法问题总结.txt */; };
+		F06A84341DED1B8700EC19BB /* 多线程.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A840B1DED1B8700EC19BB /* 多线程.txt */; };
+		F06A84351DED1B8700EC19BB /* 多线程总结1.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A840C1DED1B8700EC19BB /* 多线程总结1.txt */; };
+		F06A84361DED1B8700EC19BB /* 大文件下载.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A840D1DED1B8700EC19BB /* 大文件下载.txt */; };
+		F06A84371DED1B8700EC19BB /* 数据传输.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A840E1DED1B8700EC19BB /* 数据传输.txt */; };
+		F06A84381DED1B8700EC19BB /* 网络状态码.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A840F1DED1B8700EC19BB /* 网络状态码.txt */; };
+		F06A84391DED1B8700EC19BB /* 网络请求.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A84101DED1B8700EC19BB /* 网络请求.txt */; };
+		F06A843A1DED1B8700EC19BB /* 面试知识点.html in Resources */ = {isa = PBXBuildFile; fileRef = F06A84111DED1B8700EC19BB /* 面试知识点.html */; };
+		F06A843B1DED1B8700EC19BB /* 面试题总结.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A84121DED1B8700EC19BB /* 面试题总结.txt */; };
+		F06A843C1DED1B8700EC19BB /* AFN.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A84141DED1B8700EC19BB /* AFN.txt */; };
+		F06A843D1DED1B8700EC19BB /* ASI.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A84151DED1B8700EC19BB /* ASI.txt */; };
+		F06A843E1DED1B8700EC19BB /* ASI和AFN的区别.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A84161DED1B8700EC19BB /* ASI和AFN的区别.txt */; };
+		F06A843F1DED1B8700EC19BB /* HTML+CSS+JS.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A84171DED1B8700EC19BB /* HTML+CSS+JS.txt */; };
+		F06A84401DED1B8700EC19BB /* runtime.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A84181DED1B8700EC19BB /* runtime.txt */; };
+		F06A84411DED1B8700EC19BB /* 文件上传分析.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A84191DED1B8700EC19BB /* 文件上传分析.txt */; };
+		F06A84421DED1B8700EC19BB /* 文件解压缩.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A841A1DED1B8700EC19BB /* 文件解压缩.txt */; };
+		F06A84431DED1B8800EC19BB /* 01-多线程网络.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A841C1DED1B8700EC19BB /* 01-多线程网络.txt */; };
+		F06A84441DED1B8800EC19BB /* 02-内存管理.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A841D1DED1B8700EC19BB /* 02-内存管理.txt */; };
+		F06A84451DED1B8800EC19BB /* 03-Foundation.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A841E1DED1B8700EC19BB /* 03-Foundation.txt */; };
+		F06A84461DED1B8800EC19BB /* 04-数据存储.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A841F1DED1B8700EC19BB /* 04-数据存储.txt */; };
+		F06A84471DED1B8800EC19BB /* 05-UI控件.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A84201DED1B8700EC19BB /* 05-UI控件.txt */; };
+		F06A84481DED1B8800EC19BB /* 06-应用程序.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A84211DED1B8700EC19BB /* 06-应用程序.txt */; };
+		F06A84491DED1B8800EC19BB /* 07-第三方框架.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A84221DED1B8700EC19BB /* 07-第三方框架.txt */; };
+		F06A844A1DED1B8800EC19BB /* 08-其他.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A84231DED1B8700EC19BB /* 08-其他.txt */; };
+		F06A844B1DED1B8800EC19BB /* iOS笔试题01.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A84241DED1B8700EC19BB /* iOS笔试题01.txt */; };
+		F06A844C1DED1B8800EC19BB /* iOS笔试题02.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A84251DED1B8700EC19BB /* iOS笔试题02.txt */; };
+		F06A844D1DED1B8800EC19BB /* iOS笔试题03.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A84261DED1B8700EC19BB /* iOS笔试题03.txt */; };
+		F06A844E1DED1B8800EC19BB /* iOS笔试题04.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A84271DED1B8700EC19BB /* iOS笔试题04.txt */; };
+		F06A844F1DED1B8800EC19BB /* 人事面试.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A84291DED1B8700EC19BB /* 人事面试.txt */; };
+		F06A84501DED1B8800EC19BB /* 人事面试一百问.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A842A1DED1B8700EC19BB /* 人事面试一百问.txt */; };
+		F06A84511DED1B8800EC19BB /* 程序员非技术面试题.txt in Resources */ = {isa = PBXBuildFile; fileRef = F06A842B1DED1B8700EC19BB /* 程序员非技术面试题.txt */; };
+		F06A84521DED1B8800EC19BB /* 主要技术和项目经验.html in Resources */ = {isa = PBXBuildFile; fileRef = F06A842D1DED1B8700EC19BB /* 主要技术和项目经验.html */; };
+		F06A84531DED1B8800EC19BB /* 面试题.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F06A842E1DED1B8700EC19BB /* 面试题.pdf */; };
+		F06A84541DED1B8800EC19BB /* 项目描述.html in Resources */ = {isa = PBXBuildFile; fileRef = F06A842F1DED1B8700EC19BB /* 项目描述.html */; };
+		F06A84561DED1B9C00EC19BB /* text.plist in Resources */ = {isa = PBXBuildFile; fileRef = F06A84551DED1B9C00EC19BB /* text.plist */; };
+		F06A84591DED1BE800EC19BB /* SYTextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F06A84581DED1BE800EC19BB /* SYTextModel.m */; };
+		F06A845C1DED1CED00EC19BB /* SYDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F06A845B1DED1CED00EC19BB /* SYDetailViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F06A83EB1DED0E3E00EC19BB /* InterviewSource.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InterviewSource.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F06A83EF1DED0E3E00EC19BB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F06A83F11DED0E3E00EC19BB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F06A83F21DED0E3E00EC19BB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F06A83F41DED0E3E00EC19BB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F06A83F51DED0E3E00EC19BB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F06A83F81DED0E3E00EC19BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F06A83FA1DED0E3E00EC19BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F06A83FD1DED0E3E00EC19BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F06A83FF1DED0E3E00EC19BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F06A84071DED1B8700EC19BB /* 100道面试题及答案.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "100道面试题及答案.txt"; sourceTree = "<group>"; };
+		F06A84081DED1B8700EC19BB /* iOS性能优化01.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS性能优化01.txt"; sourceTree = "<group>"; };
+		F06A84091DED1B8700EC19BB /* iOS性能优化02.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS性能优化02.txt"; sourceTree = "<group>"; };
+		F06A840A1DED1B8700EC19BB /* OC特有语法问题总结.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "OC特有语法问题总结.txt"; sourceTree = "<group>"; };
+		F06A840B1DED1B8700EC19BB /* 多线程.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "多线程.txt"; sourceTree = "<group>"; };
+		F06A840C1DED1B8700EC19BB /* 多线程总结1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "多线程总结1.txt"; sourceTree = "<group>"; };
+		F06A840D1DED1B8700EC19BB /* 大文件下载.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "大文件下载.txt"; sourceTree = "<group>"; };
+		F06A840E1DED1B8700EC19BB /* 数据传输.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "数据传输.txt"; sourceTree = "<group>"; };
+		F06A840F1DED1B8700EC19BB /* 网络状态码.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "网络状态码.txt"; sourceTree = "<group>"; };
+		F06A84101DED1B8700EC19BB /* 网络请求.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "网络请求.txt"; sourceTree = "<group>"; };
+		F06A84111DED1B8700EC19BB /* 面试知识点.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "面试知识点.html"; sourceTree = "<group>"; };
+		F06A84121DED1B8700EC19BB /* 面试题总结.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "面试题总结.txt"; sourceTree = "<group>"; };
+		F06A84141DED1B8700EC19BB /* AFN.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AFN.txt; sourceTree = "<group>"; };
+		F06A84151DED1B8700EC19BB /* ASI.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ASI.txt; sourceTree = "<group>"; };
+		F06A84161DED1B8700EC19BB /* ASI和AFN的区别.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ASI和AFN的区别.txt"; sourceTree = "<group>"; };
+		F06A84171DED1B8700EC19BB /* HTML+CSS+JS.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "HTML+CSS+JS.txt"; sourceTree = "<group>"; };
+		F06A84181DED1B8700EC19BB /* runtime.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = runtime.txt; sourceTree = "<group>"; };
+		F06A84191DED1B8700EC19BB /* 文件上传分析.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "文件上传分析.txt"; sourceTree = "<group>"; };
+		F06A841A1DED1B8700EC19BB /* 文件解压缩.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "文件解压缩.txt"; sourceTree = "<group>"; };
+		F06A841C1DED1B8700EC19BB /* 01-多线程网络.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "01-多线程网络.txt"; sourceTree = "<group>"; };
+		F06A841D1DED1B8700EC19BB /* 02-内存管理.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "02-内存管理.txt"; sourceTree = "<group>"; };
+		F06A841E1DED1B8700EC19BB /* 03-Foundation.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "03-Foundation.txt"; sourceTree = "<group>"; };
+		F06A841F1DED1B8700EC19BB /* 04-数据存储.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "04-数据存储.txt"; sourceTree = "<group>"; };
+		F06A84201DED1B8700EC19BB /* 05-UI控件.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "05-UI控件.txt"; sourceTree = "<group>"; };
+		F06A84211DED1B8700EC19BB /* 06-应用程序.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "06-应用程序.txt"; sourceTree = "<group>"; };
+		F06A84221DED1B8700EC19BB /* 07-第三方框架.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "07-第三方框架.txt"; sourceTree = "<group>"; };
+		F06A84231DED1B8700EC19BB /* 08-其他.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "08-其他.txt"; sourceTree = "<group>"; };
+		F06A84241DED1B8700EC19BB /* iOS笔试题01.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS笔试题01.txt"; sourceTree = "<group>"; };
+		F06A84251DED1B8700EC19BB /* iOS笔试题02.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS笔试题02.txt"; sourceTree = "<group>"; };
+		F06A84261DED1B8700EC19BB /* iOS笔试题03.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS笔试题03.txt"; sourceTree = "<group>"; };
+		F06A84271DED1B8700EC19BB /* iOS笔试题04.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "iOS笔试题04.txt"; sourceTree = "<group>"; };
+		F06A84291DED1B8700EC19BB /* 人事面试.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "人事面试.txt"; sourceTree = "<group>"; };
+		F06A842A1DED1B8700EC19BB /* 人事面试一百问.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "人事面试一百问.txt"; sourceTree = "<group>"; };
+		F06A842B1DED1B8700EC19BB /* 程序员非技术面试题.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "程序员非技术面试题.txt"; sourceTree = "<group>"; };
+		F06A842D1DED1B8700EC19BB /* 主要技术和项目经验.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "主要技术和项目经验.html"; sourceTree = "<group>"; };
+		F06A842E1DED1B8700EC19BB /* 面试题.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "面试题.pdf"; sourceTree = "<group>"; };
+		F06A842F1DED1B8700EC19BB /* 项目描述.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "项目描述.html"; sourceTree = "<group>"; };
+		F06A84551DED1B9C00EC19BB /* text.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = text.plist; sourceTree = "<group>"; };
+		F06A84571DED1BE800EC19BB /* SYTextModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYTextModel.h; sourceTree = "<group>"; };
+		F06A84581DED1BE800EC19BB /* SYTextModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYTextModel.m; sourceTree = "<group>"; };
+		F06A845A1DED1CED00EC19BB /* SYDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYDetailViewController.h; sourceTree = "<group>"; };
+		F06A845B1DED1CED00EC19BB /* SYDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYDetailViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F06A83E81DED0E3E00EC19BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F06A83E21DED0E3E00EC19BB = {
+			isa = PBXGroup;
+			children = (
+				F06A83ED1DED0E3E00EC19BB /* InterviewSource */,
+				F06A83EC1DED0E3E00EC19BB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F06A83EC1DED0E3E00EC19BB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F06A83EB1DED0E3E00EC19BB /* InterviewSource.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F06A83ED1DED0E3E00EC19BB /* InterviewSource */ = {
+			isa = PBXGroup;
+			children = (
+				F06A83F11DED0E3E00EC19BB /* AppDelegate.h */,
+				F06A83F21DED0E3E00EC19BB /* AppDelegate.m */,
+				F06A83F41DED0E3E00EC19BB /* ViewController.h */,
+				F06A83F51DED0E3E00EC19BB /* ViewController.m */,
+				F06A84571DED1BE800EC19BB /* SYTextModel.h */,
+				F06A84581DED1BE800EC19BB /* SYTextModel.m */,
+				F06A845A1DED1CED00EC19BB /* SYDetailViewController.h */,
+				F06A845B1DED1CED00EC19BB /* SYDetailViewController.m */,
+				F06A83F71DED0E3E00EC19BB /* Main.storyboard */,
+				F06A83FA1DED0E3E00EC19BB /* Assets.xcassets */,
+				F06A83FC1DED0E3E00EC19BB /* LaunchScreen.storyboard */,
+				F06A83FF1DED0E3E00EC19BB /* Info.plist */,
+				F06A84051DED1B8700EC19BB /* Source */,
+				F06A83EE1DED0E3E00EC19BB /* Supporting Files */,
+			);
+			path = InterviewSource;
+			sourceTree = "<group>";
+		};
+		F06A83EE1DED0E3E00EC19BB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F06A83EF1DED0E3E00EC19BB /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F06A84051DED1B8700EC19BB /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				F06A84551DED1B9C00EC19BB /* text.plist */,
+				F06A84061DED1B8700EC19BB /* 技术面试 */,
+				F06A84131DED1B8700EC19BB /* 笔记 */,
+				F06A841B1DED1B8700EC19BB /* 笔试题 */,
+				F06A84281DED1B8700EC19BB /* 非技术面试 */,
+				F06A842C1DED1B8700EC19BB /* 项目知识 */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		F06A84061DED1B8700EC19BB /* 技术面试 */ = {
+			isa = PBXGroup;
+			children = (
+				F06A84071DED1B8700EC19BB /* 100道面试题及答案.txt */,
+				F06A84081DED1B8700EC19BB /* iOS性能优化01.txt */,
+				F06A84091DED1B8700EC19BB /* iOS性能优化02.txt */,
+				F06A840A1DED1B8700EC19BB /* OC特有语法问题总结.txt */,
+				F06A840B1DED1B8700EC19BB /* 多线程.txt */,
+				F06A840C1DED1B8700EC19BB /* 多线程总结1.txt */,
+				F06A840D1DED1B8700EC19BB /* 大文件下载.txt */,
+				F06A840E1DED1B8700EC19BB /* 数据传输.txt */,
+				F06A840F1DED1B8700EC19BB /* 网络状态码.txt */,
+				F06A84101DED1B8700EC19BB /* 网络请求.txt */,
+				F06A84111DED1B8700EC19BB /* 面试知识点.html */,
+				F06A84121DED1B8700EC19BB /* 面试题总结.txt */,
+			);
+			path = "技术面试";
+			sourceTree = "<group>";
+		};
+		F06A84131DED1B8700EC19BB /* 笔记 */ = {
+			isa = PBXGroup;
+			children = (
+				F06A84141DED1B8700EC19BB /* AFN.txt */,
+				F06A84151DED1B8700EC19BB /* ASI.txt */,
+				F06A84161DED1B8700EC19BB /* ASI和AFN的区别.txt */,
+				F06A84171DED1B8700EC19BB /* HTML+CSS+JS.txt */,
+				F06A84181DED1B8700EC19BB /* runtime.txt */,
+				F06A84191DED1B8700EC19BB /* 文件上传分析.txt */,
+				F06A841A1DED1B8700EC19BB /* 文件解压缩.txt */,
+			);
+			path = "笔记";
+			sourceTree = "<group>";
+		};
+		F06A841B1DED1B8700EC19BB /* 笔试题 */ = {
+			isa = PBXGroup;
+			children = (
+				F06A841C1DED1B8700EC19BB /* 01-多线程网络.txt */,
+				F06A841D1DED1B8700EC19BB /* 02-内存管理.txt */,
+				F06A841E1DED1B8700EC19BB /* 03-Foundation.txt */,
+				F06A841F1DED1B8700EC19BB /* 04-数据存储.txt */,
+				F06A84201DED1B8700EC19BB /* 05-UI控件.txt */,
+				F06A84211DED1B8700EC19BB /* 06-应用程序.txt */,
+				F06A84221DED1B8700EC19BB /* 07-第三方框架.txt */,
+				F06A84231DED1B8700EC19BB /* 08-其他.txt */,
+				F06A84241DED1B8700EC19BB /* iOS笔试题01.txt */,
+				F06A84251DED1B8700EC19BB /* iOS笔试题02.txt */,
+				F06A84261DED1B8700EC19BB /* iOS笔试题03.txt */,
+				F06A84271DED1B8700EC19BB /* iOS笔试题04.txt */,
+			);
+			path = "笔试题";
+			sourceTree = "<group>";
+		};
+		F06A84281DED1B8700EC19BB /* 非技术面试 */ = {
+			isa = PBXGroup;
+			children = (
+				F06A84291DED1B8700EC19BB /* 人事面试.txt */,
+				F06A842A1DED1B8700EC19BB /* 人事面试一百问.txt */,
+				F06A842B1DED1B8700EC19BB /* 程序员非技术面试题.txt */,
+			);
+			path = "非技术面试";
+			sourceTree = "<group>";
+		};
+		F06A842C1DED1B8700EC19BB /* 项目知识 */ = {
+			isa = PBXGroup;
+			children = (
+				F06A842D1DED1B8700EC19BB /* 主要技术和项目经验.html */,
+				F06A842E1DED1B8700EC19BB /* 面试题.pdf */,
+				F06A842F1DED1B8700EC19BB /* 项目描述.html */,
+			);
+			path = "项目知识";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F06A83EA1DED0E3E00EC19BB /* InterviewSource */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F06A84021DED0E3E00EC19BB /* Build configuration list for PBXNativeTarget "InterviewSource" */;
+			buildPhases = (
+				F06A83E71DED0E3E00EC19BB /* Sources */,
+				F06A83E81DED0E3E00EC19BB /* Frameworks */,
+				F06A83E91DED0E3E00EC19BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = InterviewSource;
+			productName = InterviewSource;
+			productReference = F06A83EB1DED0E3E00EC19BB /* InterviewSource.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F06A83E31DED0E3E00EC19BB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SY;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = tsy;
+				TargetAttributes = {
+					F06A83EA1DED0E3E00EC19BB = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 5Z3XUN2VRQ;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F06A83E61DED0E3E00EC19BB /* Build configuration list for PBXProject "InterviewSource" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F06A83E21DED0E3E00EC19BB;
+			productRefGroup = F06A83EC1DED0E3E00EC19BB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F06A83EA1DED0E3E00EC19BB /* InterviewSource */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F06A83E91DED0E3E00EC19BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F06A84381DED1B8700EC19BB /* 网络状态码.txt in Resources */,
+				F06A84321DED1B8700EC19BB /* iOS性能优化02.txt in Resources */,
+				F06A84561DED1B9C00EC19BB /* text.plist in Resources */,
+				F06A844D1DED1B8800EC19BB /* iOS笔试题03.txt in Resources */,
+				F06A84341DED1B8700EC19BB /* 多线程.txt in Resources */,
+				F06A84511DED1B8800EC19BB /* 程序员非技术面试题.txt in Resources */,
+				F06A843E1DED1B8700EC19BB /* ASI和AFN的区别.txt in Resources */,
+				F06A84501DED1B8800EC19BB /* 人事面试一百问.txt in Resources */,
+				F06A84391DED1B8700EC19BB /* 网络请求.txt in Resources */,
+				F06A84351DED1B8700EC19BB /* 多线程总结1.txt in Resources */,
+				F06A84451DED1B8800EC19BB /* 03-Foundation.txt in Resources */,
+				F06A843B1DED1B8700EC19BB /* 面试题总结.txt in Resources */,
+				F06A844C1DED1B8800EC19BB /* iOS笔试题02.txt in Resources */,
+				F06A84361DED1B8700EC19BB /* 大文件下载.txt in Resources */,
+				F06A843D1DED1B8700EC19BB /* ASI.txt in Resources */,
+				F06A84461DED1B8800EC19BB /* 04-数据存储.txt in Resources */,
+				F06A84401DED1B8700EC19BB /* runtime.txt in Resources */,
+				F06A843A1DED1B8700EC19BB /* 面试知识点.html in Resources */,
+				F06A84421DED1B8700EC19BB /* 文件解压缩.txt in Resources */,
+				F06A83FE1DED0E3E00EC19BB /* LaunchScreen.storyboard in Resources */,
+				F06A84491DED1B8800EC19BB /* 07-第三方框架.txt in Resources */,
+				F06A84431DED1B8800EC19BB /* 01-多线程网络.txt in Resources */,
+				F06A84471DED1B8800EC19BB /* 05-UI控件.txt in Resources */,
+				F06A84301DED1B8700EC19BB /* 100道面试题及答案.txt in Resources */,
+				F06A84481DED1B8800EC19BB /* 06-应用程序.txt in Resources */,
+				F06A84521DED1B8800EC19BB /* 主要技术和项目经验.html in Resources */,
+				F06A84411DED1B8700EC19BB /* 文件上传分析.txt in Resources */,
+				F06A84541DED1B8800EC19BB /* 项目描述.html in Resources */,
+				F06A843C1DED1B8700EC19BB /* AFN.txt in Resources */,
+				F06A844E1DED1B8800EC19BB /* iOS笔试题04.txt in Resources */,
+				F06A83FB1DED0E3E00EC19BB /* Assets.xcassets in Resources */,
+				F06A843F1DED1B8700EC19BB /* HTML+CSS+JS.txt in Resources */,
+				F06A844A1DED1B8800EC19BB /* 08-其他.txt in Resources */,
+				F06A84311DED1B8700EC19BB /* iOS性能优化01.txt in Resources */,
+				F06A84441DED1B8800EC19BB /* 02-内存管理.txt in Resources */,
+				F06A84371DED1B8700EC19BB /* 数据传输.txt in Resources */,
+				F06A84331DED1B8700EC19BB /* OC特有语法问题总结.txt in Resources */,
+				F06A844F1DED1B8800EC19BB /* 人事面试.txt in Resources */,
+				F06A84531DED1B8800EC19BB /* 面试题.pdf in Resources */,
+				F06A844B1DED1B8800EC19BB /* iOS笔试题01.txt in Resources */,
+				F06A83F91DED0E3E00EC19BB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F06A83E71DED0E3E00EC19BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F06A83F61DED0E3E00EC19BB /* ViewController.m in Sources */,
+				F06A845C1DED1CED00EC19BB /* SYDetailViewController.m in Sources */,
+				F06A83F31DED0E3E00EC19BB /* AppDelegate.m in Sources */,
+				F06A84591DED1BE800EC19BB /* SYTextModel.m in Sources */,
+				F06A83F01DED0E3E00EC19BB /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F06A83F71DED0E3E00EC19BB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F06A83F81DED0E3E00EC19BB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F06A83FC1DED0E3E00EC19BB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F06A83FD1DED0E3E00EC19BB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F06A84001DED0E3E00EC19BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F06A84011DED0E3E00EC19BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F06A84031DED0E3E00EC19BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = 5Z3XUN2VRQ;
+				INFOPLIST_FILE = InterviewSource/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = sy.team.InterviewSource;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F06A84041DED0E3E00EC19BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = 5Z3XUN2VRQ;
+				INFOPLIST_FILE = InterviewSource/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = sy.team.InterviewSource;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F06A83E61DED0E3E00EC19BB /* Build configuration list for PBXProject "InterviewSource" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F06A84001DED0E3E00EC19BB /* Debug */,
+				F06A84011DED0E3E00EC19BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F06A84021DED0E3E00EC19BB /* Build configuration list for PBXNativeTarget "InterviewSource" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F06A84031DED0E3E00EC19BB /* Debug */,
+				F06A84041DED0E3E00EC19BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F06A83E31DED0E3E00EC19BB /* Project object */;
+}

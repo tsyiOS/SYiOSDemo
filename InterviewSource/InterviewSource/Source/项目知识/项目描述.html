@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.0.8 (451398)"/><meta name="altitude" content="49"/><meta name="author" content="zhangzz7998@163.com"/><meta name="created" content="2015-07-29 02:13:37 +0000"/><meta name="latitude" content="40.05739928046329"/><meta name="longitude" content="116.3310534330899"/><meta name="source" content="desktop.mac"/><meta name="updated" content="2015-08-03 16:25:06 +0000"/><title>项目描述</title></head><body>
+<div><span style="font-size: 18px;"><b>UI</b></span></div>
+<div><b>主框架</b></div>
+<div>1.利用UIScrollView+自定义UITbaleViewCell+UICollectionView进行主界面框架的搭建。</div>
+<div>2.创建UINavigationController基类，各功能模块导航控制器继承基类实现特有功能，在基类中对样式做统一更改，优化代码结构。</div>
+<div>3.主架构采用UITabBarController+多UINavigationController的复合结构设计。</div>
+<div>4.UITabBarController + UINavigationController 的主架构设计，摒弃抽屉效果提升用户体验、个性化的下拉刷新以及 UITableHeaderView，个性化的首页UITableView</div>
+<div>5.使用多StoryBorad模式（故事版对应模块）进行整体架构设计，在方便后期屏幕适配同时有利团队并行分散开发</div>
+<div>6.自定义tabbar控制器做UIWindow的根控制器，每个子模块的控制器为导航控制器</div>
+<div>7.主控制器是自定义 TabBar ，实现不同页面之间的切换。主要结构是产品搜索展示和我的功能</div>
+<div>8.利用Storyboard+Autolayout、xib实现界面的快速开发</div>
+<div>9.引入了AFNetWorking,SDWebImage,iOS-Slide-Menu等框架</div>
+<div><br/></div>
+<div><b>新特性</b></div>
+<div>1.使用UICollectionView实现新特性界面，利用3个Cell进行复用可实现N多张图片的展示，进行图片循环轮播</div>
+<div><br/></div>
+<div><b>分类筛选</b></div>
+<div><br/></div>
+<div><br/></div>
+<div><b>标签栏</b></div>
+<div>1.自定义TabBar添加到系统控件，使用自定义UIButton巧妙的添加TabBar中的编辑模板按钮。</div>
+<div>2.在栏目板块通过两个tableViewController实现数据互联</div>
+<div><br/></div>
+<div><b>列表展示</b></div>
+<div>1.使⽤UITableView,UICollectionView组合实现商品分类展⽰,使用户能有更好购物体验</div>
+<div>2.使用Xib封装⾃定义TableViewCell、CollectionViewCell，更好的展示单个记录</div>
+<div>
+<div>3.使⽤UITableView与⾃定义的UITableViewCell展示装修公司的简单信息</div>
+</div>
+<div>4.使用UICollectionView及自定义cell展⽰装修案例的一些效果图⽚</div>
+<div>5.自定义UITableViewCell显示文章标题与简介，使用SDWebImage开源框架对图片进行缓存；</div>
+<div>6.封装了cell的Frame模型，使设置cell的Frame更加方便。</div>
+<div><span style="color: rgb(79, 143, 0);">7.利用赋值和计算布局分离、核心绘图异步绘制cell、快速滑动图片过滤等对tableview列表进行性能调优    <a href="http://www.cocoachina.com/ios/20150602/11968.html">http://www.cocoachina.com/ios/20150602/11968.html</a></span></div>
+<div>8.利用UICollectionView实现音乐播放界面的流水布局效果</div>
+<div>9.主页面由tableView展示，自定义两种cell，分别用来加载有图和无图帖子</div>
+<div>10.UITableview的自动布局处理（与Container View的结合）</div>
+<div>11.在自定义的UICollectionCell中显示旅游的图片和文字数据</div>
+<div>12.用UIScorllView实现频道的选择栏视图、label的变化</div>
+<div>13.自定义UIScrollview实现各频道的切换</div>
+<div>14.根据获取的数据来自定义不同的UICollectionviewcell,如单图、多图、大图的新闻</div>
+<div>15.直播间用户发表言论自定义UITableviewcell，根据文本内容动态计算每个cell的frame</div>
+<div><br/></div>
+<div><b>自定义行高</b></div>
+<div>1.自定义Cell，由于无法获取微博中图片的高度，首先利用SDWebImage讲图面下载下来，在使用cell的时候根据图片的张数，对图片进行排版，使用约束来控制cell的高度，计算返回行高。</div>
+<div><span style="color: rgb(0, 143, 0);">2.利用NSCache来缓存行高，来对tableView进行优化。</span><a href="http://pizi.me/66">http://pizi.me/66</a></div>
+<div><br/></div>
+<div><b>刷新控件</b></div>
+<div>1.使用第三方框架MJRefresh用Scrollview代理监听滚动视图的contentoffset，使用UIView的Block动画改变UITableview的contentInset实现数据上拉加载，下拉刷新效果；</div>
+<div>2.自定义刷新控件，用KVO来监听UIRefreshControl的view的frame来实现响应的动画</div>
+<div><br/></div>
+<div><b>瀑布流</b></div>
+<div>1.使用UICollectionView的自定义布局，并自定义UICollectionViewCell以及Cell的自适应高度，完成美食列表展示的瀑布流效果，显示美食图库;</div>
+<div>2.自定义UICollectionViewCell，采用流水布局实现Cell的九宫格展示；</div>
+<div><br/></div>
+<div><b>轮播图</b></div>
+<div>自定义UIScrollView配合UIPagecontrol监听完成分页功能，使用NSTimer实现图片轮播效果；</div>
+<div><br/></div>
+<div><b>抽屉效果</b></div>
+<div>1.利用View的移动和拖拽事件（pan拖拽，tap点击）实现抽屉效果进行侧滑菜单的开发。</div>
+<div>2.侧滑效果展示主界面以及自定义TabBar。</div>
+<div>3.自定义抽屉效果的TarBar控制器，使用块动画、手势效果优化UI效果；</div>
+<div>4.左右侧滑菜单里分别显示栏目板块和用户详情，可以通过手势切换，也可以通过按钮点击切换</div>
+<div><br/></div>
+<div><b>提示窗</b></div>
+<div>1.利用MBProgressHUD框架封装的UIAlertView完成加载过程中等待响应的蒙板效果。</div>
+<div>2.使用SVProgressHUD来创建登录或者下载等操作时候的提醒框；</div>
+<div><br/></div>
+<div><b>画中画</b></div>
+<div>弹出菜单使用 UIPresentationController 实现弹出遮盖，自定义CATrasition转场动画实现弹出、消失动作。</div>
+<div><br/></div>
+<div><b>图片浏览器</b></div>
+<div>通过UICollectionView和转场动画实现图片浏览器。</div>
+<div><br/></div>
+<div><b>网页展示</b></div>
+<div>1.使用UIWebView控件加载从服务器中获得的新闻数据对新闻详情页进行展示。</div>
+<div>2.使用WebView调用JS语句实现对网页内容字号大小的调整</div>
+<div>3.使用WebView加载html新闻内容，采用oc&amp;js互调放大展示图片/打开相机/打开系统相册等</div>
+<div><br/></div>
+<div><b>事件监听</b></div>
+<div>1.使用hitTest和pointInside监听不规则控件的事件响应，实现点击人体不同部位选择对应病理分类的功能。</div>
+<div><br/></div>
+<div><b>轨迹跟踪</b></div>
+<div>1.通过UIEvent的事件监听实现对触摸事件的轨迹跟踪，实现涂鸦功能/实现栏目控件的拖动效果</div>
+<div>2.使用手势识别功能添加特殊手势，双指滑动放大缩小文本内容</div>
+<div>3.使用UIGesturRecognizer手势识别，实现文件回收站效果，拖拽文件到回收站并删除指定文件</div>
+<div><br/></div>
+<div><b>多控制器管理</b></div>
+<div>1.使用modal（模态）窗口的形式管理视图，展示状态编辑界面，收集用户输入信息</div>
+<div>2.使用自定义转场动画实现多控制器之间的跳转功能</div>
+<div>3.自定义转场modal出视图控制器</div>
+<div><br/></div>
+<div><b>布局</b></div>
+<div>1.使⽤AutoLayout实现布局控件,设置自定义中cell的控件之间的位置</div>
+<div>2.使⽤AutoLayout布局设置,适配iOS6〜iOS8,以及常⽤用⼯具类和宏的封装等。</div>
+<div>3.使用Masonry以代码形式实现全局控件自动布局</div>
+<div>4.使用FFAutoLayout进行自动布局</div>
+<div><br/></div>
+<div><b>动画效果</b></div>
+<div>1.使用核心动画CABasicAnimation设置转盘transform的rotation属性实现幸运转盘功能</div>
+<div>2.使用CoreAnimation核心动画制作华丽的翻页效果，保证效率的同时提高了用户体验；</div>
+<div>3.利用KVO监听界面位置的变化,实现顶部导航栏的淡入淡出效果</div>
+<div>4.利用动画来实现抽奖活动转盘抽奖</div>
+<div>5.使用UIImageView实现开奖帧动画，并对内存进行优化</div>
+<div>进度条：使用KVO监听下载进度属性，自定义View重写drawRect方法，setNeedsDisplay实时重绘</div>
+<div>雪花效果（刷帧动画）:使用CADisplayLink刷帧实时重绘,重写drawRect方法渲染UIImage</div>
+<div><span style="color: rgb(33, 33, 33);">时钟动画:</span> 对视图添加CALayer，并调整指针视图锚点，使用定时器CADisplayLink并匹配当前时间设置指针视图的transform转动完成时钟动画</div>
+<div>心跳动画：使用CABasicAnimation基础动画设置红心视图的layer的transform.scale，实现心跳效果</div>
+<div><span style="color: rgb(33, 33, 33);">图片抖动:使用CAKeyframeAnimation关键帧动画切换layer的transform.rotation属性，实现图片抖动效果</span></div>
+<div>翻页动画:为UIImageView添加手势识别，监听事件重新赋值数据并执行CATrasition动画实现翻页/淡入淡出/Push/水滴/立方体翻转效果</div>
+<div><span style="color: rgb(255, 38, 0);"><br/></span></div>
+<div><b>全景展示</b></div>
+<div>监听视图的UITouch事件，根据touchMoved方法取得偏移量关联沙盒角度图片实现车辆的360度全景展示</div>
+<div><a href="http://code4app.com/ios/360-Degrees-Image-Sequence/4fb090c56803fa2563000001#">http://code4app.com/ios/360-Degrees-Image-Sequence/4fb090c56803fa2563000001#</a></div>
+<div><br/></div>
+<div>
+<div><b>iPad</b></div>
+</div>
+<div>1.使用UIPopoverController弹出菜谱搜索与选择界面；</div>
+<div>2.使用UIPickview实现站点选择功能</div>
+<div><br/></div>
+<div><span style="font-size: 18px;"><b>网络</b></span></div>
+<div>1.使用第三方框架AFNetWorking实现网络数据交互的异步请求。</div>
+<div>2.对AFNetWorking中的AFHTTPSessionManager封装成工具类,实现管理所有的数据访问,降低了项⺫与第三方框架的耦合度</div>
+<div>3.使用MJExtension将服务器发送回来的Json格式的数据封装成对象,在加载图片时,使用SDWebImage实现图片缓存。</div>
+<div>4.设计请求工具类来封装AFN框架发网络，以实现请求业务以实现项目分层管理；</div>
+<div>5.网络交互采用json数据格式，并使用<span style="">NSJSONSerialization/SBJson/Jsonkit进行json数据解析。</span></div>
+<div>7.使用系统Reachability框架监测网络情况，配合NSOperation控制线程数进行节电处理。</div>
+<div>8.使用SDWebImage异步下载商品图⽚并进行内存和硬盘缓存。</div>
+<div>9.使用AFN实现网络请求数据，以及数据解析，提高编程效率。</div>
+<div>10.使用第三方框架AFNetworking处理网络数据访问，用Block封装，实现异步处理网络请求并对错误信息进行处理</div>
+<div>11.使用AFN单例来管理全局的数据请求，NSURLCache做网络请求缓存</div>
+<div>12.json解析数据，展示论坛内容，用户可以通过订阅不同内容，来进行展示</div>
+<div>13.使用AFNNetworking封装网络请求工具类,进而可以使用全局网络访问单例处理应用中的全部网络数据传输</div>
+<div>14.使用AFNNetworking第三方框架封装网络工具类,将框架和工具分离,降低项目对框架的依赖</div>
+<div><br/></div>
+<div><b>自动刷新</b></div>
+<div>1.开启异步线程Runloop使用定时器定期拉取网络数据源，修改数据源自动刷新列表数据</div>
+<div>2.使用KVO监听数据源变化，实时调整显示新信息数据的badgeNumber</div>
+<div><br/></div>
+<div><b>注册登录</b></div>
+<div>1.快速注册采用的是集成第三方SSMSDK发送验证码到注册手机上进行注册;</div>
+<div>2.使用Post网络请求进行数据上传,实现登录和数据信息发布;</div>
+<div><br/></div>
+<div><b>第三方登录</b></div>
+<div>1.使用ShareSDK集成第三方登录模块完成微博、微信、QQ等SSO单点登录授权</div>
+<div>2.使用OAuth2认证完成用户登录，使用UIWebView截取网页重定向数据截取token，完成SSO授权</div>
+<div>3.通过腾讯和新浪的SSO授权，实现微信、微信、QQ第三方登陆功能。</div>
+<div><br/></div>
+<div><span style="color: rgb(255, 38, 0);"><b>加密</b></span></div>
+<div>1.用户登录注册使用 ((pwd+key)hmac+服务器时间)hmac 时间戳的解决方案，保证账户安全性和实时性。</div>
+<div>2. 使用sskeychain保存钥匙串。</div>
+<div><br/></div>
+<div><b>下载</b></div>
+<div>下载进度：使用NSURLConnection的代理监听，获取下载的数据段，并实现下载进度跟进，使用异步下载</div>
+<div><span style="color: rgb(33, 33, 33);">断点续传：使用head请求检查服务器段文件大小，使用NSFileManager获取本地文件大小设置为http请求头的range字段，进行网络请求</span></div>
+<div><span style="color: rgb(33, 33, 33);"><br/></span></div>
+<div><b><span style="color: rgb(33, 33, 33);">文件上传</span></b></div>
+<div>1.使用NSURLConnection进行POST请求使用multipart/form-data文件类型拼接mimeType实现文件上传功能(文件大小限定2M)</div>
+<div>2.使用NSURLSession进行PUT请求结合WebDAV服务器实现大文件上传功能</div>
+<div><br/></div>
+<div><span style="font-size: 18px;"><b>数据存储</b></span></div>
+<div>1.使⽤FMDB框架实现书库数据缓存,减轻服务器频繁被访问的压力和减少用户数据流量的浪费，提高用户体验</div>
+<div>2.使用NSUserDefaults保存用户配置信息，如自动登录，账户信息等</div>
+<div>3.使用FMDB第三方数据库框架实现SQLite数据库管理</div>
+<div>4.模仿SDWebimage对获取的红包图片转化成NSData类型二进制数据写入沙盒进行归档，本地保存图片，生成下载url的md5作为图片查找key以保证唯一性</div>
+<div>5.使用NSFileManager对磁盘缓存进行管理，使用替换路径方式清理磁盘缓存</div>
+<div>6.使用 FMDB 完成数据持久化功能,结合图片缓存，提升用户体验</div>
+<div>7.SDWebImage 实现图片的异步下载与缓存，内存缓存以及磁盘缓存，提升用户断开连接时的用户体验，程序进入后台自动清理</div>
+<div>8.抽取用户行为，自定义用户模型对象，利用归档保存用户信息</div>
+<div>9.用户登录信息存入沙盒，可以自动登录和记住密码</div>
+<div>10.编写专门的数据处理工具类，利用NSCoding实现模型数据的存储和读取</div>
+<div>11.利用SDWebImage实现图片异步下载、图片缓存、防止图片重复下载、图片缓存清理等</div>
+<div>12.利用SQlite3实现收藏、最近浏览的数据本地缓存</div>
+<div>13.用SQlite3实现本地数据缓存，提升客户端与服务器之间的通讯性能</div>
+<div>14.采用CoreData作为应用的数据库技术，更好的管理数据库访问性能和关联表的更新</div>
+<div><br/></div>
+<div><span style="font-size: 18px;"><b>设计模式</b></span></div>
+<div>1.对标签页进行共性的抽取并封装成对象,将一些共性的方法比如初始化界面,加载数据等操作封装到工具类中,提高了程序的扩展性。</div>
+<div>2.使用GCD实现单例模式封装用户登录模块。</div>
+<div>3.严格遵循MVC设计模式开发，降低各个模块的耦合度。</div>
+<div>4.对封装框架创建Category，按功能分布式管理核心类，使用runtime机制动态关联对象，给对象添加属性</div>
+<div>5.使用MVC模式，分工处理各功能模块；</div>
+<div>6.使用消息机制、代理和BLOCK来实现各界面之间跳转时数据的传递；</div>
+<div><br/></div>
+<div><br/></div>
+<div><span style="font-size: 18px;"><b>数据传递</b></span></div>
+<div>1.使用NSNotificationCenter进行多控制器消息通知，实现消息列表及消息详情等多界面监听新消息提醒。</div>
+<div>2.使用Protocol对通讯录列表页和编辑页进行代理模式消息传递，减少应用耦合度，提高模块复用。</div>
+<div>3.通过MJExtension使用runtime机制动态加载模型数据，使开发更有效率。</div>
+<div>4.利用Block对AFN的GET/POST数据请求进行封装，保证消息响应代码的高度集中。</div>
+<div>5.自定义cell创建Block属性，利用策略模式封装cell响应的具体表现。</div>
+<div>6.通过 Runtime 动态获取属性列表，替代字典转模型工具 JSONModal, 是代码更加轻量高效</div>
+<div>7.使用runtime机制动态获取属性列表的技术，快速有效完成字典转模型、对象归解档操作。</div>
+<div>8.使用通知来实现登录、欢迎、未登录界面的切换</div>
+<div>9.利用Runtime运行时机制，优化字典数据转模型数据的速度</div>
+<div>10.贯彻MVC设计模式，大量使用字典转模型进行数据加载和建模</div>
+<div>11.MVC设计模式开发，面向接口、模型开发，实现彻底封装，最低耦合度。</div>
+<div>12.给NSObject添加分类，利用Runtime机制动态获取类的属性列表关联到模型数据中</div>
+<div><br/></div>
+<div><br/></div>
+<div><span style="font-size: 18px;"><b>实用技术</b></span></div>
+<div><b>数据统计&amp;社会化分享</b></div>
+<div>1.使用UmengSDK完成应用数据统计，实时监控各栏目的用户需求，并集成分享模块实现一键社会化分享功能。</div>
+<div>2.通过友盟分享，让用户把在我们APP看到的信息分享到他的新浪微博、微信朋友圈。</div>
+<div><b><br/></b></div>
+<div><b>远程推送</b></div>
+<div>使用JPush激光推送集成APNS实现远程通知功能，定期为用户推荐最新商户信息。</div>
+<div><b><br/></b></div>
+<div><b>相机</b></div>
+<div>使用系统相机API设置UIImagePicker控制器，调用系统相机App和系统相册，实现拍照和相册读取功能。</div>
+<div><b><br/></b></div>
+<div><b>截屏/截图</b></div>
+<div>使用UIKit的Core Graphics(核心绘图)api截取window范围内容，生成图片并保存到相册中。</div>
+<div><b><br/></b></div>
+<div><b>支付</b></div>
+<div>使用单例封装UPPay和AliPay框架，接入银联和支付宝两大主流支付方式，打通应用支付环节。</div>
+<div><br/></div>
+<div><b>地图定位</b></div>
+<div>1.使用BMapKit框架，利用百度地图API实现移动导航功能。</div>
+<div>2.使用CoreLocation实现地图定位并捕获地理信息，使用MapKit实现大头针功能，标记地址位置和行车路线。</div>
+<div>3.利用高德地图开放API进行定位和周边团购数据查找。</div>
+<div>4.使用Mapkit、CLLocation、自定义MKAnnotation View实现地图上标识地铁出入站口位置/显示商家信息</div>
+<div>5.使用UIScrollview展示线路图，支持手势缩放查看</div>
+<div><br/></div>
+<div><b>二维码</b></div>
+<div>1.使用AVFoundation捕获摄像头输出的二维码对应的URL并进行加载来实现二维码扫描</div>
+<div>2.使用CIFilter滤镜设置二维码类型和对应信息生成二维码名片</div>
+<div><br/></div>
+<div><b>搜索</b></div>
+<div>1.使用科大语音讯飞API集成语音识别功能，将语音转为文本并通过谓词过滤实现语音搜索功能，查找病人病历</div>
+<div>
+<div><a href="http://code4app.com/ios/%E8%AE%AF%E9%A3%9E%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB/53514bb1933bf0914a8b52d9">http://code4app.com/ios/%E8%AE%AF%E9%A3%9E%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB/53514bb1933bf0914a8b52d9</a></div>
+</div>
+<div>2.基于正则表达式的搜索功能</div>
+<div>3.首个页面“搜菜谱”随机加载一组数据通过弹跳方式展示在页面上，用户点击就可以自动进行搜索，或者输入所要搜索的内容，手动点击搜索。</div>
+<div>4.使用PinYin4Objc获取可选栏目的拼音字符串并保存到模型，使用NSPredicate谓词过滤匹配用户输入的拼音结果实现拼音搜索功能</div>
+<div><br/></div>
+<div><b>图文混排</b></div>
+<div>1.优化写日记功能，支持添加多张图片、图文混排编辑。</div>
+<div>2.使用NSAttributedString的附件属性attachment添加自定义图片，实现图文混排。</div>
+<div>3.设置表情键盘，在数据模型中实现图文混排</div>
+<div><br/></div>
+<div><b>源代码管理</b></div>
+<div>使用CocoaPods来管理各第三方框架；</div>
+<div><br/></div>
+<div><b>图片水印</b></div>
+<div>1.假水印：新闻图片使用核心绘图重写UIView的drawRect方法,画字符串到UIView中</div>
+<div>2.真水印：利用Quartz2D开启一个基于位图的图形上下文，将原图和水印图都画入并生成新图片</div>
+<div><br/></div>
+<div><b>手势解锁</b></div>
+<div>通过监听手势识别UITouch事件匹配解锁按钮frame区域，实现手势解锁功能</div>
+<div><br/></div>
+<div><b>文件管理</b></div>
+<div>1.使用SSZipArchive框架实现对Zip文件的压缩和解压缩操作，节省磁盘控件</div>
+<div><br/></div>
+<div><b>播放视频</b></div>
+<div><span style="color: rgb(255, 38, 0);"><span style="color: rgb(33, 33, 33);">1.全屏：使用Mediaplayer类库播放本地视频，并调用视频截图方法接收通知消息截取截屏信息</span>  </span></div>
+<div><span style="color: rgb(33, 33, 33);">2.窗口：使用</span>AVPlayer实现视频播放功能，并通过设置其layer实现窗口播放，及视频放大缩小功能。</div>
+<div><a href="http://code4app.com/search/%E8%A7%86%E9%A2%91/0">http://code4app.com/search/%E8%A7%86%E9%A2%91/0</a></div>
+<div>3.流媒体：使用MPMoviePlayer加载m3u8格式视频，实现流媒体播放</div>
+<div>ffmpeg 支持mms、rtsp等协议的流媒体</div>
+<div><a href="http://code4app.com/ios/%E6%B5%81%E5%AA%92%E4%BD%93%E6%92%AD%E6%94%BE%E5%99%A8/538ed7f4933bf0f1168b519a">http://code4app.com/ios/%E6%B5%81%E5%AA%92%E4%BD%93%E6%92%AD%E6%94%BE%E5%99%A8/538ed7f4933bf0f1168b519a</a></div>
+<div><br/></div>
+<div><b>音频音效</b></div>
+<div>音效：使用AudioServices类库实现iOS音效播放功能</div>
+<div>本地音乐：使用AVAudioPlayer类库实现iOS平台的本地音乐播放</div>
+<div>流媒体音乐：</div>
+<div>1.使用AFN下载流媒体数据拼接NSData,使用AVAudioPlayer播放二进制数据 (不稳定)</div>
+<div>2.使用AVPlayer加载URL实现流媒体音乐播放功能(无法拿到数据)</div>
+<div>3.使用第三方库DOUAudioStreamer/Vitamio-online实现流媒体音乐播放</div>
+<div><br/></div>
+<div><b>国际化</b></div>
+<div>添加多项<span style="font: 14.0px Menlo; font-variant-ligatures: no-common-ligatures">InfoPlist.strings配置</span><span style="font: 14.0px 'Heiti SC Light'; font-variant-ligatures: no-common-ligatures">文件对应不同语言，使用<span style="font: 14.0px Menlo; font-variant-ligatures: no-common-ligatures">NSLocalizedString配置不同版本内容  <a href="http://www.cocoachina.com/industry/20140526/8554.html">http://www.cocoachina.com/industry/20140526/8554.html</a></span></span></div>
+<div><br/></div>
+<div><b>应用跳转</b></div>
+<div>1.使用openurl加载指定应用的scheme，实现应用推荐/支付宝跳转/第三方登录授权后返回应用的应用间跳转功能</div>
+<div>2.使用openurl调用系统电话APP/邮件APP/短信APP，实现打电话/发邮件/发短信等功能</div>
+<div><br/></div>
+</body></html>
