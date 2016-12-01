@@ -1,0 +1,400 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9F18B4601D9172040098F0FF /* UITableView+SYSlideExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F18B45F1D9172040098F0FF /* UITableView+SYSlideExtension.m */; };
+		9FCCA81A1D92D5C700CE8753 /* SYHeaderRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FCCA8191D92D5C700CE8753 /* SYHeaderRefreshView.m */; };
+		F0AD9A1E1D8F8149009E4738 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD9A1D1D8F8149009E4738 /* main.m */; };
+		F0AD9A211D8F8149009E4738 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD9A201D8F8149009E4738 /* AppDelegate.m */; };
+		F0AD9A241D8F8149009E4738 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD9A231D8F8149009E4738 /* ViewController.m */; };
+		F0AD9A291D8F8149009E4738 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0AD9A281D8F8149009E4738 /* Assets.xcassets */; };
+		F0AD9A2C1D8F8149009E4738 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0AD9A2A1D8F8149009E4738 /* LaunchScreen.storyboard */; };
+		F0AD9A391D8F906D009E4738 /* SYSlideSelectedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD9A381D8F906D009E4738 /* SYSlideSelectedView.m */; };
+		F0AD9A3C1D8F908F009E4738 /* UIColor+SYColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD9A3B1D8F908F009E4738 /* UIColor+SYColor.m */; };
+		F0AD9A431D8FACB4009E4738 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0AD9A421D8FACB4009E4738 /* Main.storyboard */; };
+		F0AD9A581D8FD110009E4738 /* UIView+SYFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD9A571D8FD110009E4738 /* UIView+SYFrame.m */; };
+		F0AD9A651D90CC20009E4738 /* RTHCoursesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD9A5B1D90CC20009E4738 /* RTHCoursesViewController.m */; };
+		F0AD9A661D90CC20009E4738 /* RTHEvaluateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD9A5D1D90CC20009E4738 /* RTHEvaluateViewController.m */; };
+		F0AD9A671D90CC20009E4738 /* RTHExpertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD9A5F1D90CC20009E4738 /* RTHExpertViewController.m */; };
+		F0AD9A681D90CC20009E4738 /* RTHExpertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0AD9A601D90CC20009E4738 /* RTHExpertViewController.xib */; };
+		F0AD9A691D90CC20009E4738 /* RTHIntroductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD9A621D90CC20009E4738 /* RTHIntroductViewController.m */; };
+		F0AD9A6A1D90CC20009E4738 /* RTHQuestionAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD9A641D90CC20009E4738 /* RTHQuestionAnswerViewController.m */; };
+		F0AD9A6E1D90CC6E009E4738 /* RTHExpertMiddleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD9A6D1D90CC6E009E4738 /* RTHExpertMiddleView.m */; };
+		F0EBE15B1D914409005DA1D2 /* SYSlideBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EBE15A1D914409005DA1D2 /* SYSlideBaseTableViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9F18B45E1D9172040098F0FF /* UITableView+SYSlideExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SYSlideExtension.h"; sourceTree = "<group>"; };
+		9F18B45F1D9172040098F0FF /* UITableView+SYSlideExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SYSlideExtension.m"; sourceTree = "<group>"; };
+		9FCCA8181D92D5C700CE8753 /* SYHeaderRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHeaderRefreshView.h; sourceTree = "<group>"; };
+		9FCCA8191D92D5C700CE8753 /* SYHeaderRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHeaderRefreshView.m; sourceTree = "<group>"; };
+		F0AD9A191D8F8149009E4738 /* SYSlideDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SYSlideDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0AD9A1D1D8F8149009E4738 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F0AD9A1F1D8F8149009E4738 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F0AD9A201D8F8149009E4738 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F0AD9A221D8F8149009E4738 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F0AD9A231D8F8149009E4738 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F0AD9A281D8F8149009E4738 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F0AD9A2B1D8F8149009E4738 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F0AD9A2D1D8F8149009E4738 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0AD9A371D8F906D009E4738 /* SYSlideSelectedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYSlideSelectedView.h; sourceTree = "<group>"; };
+		F0AD9A381D8F906D009E4738 /* SYSlideSelectedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYSlideSelectedView.m; sourceTree = "<group>"; };
+		F0AD9A3A1D8F908F009E4738 /* UIColor+SYColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+SYColor.h"; sourceTree = "<group>"; };
+		F0AD9A3B1D8F908F009E4738 /* UIColor+SYColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SYColor.m"; sourceTree = "<group>"; };
+		F0AD9A421D8FACB4009E4738 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F0AD9A561D8FD110009E4738 /* UIView+SYFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SYFrame.h"; sourceTree = "<group>"; };
+		F0AD9A571D8FD110009E4738 /* UIView+SYFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SYFrame.m"; sourceTree = "<group>"; };
+		F0AD9A5A1D90CC20009E4738 /* RTHCoursesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTHCoursesViewController.h; sourceTree = "<group>"; };
+		F0AD9A5B1D90CC20009E4738 /* RTHCoursesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTHCoursesViewController.m; sourceTree = "<group>"; };
+		F0AD9A5C1D90CC20009E4738 /* RTHEvaluateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTHEvaluateViewController.h; sourceTree = "<group>"; };
+		F0AD9A5D1D90CC20009E4738 /* RTHEvaluateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTHEvaluateViewController.m; sourceTree = "<group>"; };
+		F0AD9A5E1D90CC20009E4738 /* RTHExpertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTHExpertViewController.h; sourceTree = "<group>"; };
+		F0AD9A5F1D90CC20009E4738 /* RTHExpertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTHExpertViewController.m; sourceTree = "<group>"; };
+		F0AD9A601D90CC20009E4738 /* RTHExpertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RTHExpertViewController.xib; sourceTree = "<group>"; };
+		F0AD9A611D90CC20009E4738 /* RTHIntroductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTHIntroductViewController.h; sourceTree = "<group>"; };
+		F0AD9A621D90CC20009E4738 /* RTHIntroductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTHIntroductViewController.m; sourceTree = "<group>"; };
+		F0AD9A631D90CC20009E4738 /* RTHQuestionAnswerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTHQuestionAnswerViewController.h; sourceTree = "<group>"; };
+		F0AD9A641D90CC20009E4738 /* RTHQuestionAnswerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTHQuestionAnswerViewController.m; sourceTree = "<group>"; };
+		F0AD9A6C1D90CC6E009E4738 /* RTHExpertMiddleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTHExpertMiddleView.h; sourceTree = "<group>"; };
+		F0AD9A6D1D90CC6E009E4738 /* RTHExpertMiddleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTHExpertMiddleView.m; sourceTree = "<group>"; };
+		F0EBE1591D914409005DA1D2 /* SYSlideBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYSlideBaseTableViewController.h; sourceTree = "<group>"; };
+		F0EBE15A1D914409005DA1D2 /* SYSlideBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYSlideBaseTableViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F0AD9A161D8F8149009E4738 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F0AD9A101D8F8149009E4738 = {
+			isa = PBXGroup;
+			children = (
+				F0AD9A1B1D8F8149009E4738 /* SYSlideDemo */,
+				F0AD9A1A1D8F8149009E4738 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F0AD9A1A1D8F8149009E4738 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F0AD9A191D8F8149009E4738 /* SYSlideDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F0AD9A1B1D8F8149009E4738 /* SYSlideDemo */ = {
+			isa = PBXGroup;
+			children = (
+				F0AD9A591D90CC20009E4738 /* RTH */,
+				F0AD9A361D8F906D009E4738 /* SYSlideSelect */,
+				F0AD9A1F1D8F8149009E4738 /* AppDelegate.h */,
+				F0AD9A201D8F8149009E4738 /* AppDelegate.m */,
+				F0AD9A221D8F8149009E4738 /* ViewController.h */,
+				F0AD9A231D8F8149009E4738 /* ViewController.m */,
+				F0AD9A421D8FACB4009E4738 /* Main.storyboard */,
+				F0AD9A281D8F8149009E4738 /* Assets.xcassets */,
+				F0AD9A2A1D8F8149009E4738 /* LaunchScreen.storyboard */,
+				F0AD9A2D1D8F8149009E4738 /* Info.plist */,
+				F0AD9A1C1D8F8149009E4738 /* Supporting Files */,
+			);
+			path = SYSlideDemo;
+			sourceTree = "<group>";
+		};
+		F0AD9A1C1D8F8149009E4738 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F0AD9A1D1D8F8149009E4738 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F0AD9A361D8F906D009E4738 /* SYSlideSelect */ = {
+			isa = PBXGroup;
+			children = (
+				F0AD9A371D8F906D009E4738 /* SYSlideSelectedView.h */,
+				F0AD9A381D8F906D009E4738 /* SYSlideSelectedView.m */,
+				F0AD9A3A1D8F908F009E4738 /* UIColor+SYColor.h */,
+				F0AD9A3B1D8F908F009E4738 /* UIColor+SYColor.m */,
+				F0AD9A561D8FD110009E4738 /* UIView+SYFrame.h */,
+				F0AD9A571D8FD110009E4738 /* UIView+SYFrame.m */,
+				9FCCA8181D92D5C700CE8753 /* SYHeaderRefreshView.h */,
+				9FCCA8191D92D5C700CE8753 /* SYHeaderRefreshView.m */,
+				9F18B45E1D9172040098F0FF /* UITableView+SYSlideExtension.h */,
+				9F18B45F1D9172040098F0FF /* UITableView+SYSlideExtension.m */,
+				F0EBE1591D914409005DA1D2 /* SYSlideBaseTableViewController.h */,
+				F0EBE15A1D914409005DA1D2 /* SYSlideBaseTableViewController.m */,
+			);
+			path = SYSlideSelect;
+			sourceTree = "<group>";
+		};
+		F0AD9A591D90CC20009E4738 /* RTH */ = {
+			isa = PBXGroup;
+			children = (
+				F0AD9A6B1D90CC39009E4738 /* views */,
+				F0AD9A5E1D90CC20009E4738 /* RTHExpertViewController.h */,
+				F0AD9A5F1D90CC20009E4738 /* RTHExpertViewController.m */,
+				F0AD9A601D90CC20009E4738 /* RTHExpertViewController.xib */,
+				F0AD9A5A1D90CC20009E4738 /* RTHCoursesViewController.h */,
+				F0AD9A5B1D90CC20009E4738 /* RTHCoursesViewController.m */,
+				F0AD9A5C1D90CC20009E4738 /* RTHEvaluateViewController.h */,
+				F0AD9A5D1D90CC20009E4738 /* RTHEvaluateViewController.m */,
+				F0AD9A611D90CC20009E4738 /* RTHIntroductViewController.h */,
+				F0AD9A621D90CC20009E4738 /* RTHIntroductViewController.m */,
+				F0AD9A631D90CC20009E4738 /* RTHQuestionAnswerViewController.h */,
+				F0AD9A641D90CC20009E4738 /* RTHQuestionAnswerViewController.m */,
+			);
+			path = RTH;
+			sourceTree = "<group>";
+		};
+		F0AD9A6B1D90CC39009E4738 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				F0AD9A6C1D90CC6E009E4738 /* RTHExpertMiddleView.h */,
+				F0AD9A6D1D90CC6E009E4738 /* RTHExpertMiddleView.m */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F0AD9A181D8F8149009E4738 /* SYSlideDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0AD9A301D8F8149009E4738 /* Build configuration list for PBXNativeTarget "SYSlideDemo" */;
+			buildPhases = (
+				F0AD9A151D8F8149009E4738 /* Sources */,
+				F0AD9A161D8F8149009E4738 /* Frameworks */,
+				F0AD9A171D8F8149009E4738 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SYSlideDemo;
+			productName = SYSlideDemo;
+			productReference = F0AD9A191D8F8149009E4738 /* SYSlideDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F0AD9A111D8F8149009E4738 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = tsy;
+				TargetAttributes = {
+					F0AD9A181D8F8149009E4738 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = F0AD9A141D8F8149009E4738 /* Build configuration list for PBXProject "SYSlideDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F0AD9A101D8F8149009E4738;
+			productRefGroup = F0AD9A1A1D8F8149009E4738 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F0AD9A181D8F8149009E4738 /* SYSlideDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F0AD9A171D8F8149009E4738 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0AD9A2C1D8F8149009E4738 /* LaunchScreen.storyboard in Resources */,
+				F0AD9A681D90CC20009E4738 /* RTHExpertViewController.xib in Resources */,
+				F0AD9A291D8F8149009E4738 /* Assets.xcassets in Resources */,
+				F0AD9A431D8FACB4009E4738 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F0AD9A151D8F8149009E4738 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0AD9A3C1D8F908F009E4738 /* UIColor+SYColor.m in Sources */,
+				F0AD9A241D8F8149009E4738 /* ViewController.m in Sources */,
+				F0AD9A6A1D90CC20009E4738 /* RTHQuestionAnswerViewController.m in Sources */,
+				F0AD9A661D90CC20009E4738 /* RTHEvaluateViewController.m in Sources */,
+				F0AD9A391D8F906D009E4738 /* SYSlideSelectedView.m in Sources */,
+				9F18B4601D9172040098F0FF /* UITableView+SYSlideExtension.m in Sources */,
+				F0AD9A211D8F8149009E4738 /* AppDelegate.m in Sources */,
+				F0AD9A581D8FD110009E4738 /* UIView+SYFrame.m in Sources */,
+				F0AD9A691D90CC20009E4738 /* RTHIntroductViewController.m in Sources */,
+				F0EBE15B1D914409005DA1D2 /* SYSlideBaseTableViewController.m in Sources */,
+				F0AD9A6E1D90CC6E009E4738 /* RTHExpertMiddleView.m in Sources */,
+				F0AD9A1E1D8F8149009E4738 /* main.m in Sources */,
+				F0AD9A671D90CC20009E4738 /* RTHExpertViewController.m in Sources */,
+				9FCCA81A1D92D5C700CE8753 /* SYHeaderRefreshView.m in Sources */,
+				F0AD9A651D90CC20009E4738 /* RTHCoursesViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F0AD9A2A1D8F8149009E4738 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0AD9A2B1D8F8149009E4738 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F0AD9A2E1D8F8149009E4738 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F0AD9A2F1D8F8149009E4738 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F0AD9A311D8F8149009E4738 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SYSlideDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.leju.SYSlideDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F0AD9A321D8F8149009E4738 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SYSlideDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.leju.SYSlideDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F0AD9A141D8F8149009E4738 /* Build configuration list for PBXProject "SYSlideDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0AD9A2E1D8F8149009E4738 /* Debug */,
+				F0AD9A2F1D8F8149009E4738 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0AD9A301D8F8149009E4738 /* Build configuration list for PBXNativeTarget "SYSlideDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0AD9A311D8F8149009E4738 /* Debug */,
+				F0AD9A321D8F8149009E4738 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F0AD9A111D8F8149009E4738 /* Project object */;
+}
