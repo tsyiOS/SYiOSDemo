@@ -14,6 +14,7 @@
 		F030C4451DD40E0F00DD38E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F030C4441DD40E0F00DD38E2 /* Assets.xcassets */; };
 		F030C4481DD40E0F00DD38E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F030C4461DD40E0F00DD38E2 /* LaunchScreen.storyboard */; };
 		F030C4511DD40E2B00DD38E2 /* RPEvaluateListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F030C4501DD40E2B00DD38E2 /* RPEvaluateListModel.m */; };
+		F0B7FAF71E01431300796AD1 /* RPPostListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B7FAF61E01431300796AD1 /* RPPostListModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		F030C4491DD40E0F00DD38E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F030C44F1DD40E2B00DD38E2 /* RPEvaluateListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPEvaluateListModel.h; sourceTree = "<group>"; };
 		F030C4501DD40E2B00DD38E2 /* RPEvaluateListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPEvaluateListModel.m; sourceTree = "<group>"; };
+		F0B7FAF51E01431300796AD1 /* RPPostListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPPostListModel.h; sourceTree = "<group>"; };
+		F0B7FAF61E01431300796AD1 /* RPPostListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPPostListModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				F030C43F1DD40E0F00DD38E2 /* ViewController.m */,
 				F030C44F1DD40E2B00DD38E2 /* RPEvaluateListModel.h */,
 				F030C4501DD40E2B00DD38E2 /* RPEvaluateListModel.m */,
+				F0B7FAF51E01431300796AD1 /* RPPostListModel.h */,
+				F0B7FAF61E01431300796AD1 /* RPPostListModel.m */,
 				F030C4411DD40E0F00DD38E2 /* Main.storyboard */,
 				F030C4441DD40E0F00DD38E2 /* Assets.xcassets */,
 				F030C4461DD40E0F00DD38E2 /* LaunchScreen.storyboard */,
@@ -157,6 +162,7 @@
 				F030C4401DD40E0F00DD38E2 /* ViewController.m in Sources */,
 				F030C43D1DD40E0F00DD38E2 /* AppDelegate.m in Sources */,
 				F030C4511DD40E2B00DD38E2 /* RPEvaluateListModel.m in Sources */,
+				F0B7FAF71E01431300796AD1 /* RPPostListModel.m in Sources */,
 				F030C43A1DD40E0F00DD38E2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,6 +312,7 @@
 				F030C44E1DD40E0F00DD38E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
