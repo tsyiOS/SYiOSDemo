@@ -10,7 +10,7 @@
 #import "SYArticleModel.h"
 #import "SYArticleViewController.h"
 #import "SYPictureViewController.h"
-#import "SYPhotoBrowserViewController.h"
+#import "SYPhotoBrowser.h"
 
 @interface SYListViewController ()
 @property (nonatomic, strong) NSArray *list;
@@ -108,15 +108,32 @@
         [self.navigationController pushViewController:articleVC animated:YES];
     }else if (self.type == SYHtmlTypePictureList) {
 //        SYPictureViewController *pictureVC = [[SYPictureViewController alloc] initWithNibName:NSStringFromClass([SYPictureViewController class]) bundle:nil];
-//        SYArticleModel *model = self.list[indexPath.row];
+        SYArticleModel *model = self.list[indexPath.row];
 //        pictureVC.urlString = model.url;
 //        [self.navigationController pushViewController:pictureVC animated:YES];
-        SYPhotoBrowserViewController *pictureVC = [[SYPhotoBrowserViewController alloc] init];
-        SYArticleModel *model = self.list[indexPath.row];
-        pictureVC.url = model.url;
-        [self presentViewController:pictureVC animated:YES completion:nil];
+        
+        [[SYHtmlManager sharedSYHtmlManager] requestDataWithUrl:model.url andType:SYHtmlTypePicture completion:^(id response) {
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self presentBrowser:response];
+                });
+            }
+        }];
     }
-    
+}
+
+- (void)presentBrowser:(NSArray *)urls {
+    SYPhotoBrowser *pictureVC = [[SYPhotoBrowser alloc] init];
+    NSMutableArray *tempArray = [NSMutableArray array];
+    for (NSString *url in urls) {
+        SYPhoto *photo = [[SYPhoto alloc] init];
+        photo.url = url;
+        [tempArray addObject:photo];
+    }
+    pictureVC.images = tempArray;
+    [self presentViewController:pictureVC animated:YES completion:^{
+        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    }];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

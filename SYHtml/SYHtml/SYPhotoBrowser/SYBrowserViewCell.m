@@ -7,10 +7,11 @@
 
 #import "SYBrowserViewCell.h"
 
+#define ScreenW [UIScreen mainScreen].bounds.size.width
+#define ScreenH [UIScreen mainScreen].bounds.size.height
 #define ScrollViewSize self.scrollView.bounds.size
 
 @interface SYBrowserViewCell () <UIScrollViewDelegate>
-@property (nonatomic,strong) UIImageView *imageView;
 @property (nonatomic,strong) UIScrollView *scrollView;
 @end
 
@@ -21,35 +22,34 @@
         
         [self.contentView addSubview:self.scrollView];
         [self.scrollView addSubview:self.imageView];
-        [self prepareScrollView];
     }
     return self;
 }
 
 - (void)setImage:(UIImage *)image {
     _image = image;
-    CGSize size = [self getImageDisplaySizeWith:image];
-    [self resetScrollView];
-    if (size.height < ScrollViewSize.height) {
-        //短图
+    if (image) {
+        CGSize size = [self getImageDisplaySizeWith:image];
+        [self resetScrollView];
+        if (size.height < ScrollViewSize.height) {
+            //短图
+            CGFloat y = (ScrollViewSize.height - size.height) * 0.5;
+            self.imageView.frame = CGRectMake(0, 0, size.width, size.height);
+            self.scrollView.contentInset = UIEdgeInsetsMake(y, 0, y, 0);
+        }else {
+            //长图
+            self.imageView.frame = CGRectMake(0, 0, size.width, size.height);
+        }
+        self.scrollView.contentSize = size;
+        self.imageView.image = image;
+    }else {
+        CGSize size = CGSizeMake(ScreenW, ScreenW * 0.75);
         CGFloat y = (ScrollViewSize.height - size.height) * 0.5;
         self.imageView.frame = CGRectMake(0, 0, size.width, size.height);
         self.scrollView.contentInset = UIEdgeInsetsMake(y, 0, y, 0);
-    }else {
-        //长图
-        self.imageView.frame = CGRectMake(0, 0, size.width, size.height);
+        self.imageView.image = nil;
         self.scrollView.contentSize = size;
     }
-    self.imageView.image = image;
-}
-
-- (void)prepareScrollView {
-    self.scrollView.delegate = self;
-    self.scrollView.minimumZoomScale = 1.0;
-    self.scrollView.maximumZoomScale = 2.5;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapscrollView)];
-    self.scrollView.userInteractionEnabled = YES;
-    [self.scrollView addGestureRecognizer:tap];
 }
 
 - (void)tapscrollView {
@@ -68,7 +68,7 @@
 - (CGSize)getImageDisplaySizeWith:(UIImage *)image {
     CGFloat scale = image.size.height / image.size.width;
     CGFloat height = scale *self.scrollView.bounds.size.width;
-    
+
     return CGSizeMake(self.scrollView.bounds.size.width, height);
 }
 
@@ -78,7 +78,6 @@
 }
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
-    
     CGFloat offsetX = (ScrollViewSize.width - view.frame.size.width) * 0.5;
     offsetX = offsetX < 0 ? 0 : offsetX;
     CGFloat offsetY = (ScrollViewSize.height - view.frame.size.height) * 0.5;
@@ -99,6 +98,12 @@
         _scrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
         _scrollView.showsVerticalScrollIndicator = NO;
         _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.delegate = self;
+        _scrollView.minimumZoomScale = 1.0;
+        _scrollView.maximumZoomScale = 2.0;
+        _scrollView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapscrollView)];
+        [_scrollView addGestureRecognizer:tap];
     }
     return _scrollView;
 }
