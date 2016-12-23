@@ -11,6 +11,7 @@
 #import "SYArticleViewController.h"
 #import "SYPictureViewController.h"
 #import "SYPhotoBrowser.h"
+#import "SVProgressHUD.h"
 
 @interface SYListViewController ()
 @property (nonatomic, strong) NSArray *list;
@@ -26,7 +27,7 @@
     self.tableView.tableFooterView = [UIView new];
     self.page = 1;
     if (self.type == SYHtmlTypeAllList) {
-      
+        self.title = @"目录";
     }else {
         self.isLoading = YES;
          [[SYHtmlManager sharedSYHtmlManager] requestDataWithUrl:self.urlSring andType:self.type completion:^(id response) {
@@ -42,6 +43,17 @@
             });
          }];
     }
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStyleDone target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor blackColor];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
+}
+
+- (void)backAction {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -107,11 +119,7 @@
         articleVC.urlString = model.url;
         [self.navigationController pushViewController:articleVC animated:YES];
     }else if (self.type == SYHtmlTypePictureList) {
-//        SYPictureViewController *pictureVC = [[SYPictureViewController alloc] initWithNibName:NSStringFromClass([SYPictureViewController class]) bundle:nil];
         SYArticleModel *model = self.list[indexPath.row];
-//        pictureVC.urlString = model.url;
-//        [self.navigationController pushViewController:pictureVC animated:YES];
-        
         [[SYHtmlManager sharedSYHtmlManager] requestDataWithUrl:model.url andType:SYHtmlTypePicture completion:^(id response) {
             if (response) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -131,9 +139,8 @@
         [tempArray addObject:photo];
     }
     pictureVC.images = tempArray;
-    [self presentViewController:pictureVC animated:YES completion:^{
-        [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    }];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    [self presentViewController:pictureVC animated:YES completion:nil];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

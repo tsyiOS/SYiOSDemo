@@ -34,19 +34,6 @@
     [[SYHtmlManager sharedSYHtmlManager] requestDataWithUrl:self.urlString andType:SYHtmlTypePicture completion:^(id response) {
         if (response) {
             dispatch_async(dispatch_get_main_queue(), ^{
-//                MJPhotoBrowser *browser = [[MJPhotoBrowser alloc] init];
-//                NSMutableArray *photos = [NSMutableArray array];
-//                
-//                for (NSString *url in list) {
-//                    
-//                    MJPhoto *photo = [[MJPhoto alloc] init];
-//                    photo.url = [NSURL URLWithString:url]; // 图片路径
-//                    photo.srcImageView = nil; // 来源于哪个UIImageView
-//                    photo.title = @"户型图";
-//                    [photos addObject:photo];
-//                }
-//                browser.photos = photos; // 设置所有的图片
-//                [browser show];
                 self.list = (NSArray *)response;
                 [self.collectionView reloadData];
             });

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11535.1" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Nyd-zR-uov">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11761" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Nyd-zR-uov">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11523"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,42 +21,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ttn-2X-7Wx">
-                                <rect key="frame" x="168" y="319" width="39" height="30"/>
-                                <state key="normal" title="开  始"/>
-                                <connections>
-                                    <action selector="pushToListVC" destination="BYZ-38-t0r" eventType="touchUpInside" id="vBr-uK-h83"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0DB-s9-YaD">
-                                <rect key="frame" x="0.0" y="64" width="375" height="150"/>
-                                <color key="backgroundColor" red="0.2470588235" green="0.61960784310000006" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="sm0-DF-hcF"/>
-                                </constraints>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ePP-sF-aUo">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEH-IW-CPf">
-                                <rect key="frame" x="167.5" y="399" width="39" height="30"/>
-                                <state key="normal" title="视  频"/>
-                                <connections>
-                                    <action selector="click" destination="BYZ-38-t0r" eventType="touchUpInside" id="iXT-yj-Cb7"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="0DB-s9-YaD" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="5w4-V3-Ttu"/>
-                            <constraint firstItem="0DB-s9-YaD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Aq3-cR-qfj"/>
-                            <constraint firstItem="XEH-IW-CPf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LTf-wj-Bh9"/>
-                            <constraint firstItem="Ttn-2X-7Wx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aKe-bl-9IC"/>
-                            <constraint firstAttribute="trailing" secondItem="0DB-s9-YaD" secondAttribute="trailing" id="cww-YW-APu"/>
-                            <constraint firstItem="XEH-IW-CPf" firstAttribute="top" secondItem="Ttn-2X-7Wx" secondAttribute="bottom" constant="50" id="e5l-SF-H2U"/>
-                            <constraint firstItem="Ttn-2X-7Wx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="eeN-bL-ESA"/>
+                            <constraint firstAttribute="trailing" secondItem="ePP-sF-aUo" secondAttribute="trailing" id="8U7-wt-Qu7"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ePP-sF-aUo" secondAttribute="bottom" id="Cwp-Ry-Gp2"/>
+                            <constraint firstItem="ePP-sF-aUo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="PYe-m4-z3K"/>
+                            <constraint firstItem="ePP-sF-aUo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="stp-k8-xzf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gY0-aL-o7L"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="imageView" destination="0DB-s9-YaD" id="YWx-zI-KiH"/>
+                        <outlet property="imageView" destination="ePP-sF-aUo" id="Akk-i9-2q1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -66,8 +47,9 @@
         <!--Navigation Controller-->
         <scene sceneID="Xzb-4G-sXf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Nyd-zR-uov" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Nyd-zR-uov" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TSn-gc-Sz8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

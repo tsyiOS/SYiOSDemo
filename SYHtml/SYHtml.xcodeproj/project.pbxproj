@@ -51,6 +51,8 @@
 		F0EB03891E0CCF37005C8914 /* SYBrowserViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EB03771E0CCF37005C8914 /* SYBrowserViewCell.m */; };
 		F0EB038A1E0CCF37005C8914 /* SYPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EB03791E0CCF37005C8914 /* SYPhoto.m */; };
 		F0EB038B1E0CCF37005C8914 /* SYPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EB037B1E0CCF37005C8914 /* SYPhotoBrowser.m */; };
+		F0EB03911E0D09AC005C8914 /* SYVerifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EB038F1E0D09AC005C8914 /* SYVerifyViewController.m */; };
+		F0EB03921E0D09AC005C8914 /* SYVerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0EB03901E0D09AC005C8914 /* SYVerifyViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -135,6 +137,9 @@
 		F0EB03791E0CCF37005C8914 /* SYPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYPhoto.m; sourceTree = "<group>"; };
 		F0EB037A1E0CCF37005C8914 /* SYPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYPhotoBrowser.h; sourceTree = "<group>"; };
 		F0EB037B1E0CCF37005C8914 /* SYPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYPhotoBrowser.m; sourceTree = "<group>"; };
+		F0EB038E1E0D09AB005C8914 /* SYVerifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYVerifyViewController.h; sourceTree = "<group>"; };
+		F0EB038F1E0D09AC005C8914 /* SYVerifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYVerifyViewController.m; sourceTree = "<group>"; };
+		F0EB03901E0D09AC005C8914 /* SYVerifyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SYVerifyViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +295,9 @@
 				F0B582BF1DDC3B9E0082B1D1 /* SYPictureViewController.h */,
 				F0B582C01DDC3B9E0082B1D1 /* SYPictureViewController.m */,
 				F0B582C11DDC3B9E0082B1D1 /* SYPictureViewController.xib */,
+				F0EB038E1E0D09AB005C8914 /* SYVerifyViewController.h */,
+				F0EB038F1E0D09AC005C8914 /* SYVerifyViewController.m */,
+				F0EB03901E0D09AC005C8914 /* SYVerifyViewController.xib */,
 			);
 			path = SYHtml;
 			sourceTree = "<group>";
@@ -381,6 +389,7 @@
 				F0D6EECE1DDC799A00C612CE /* SVProgressHUD.bundle in Resources */,
 				F0D4AD861DDB15BC0098F7E2 /* Assets.xcassets in Resources */,
 				F0B582C31DDC3B9E0082B1D1 /* SYPictureViewController.xib in Resources */,
+				F0EB03921E0D09AC005C8914 /* SYVerifyViewController.xib in Resources */,
 				F0B582151DDC1D070082B1D1 /* SourceList.plist in Resources */,
 				F0D4AD841DDB15BC0098F7E2 /* Main.storyboard in Resources */,
 			);
@@ -407,6 +416,7 @@
 				F0D4AD7B1DDB15BC0098F7E2 /* main.m in Sources */,
 				F0B582FB1DDC43FC0082B1D1 /* UIButton+WebCache.m in Sources */,
 				F0B582F91DDC43FC0082B1D1 /* SDWebImageManager.m in Sources */,
+				F0EB03911E0D09AC005C8914 /* SYVerifyViewController.m in Sources */,
 				F0EB038A1E0CCF37005C8914 /* SYPhoto.m in Sources */,
 				F0EB038B1E0CCF37005C8914 /* SYPhotoBrowser.m in Sources */,
 				F0B583001DDC43FC0082B1D1 /* UIImageView+WebCache.m in Sources */,
@@ -538,6 +548,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 5Z3XUN2VRQ;
 				INFOPLIST_FILE = SYHtml/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -551,6 +562,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 5Z3XUN2VRQ;
 				INFOPLIST_FILE = SYHtml/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
