@@ -50,8 +50,8 @@
             if ([self.firstPassWord isEqualToString:self.lastPassWord]) {
                 [self dismissViewControllerAnimated:YES completion:nil];
             }else {
+                [SVProgressHUD showErrorWithStatus:@"密码错误!"];
                 self.password.text = @"";
-                self.desLabel.text = @"密码错误,请重新输入";
                 self.firstPassWord = nil;
             }
         }
