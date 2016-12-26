@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SYHtml/SYHtml/SYVerifyViewController.m"
-            timestampString = "504180320.965513"
+            timestampString = "504411758.454302"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "-nubmerAction:"
             landmarkType = "7">
          </BreakpointContent>
@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SYHtml/SYHtml/SYVerifyViewController.m"
-            timestampString = "504180434.801692"
+            timestampString = "504411758.454302"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "-nubmerAction:"
             landmarkType = "7">
          </BreakpointContent>

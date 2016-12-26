@@ -8,6 +8,9 @@
 
 #import "SYVerifyViewController.h"
 #import "SVProgressHUD.h"
+#import <LocalAuthentication/LAContext.h>
+#import <LocalAuthentication/LAError.h>
+
 #define ScreenW [UIScreen mainScreen].bounds.size.width
 #define ScreenH [UIScreen mainScreen].bounds.size.height
 
@@ -24,6 +27,92 @@
 @end
 
 @implementation SYVerifyViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    LAContext *myContext = [[LAContext alloc] init];
+    NSError *authError = nil;
+    NSString *myLocalizedReasonString = @"使用指纹验证";
+    
+    /*
+     typedef NS_ENUM(NSInteger, LAError)
+     {
+     //授权失败
+     LAErrorAuthenticationFailed = kLAErrorAuthenticationFailed,
+     
+     //用户取消Touch ID授权
+     LAErrorUserCancel           = kLAErrorUserCancel,
+     
+     //用户选择输入密码
+     LAErrorUserFallback         = kLAErrorUserFallback,
+     
+     //系统取消授权(例如其他APP切入)
+     LAErrorSystemCancel         = kLAErrorSystemCancel,
+     
+     //系统未设置密码
+     LAErrorPasscodeNotSet       = kLAErrorPasscodeNotSet,
+     
+     //设备Touch ID不可用，例如未打开
+     LAErrorTouchIDNotAvailable  = kLAErrorTouchIDNotAvailable,
+     
+     //设备Touch ID不可用，用户未录入
+     LAErrorTouchIDNotEnrolled   = kLAErrorTouchIDNotEnrolled,
+     } NS_ENUM_AVAILABLE(10_10, 8_0);
+     */
+    
+    if ([myContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&authError]) {
+        [myContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:myLocalizedReasonString reply:^(BOOL success, NSError * _Nullable error) {
+            if (success) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }else {
+                NSLog(@"认证失败:%@--%zd",error.description,error.code);
+                switch (error.code) {
+                    case LAErrorSystemCancel: {
+                        //切换到其他APP，系统取消验证Touch ID
+                        
+                        break;
+                    }
+                    case LAErrorUserCancel: {
+                        //用户取消验证Touch ID
+                        
+                        break;
+                    }
+                    case LAErrorUserFallback: {
+                        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                            //用户选择输入密码，切换主线程处理
+                        }];
+                        break;
+                    }
+                    case LAErrorAuthenticationFailed: {
+                        //授权失败
+                    
+                    }
+                    case LAErrorPasscodeNotSet: {
+                         //系统未设置密码
+                        
+                    }
+                    case LAErrorTouchIDNotAvailable: {
+                         //设备Touch ID不可用，例如未打开
+                        
+                    }
+                    case  LAErrorTouchIDNotEnrolled: {
+                        //设备Touch ID不可用，用户未录入
+                        
+                    }
+                        
+                    default: {
+                        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                            //其他情况，切换主线程处理
+                        }];
+                        break;
+                    }
+                }
+            }
+        }];
+    }else {
+        NSLog(@"TouchID设备不可用");
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
