@@ -55,6 +55,9 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushToListVC)];
     [self.imageView addGestureRecognizer:tap];
     
+    //NSDate *currentdate = [NSDate date];
+    //NSDate *lastDate = [NSUserDefaults standardUserDefaults] objectForKey:@"become"
+    
     SYVerifyViewController *verifyVc = [[SYVerifyViewController alloc] initWithNibName:NSStringFromClass([SYVerifyViewController class]) bundle:nil];
     [self presentViewController:verifyVc animated:YES completion:nil];
 }

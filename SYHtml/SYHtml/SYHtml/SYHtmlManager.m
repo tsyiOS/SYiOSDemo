@@ -11,8 +11,8 @@
 #import "SVProgressHUD.h"
 
 #define SYBaseUrl @"https://www.aa924.com"
-#define SYCacheKey @"SYHtmlManagerKey"
 
+#define SYCacheKey @"SYHtmlManagerKey"
 
 @interface SYHtmlManager ()<NSURLSessionTaskDelegate>
 @property (nonatomic, strong) NSURLSession *session;
@@ -26,20 +26,17 @@ SYSingleton_implementation(SYHtmlManager)
     
     NSDictionary *dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:SYCacheKey];
     if ([dict.allKeys containsObject:urlString]) {
-        NSData *data = [dict objectForKey:urlString];
-        if (type == SYHtmlTypeArticleList) {
-            [self articleListData:data completion:completion];
-        }else if(type == SYHtmlTypeArticle) {
-            [self articleData:data completion:completion];
-        }else if (type == SYHtmlTypePictureList) {
-            [self pictureListData:data completion:completion];
-        }else if (type == SYHtmlTypePicture) {
-            [self pictureData:data completion:completion];
-        }
+        NSData *locationData = [dict objectForKey:urlString];
+        [self handleData:locationData WithType:type completion:completion];
+        
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",SYBaseUrl,urlString]];
         NSURLSessionTask *task = [self.session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             if (data) {
-                [self handelData:data];
+                NSString *html = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                NSString *locationHtml = [[NSString alloc] initWithData:locationData encoding:NSUTF8StringEncoding];
+                if (![html isEqualToString:locationHtml]) {
+                     [self handleData:data WithType:type completion:completion];
+                }
                 NSDictionary *dict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:SYCacheKey];
                 NSMutableDictionary *tempDict = [NSMutableDictionary dictionaryWithDictionary:dict];
                 [tempDict setObject:data forKey:urlString];
@@ -58,18 +55,22 @@ SYSingleton_implementation(SYHtmlManager)
                 NSMutableDictionary *tempDict = [NSMutableDictionary dictionaryWithDictionary:dict];
                 [tempDict setObject:data forKey:urlString];
                 [[NSUserDefaults standardUserDefaults] setObject:tempDict forKey:SYCacheKey];
-                if (type == SYHtmlTypeArticleList) {
-                    [self articleListData:data completion:completion];
-                }else if(type == SYHtmlTypeArticle) {
-                    [self articleData:data completion:completion];
-                }else if (type == SYHtmlTypePictureList) {
-                    [self pictureListData:data completion:completion];
-                }else if (type == SYHtmlTypePicture) {
-                    [self pictureData:data completion:completion];
-                }
+                [self handleData:data WithType:type completion:completion];
             }
         }];
          [task resume];
+    }
+}
+
+- (void)handleData:(NSData *)data WithType:(SYHtmlType)type completion:(void(^)(id response))completion {
+    if (type == SYHtmlTypeArticleList) {
+        [self articleListData:data completion:completion];
+    }else if(type == SYHtmlTypeArticle) {
+        [self articleData:data completion:completion];
+    }else if (type == SYHtmlTypePictureList) {
+        [self pictureListData:data completion:completion];
+    }else if (type == SYHtmlTypePicture) {
+        [self pictureData:data completion:completion];
     }
 }
 
@@ -155,11 +156,9 @@ didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
     NSRange titleRange = [html rangeOfString:@"<div class=\"page_title\">"];
     NSString *sub = [html substringFromIndex:titleRange.location];
     NSString *title = [self contentBetweenStart:@"<div class=\"page_title\">" andEnd:@"</div>" inString:sub];
-//    NSString *text = [self contentBetweenStart:@"</div><BR><BR>" andEnd:@"</p><p>" inString:html];
+
     NSString *text = [self contentBetweenStart:@"<div id=\"picTopAds\">" andEnd:@"<div id=\"picFootAds\">" inString:html];
-//    if (text == nil) {
-//        text = [self contentBetweenStart:@"<div id=\"picTopAds\">" andEnd:@"<div id=\"picFootAds\">" inString:html];
-//    }
+    
     SYArticleModel *model = [[SYArticleModel alloc] init];
     model.title = title;
     model.text = text;
