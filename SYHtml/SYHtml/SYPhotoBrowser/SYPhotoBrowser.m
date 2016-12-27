@@ -190,8 +190,4 @@
     return _pageLabel;
 }
 
-- (void)dealloc {
-    NSLog(@"图片浏览器消失");
-}
-
 @end
