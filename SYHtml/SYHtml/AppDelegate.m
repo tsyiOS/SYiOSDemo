@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "NSDate+SYExtension.h"
 #import "SYVerifyViewController.h"
 
 @interface AppDelegate ()
