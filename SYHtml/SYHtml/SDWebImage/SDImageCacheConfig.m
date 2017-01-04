@@ -18,7 +18,7 @@ static const NSInteger kDefaultCacheMaxCacheAge = 60 * 60 * 24 * 7; // 1 week
         _shouldDisableiCloud = YES;
         _shouldCacheImagesInMemory = YES;
         _maxCacheAge = kDefaultCacheMaxCacheAge;
-        _maxCacheSize = 0;
+        _maxCacheSize = 100000;
     }
     return self;
 }
