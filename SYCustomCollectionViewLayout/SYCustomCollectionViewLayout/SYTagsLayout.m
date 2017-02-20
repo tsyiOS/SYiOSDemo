@@ -26,7 +26,8 @@
 }
 
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
-    return YES;
+    NSLog(@"=====%@",NSStringFromCGRect(newBounds));
+    return NO;
 }
 
 - (void)prepareLayout {
