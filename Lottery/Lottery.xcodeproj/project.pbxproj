@@ -13,6 +13,12 @@
 		F03C92D21E5AF0F500D0D0D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03C92D01E5AF0F500D0D0D7 /* Main.storyboard */; };
 		F03C92D41E5AF0F500D0D0D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F03C92D31E5AF0F500D0D0D7 /* Assets.xcassets */; };
 		F03C92D71E5AF0F500D0D0D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03C92D51E5AF0F500D0D0D7 /* LaunchScreen.storyboard */; };
+		F03C92E11E5AF63A00D0D0D7 /* SYHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F03C92DF1E5AF63A00D0D0D7 /* SYHomeCell.m */; };
+		F03C92E21E5AF63A00D0D0D7 /* SYHomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F03C92E01E5AF63A00D0D0D7 /* SYHomeCell.xib */; };
+		F03C92E51E5AF6BB00D0D0D7 /* UIColor+SYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F03C92E41E5AF6BB00D0D0D7 /* UIColor+SYExtension.m */; };
+		F03C92E81E5AF6FD00D0D0D7 /* UIView+SYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F03C92E71E5AF6FD00D0D0D7 /* UIView+SYExtension.m */; };
+		F03C92EF1E5AFC2900D0D0D7 /* SYWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F03C92ED1E5AFC2900D0D0D7 /* SYWebViewController.m */; };
+		F03C92F01E5AFC2900D0D0D7 /* SYWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F03C92EE1E5AFC2900D0D0D7 /* SYWebViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,16 @@
 		F03C92D31E5AF0F500D0D0D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F03C92D61E5AF0F500D0D0D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F03C92D81E5AF0F500D0D0D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F03C92DE1E5AF63A00D0D0D7 /* SYHomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHomeCell.h; sourceTree = "<group>"; };
+		F03C92DF1E5AF63A00D0D0D7 /* SYHomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHomeCell.m; sourceTree = "<group>"; };
+		F03C92E01E5AF63A00D0D0D7 /* SYHomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SYHomeCell.xib; sourceTree = "<group>"; };
+		F03C92E31E5AF6BB00D0D0D7 /* UIColor+SYExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+SYExtension.h"; sourceTree = "<group>"; };
+		F03C92E41E5AF6BB00D0D0D7 /* UIColor+SYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SYExtension.m"; sourceTree = "<group>"; };
+		F03C92E61E5AF6FD00D0D0D7 /* UIView+SYExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SYExtension.h"; sourceTree = "<group>"; };
+		F03C92E71E5AF6FD00D0D0D7 /* UIView+SYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SYExtension.m"; sourceTree = "<group>"; };
+		F03C92EC1E5AFC2900D0D0D7 /* SYWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SYWebViewController.h; path = ../SYWebViewController.h; sourceTree = "<group>"; };
+		F03C92ED1E5AFC2900D0D0D7 /* SYWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SYWebViewController.m; path = ../SYWebViewController.m; sourceTree = "<group>"; };
+		F03C92EE1E5AFC2900D0D0D7 /* SYWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SYWebViewController.xib; path = ../SYWebViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +78,16 @@
 				F03C92CB1E5AF0F500D0D0D7 /* AppDelegate.m */,
 				F03C92CD1E5AF0F500D0D0D7 /* ViewController.h */,
 				F03C92CE1E5AF0F500D0D0D7 /* ViewController.m */,
+				F03C92E61E5AF6FD00D0D0D7 /* UIView+SYExtension.h */,
+				F03C92E71E5AF6FD00D0D0D7 /* UIView+SYExtension.m */,
+				F03C92E31E5AF6BB00D0D0D7 /* UIColor+SYExtension.h */,
+				F03C92E41E5AF6BB00D0D0D7 /* UIColor+SYExtension.m */,
+				F03C92EC1E5AFC2900D0D0D7 /* SYWebViewController.h */,
+				F03C92ED1E5AFC2900D0D0D7 /* SYWebViewController.m */,
+				F03C92EE1E5AFC2900D0D0D7 /* SYWebViewController.xib */,
+				F03C92DE1E5AF63A00D0D0D7 /* SYHomeCell.h */,
+				F03C92DF1E5AF63A00D0D0D7 /* SYHomeCell.m */,
+				F03C92E01E5AF63A00D0D0D7 /* SYHomeCell.xib */,
 				F03C92D01E5AF0F500D0D0D7 /* Main.storyboard */,
 				F03C92D31E5AF0F500D0D0D7 /* Assets.xcassets */,
 				F03C92D51E5AF0F500D0D0D7 /* LaunchScreen.storyboard */,
@@ -138,6 +164,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F03C92F01E5AFC2900D0D0D7 /* SYWebViewController.xib in Resources */,
+				F03C92E21E5AF63A00D0D0D7 /* SYHomeCell.xib in Resources */,
 				F03C92D71E5AF0F500D0D0D7 /* LaunchScreen.storyboard in Resources */,
 				F03C92D41E5AF0F500D0D0D7 /* Assets.xcassets in Resources */,
 				F03C92D21E5AF0F500D0D0D7 /* Main.storyboard in Resources */,
@@ -151,7 +179,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F03C92E11E5AF63A00D0D0D7 /* SYHomeCell.m in Sources */,
 				F03C92CF1E5AF0F500D0D0D7 /* ViewController.m in Sources */,
+				F03C92EF1E5AFC2900D0D0D7 /* SYWebViewController.m in Sources */,
+				F03C92E81E5AF6FD00D0D0D7 /* UIView+SYExtension.m in Sources */,
+				F03C92E51E5AF6BB00D0D0D7 /* UIColor+SYExtension.m in Sources */,
 				F03C92CC1E5AF0F500D0D0D7 /* AppDelegate.m in Sources */,
 				F03C92C91E5AF0F500D0D0D7 /* main.m in Sources */,
 			);
