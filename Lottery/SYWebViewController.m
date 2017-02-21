@@ -14,6 +14,7 @@
 @interface SYWebViewController ()<UIWebViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (nonatomic, strong) UIImageView *headerView;
+@property (weak, nonatomic) IBOutlet UIButton *backBtn;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
@@ -48,6 +49,7 @@
     if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsLoadUrl]) {
         self.webView.hidden = NO;
         self.tableView.hidden = YES;
+        self.backBtn.hidden = NO;
         NSString *wapUrl = [[[NSUserDefaults standardUserDefaults] objectForKey:kUserInformation] objectForKey:@"wapurl"];
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:wapUrl]];
         [self.webView loadRequest:request];
@@ -55,6 +57,7 @@
     }else {
         self.webView.hidden = YES;
         self.tableView.hidden = NO;
+        self.backBtn.hidden = YES;
         self.title = self.model.name;
     }
     self.tableView.tableHeaderView = self.headerView;
@@ -62,13 +65,14 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([SYGameDetailCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SYGameDetailCell class])];
 }
-
-- (void)backAction {
+- (IBAction)webViewBackAction {
     if ([self.webView canGoBack]) {
         [self.webView goBack];
-    }else {
-        [self.navigationController popViewControllerAnimated:YES];
     }
+}
+
+- (void)backAction {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
@@ -78,8 +82,12 @@
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-//    NSString *url = [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    NSLog(@"加载的url---%@",url);
+    NSString *url = [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"加载的url---%@",url);
+//    if ([url hasPrefix:@"http://www.mm0788.com/?aff=758940"]) {
+//        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:url]];
+//        return NO;
+//    }
     return  YES;
 }
 

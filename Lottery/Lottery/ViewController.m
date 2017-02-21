@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
 @property (nonatomic, strong) NSArray *models;
+@property (nonatomic, strong) UIView *shadowView;
 @end
 
 @implementation ViewController
@@ -36,25 +37,32 @@
     self.flowLayout.minimumLineSpacing = 0;
     self.flowLayout.itemSize = CGSizeMake(ScreenW/2, 100);
     self.flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    [self.view addSubview:self.shadowView];
     [self requestData];
 }
 
 - (void)requestData {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObjectsFromArray:@[@"text/html", @"text/plain"]];
-    
     [manager POST:URL parameters:@{@"appid":@"amdcapp37"} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSMutableDictionary *resulut = [NSMutableDictionary dictionaryWithDictionary:responseObject];
+        [resulut setObject:@"1" forKey:@"isshowwap"];
+        responseObject = resulut;
         NSLog(@"成功%@",[responseObject objectForKey:@"isshowwap"]);
         NSInteger isshow = [[responseObject objectForKey:@"isshowwap"] integerValue];
         if (isshow == 1) {
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kIsLoadUrl];
             [[NSUserDefaults standardUserDefaults] setObject:responseObject forKey:kUserInformation];
+            SYWebViewController *webVC = [[SYWebViewController alloc] initWithNibName:NSStringFromClass([SYWebViewController class]) bundle:nil];
+            [self.navigationController pushViewController:webVC animated:NO];
         }else {
+            [self.shadowView removeFromSuperview];
             [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kIsLoadUrl];
             [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kUserInformation];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"失败%@",error);
+        [self.shadowView removeFromSuperview];
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kIsLoadUrl];
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kUserInformation];
     }];
@@ -92,6 +100,14 @@
         _models = [SYGameModel games];
     }
     return _models;
+}
+
+- (UIView *)shadowView {
+    if (_shadowView == nil) {
+        _shadowView = [[UIView alloc] initWithFrame:self.view.bounds];
+        _shadowView.backgroundColor = [UIColor whiteColor];
+    }
+    return _shadowView;
 }
 
 
