@@ -12,6 +12,9 @@
 #import "UIColor+SYExtension.h"
 #import "SYWebViewController.h"
 #import "SYGameModel.h"
+#import "AFNetworking.h"
+
+#define URL @"http://appmgr.jwoquxoc.com/frontApi/getAboutUs"
 
 @interface ViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -28,12 +31,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([SYHomeCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([SYHomeCell class])];
     self.flowLayout.minimumInteritemSpacing = 0;
     self.flowLayout.minimumLineSpacing = 0;
     self.flowLayout.itemSize = CGSizeMake(ScreenW/2, 100);
     self.flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    [self requestData];
+}
+
+- (void)requestData {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObjectsFromArray:@[@"text/html", @"text/plain"]];
+    
+    [manager POST:URL parameters:@{@"appid":@"amdcapp37"} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"成功%@",[responseObject objectForKey:@"isshowwap"]);
+        NSInteger isshow = [[responseObject objectForKey:@"isshowwap"] integerValue];
+        if (isshow == 1) {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kIsLoadUrl];
+            [[NSUserDefaults standardUserDefaults] setObject:responseObject forKey:kUserInformation];
+        }else {
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kIsLoadUrl];
+            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kUserInformation];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"失败%@",error);
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kIsLoadUrl];
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kUserInformation];
+    }];
 }
 
 #pragma mark - UICollectionView dataSource
@@ -46,19 +70,8 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([UICollectionViewCell class]) forIndexPath:indexPath];
-//    UILabel *label = [cell.contentView viewWithTag:10];
-//    if (label == nil) {
-//        label = [[UILabel alloc] initWithFrame:cell.bounds];
-//        label.textAlignment = NSTextAlignmentCenter;
-//        label.tag = 10;
-//        [cell.contentView addSubview:label];
-//    }
-//    label.text = [NSString stringWithFormat:@"%zd",indexPath.row];
-//    return cell;
     SYHomeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([SYHomeCell class]) forIndexPath:indexPath];
     cell.model = self.models[indexPath.row];
-//    cell.nameLabel.textColor = [UIColor blackColor];
     return cell;
 }
 

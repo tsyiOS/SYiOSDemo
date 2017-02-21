@@ -21,12 +21,18 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:kIsLoadUrl]) {
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+    }
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:kIsLoadUrl]) {
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+    }
+//    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (void)viewDidLoad {
@@ -38,27 +44,24 @@
     
     self.extendedLayoutIncludesOpaqueBars = NO;
     self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
-    self.title = self.model.name;
-    
+
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsLoadUrl]) {
+        self.webView.hidden = NO;
+        self.tableView.hidden = YES;
+        NSString *wapUrl = [[[NSUserDefaults standardUserDefaults] objectForKey:kUserInformation] objectForKey:@"wapurl"];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:wapUrl]];
+        [self.webView loadRequest:request];
+        self.title = @"幸运之星";
+    }else {
+        self.webView.hidden = YES;
+        self.tableView.hidden = NO;
+        self.title = self.model.name;
+    }
     self.tableView.tableHeaderView = self.headerView;
     self.tableView.estimatedRowHeight = 100;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.webView.hidden = YES;
-    
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([SYGameDetailCell class]) bundle:nil] forCellReuseIdentifier:NSStringFromClass([SYGameDetailCell class])];
-    
-//    BOOL location = NO;
-//    if (location) {
-//        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com"]];
-//        [self.webView loadRequest:request];
-//    }else {
-//        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"炸金花" ofType:@"html"];
-//        NSString *htmlString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-//        [self.webView loadHTMLString:htmlString baseURL:[NSURL URLWithString:filePath]];
-//    }
 }
-
-
 
 - (void)backAction {
     if ([self.webView canGoBack]) {
@@ -75,8 +78,8 @@
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    NSString *url = [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"加载的url---%@",url);
+//    NSString *url = [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//    NSLog(@"加载的url---%@",url);
     return  YES;
 }
 
