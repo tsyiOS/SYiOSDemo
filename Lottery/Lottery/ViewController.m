@@ -45,10 +45,10 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObjectsFromArray:@[@"text/html", @"text/plain"]];
     [manager POST:URL parameters:@{@"appid":@"amdcapp37"} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSMutableDictionary *resulut = [NSMutableDictionary dictionaryWithDictionary:responseObject];
-        [resulut setObject:@"1" forKey:@"isshowwap"];
-        responseObject = resulut;
-        NSLog(@"成功%@",[responseObject objectForKey:@"isshowwap"]);
+//        NSMutableDictionary *resulut = [NSMutableDictionary dictionaryWithDictionary:responseObject];
+//        [resulut setObject:@"1" forKey:@"isshowwap"];
+//        responseObject = resulut;
+//        NSLog(@"成功%@",[responseObject objectForKey:@"isshowwap"]);
         NSInteger isshow = [[responseObject objectForKey:@"isshowwap"] integerValue];
         if (isshow == 1) {
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kIsLoadUrl];
