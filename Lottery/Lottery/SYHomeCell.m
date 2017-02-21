@@ -12,10 +12,14 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.nameLabel.layer.cornerRadius = 50;
-    self.nameLabel.clipsToBounds = YES;
-    self.nameLabel.layer.borderWidth = 2;
-    self.nameLabel.layer.borderColor = [UIColor blackColor].CGColor;
+//    self.nameLabel.layer.cornerRadius = 50;
+//    self.nameLabel.clipsToBounds = YES;
+//    self.nameLabel.layer.borderWidth = 2;
+//    self.nameLabel.layer.borderColor = [UIColor blackColor].CGColor;
 }
 
+- (void)setModel:(SYGameModel *)model {
+    _model = model;
+    self.nameLabel.text = model.name;
+}
 @end

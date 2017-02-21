@@ -18,20 +18,27 @@
                 <rect key="frame" x="0.0" y="0.0" width="283" height="191"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cell_bg" translatesAutoresizingMaskIntoConstraints="NO" id="raW-42-xyJ">
+                        <rect key="frame" x="20" y="20" width="243" height="151"/>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LB4-GA-Dj9">
-                        <rect key="frame" x="92" y="46" width="100" height="100"/>
+                        <rect key="frame" x="92" y="45.5" width="100" height="100"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="100" id="FBs-fe-8xM"/>
                             <constraint firstAttribute="width" constant="100" id="syU-iT-1qo"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="raW-42-xyJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="LKP-B5-Gkd"/>
+                <constraint firstAttribute="bottom" secondItem="raW-42-xyJ" secondAttribute="bottom" constant="20" id="Mm3-FE-7cF"/>
                 <constraint firstItem="LB4-GA-Dj9" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Scl-4w-t3B"/>
+                <constraint firstItem="raW-42-xyJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="gez-W7-ltq"/>
+                <constraint firstAttribute="trailing" secondItem="raW-42-xyJ" secondAttribute="trailing" constant="20" id="oDM-wK-VgV"/>
                 <constraint firstItem="LB4-GA-Dj9" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="ymj-jq-TdW"/>
             </constraints>
             <size key="customSize" width="283" height="191"/>
@@ -41,4 +48,7 @@
             <point key="canvasLocation" x="150.5" y="-16.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="cell_bg" width="236" height="61"/>
+    </resources>
 </document>

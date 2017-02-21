@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SYGameModel.h"
 @interface SYHomeCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-
+@property (nonatomic, strong) SYGameModel *model;
 @end

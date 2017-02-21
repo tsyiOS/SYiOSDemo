@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SYGameModel.h"
 @interface SYWebViewController : UIViewController
-
+@property (nonatomic, strong) SYGameModel *model;
 @end
