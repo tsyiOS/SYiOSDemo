@@ -269,7 +269,7 @@
 					F03C92C31E5AF0F500D0D0D7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = VE878NZ38N;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -379,7 +379,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Su  Mei (2PM34E6Y3Z)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -426,7 +426,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Su  Mei (VE878NZ38N)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -451,6 +451,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Lottery/Lottery.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Su  Mei (2PM34E6Y3Z)";
 				DEVELOPMENT_TEAM = VE878NZ38N;
 				INFOPLIST_FILE = Lottery/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -461,6 +462,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sy.lottery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6d2662e1-eebf-46d5-b843-3339ce68c320";
+				PROVISIONING_PROFILE_SPECIFIER = Lottery;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Lottery/Lib";
 			};
 			name = Debug;
@@ -470,6 +473,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Lottery/Lottery.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Su  Mei (VE878NZ38N)";
 				DEVELOPMENT_TEAM = VE878NZ38N;
 				INFOPLIST_FILE = Lottery/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -480,6 +484,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sy.lottery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1a70ee6c-3579-4e9e-a822-f6390546de2c";
+				PROVISIONING_PROFILE_SPECIFIER = Publish;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Lottery/Lib";
 			};
 			name = Release;
