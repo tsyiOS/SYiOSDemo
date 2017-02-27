@@ -43,6 +43,8 @@
 		F03C93C51E5C234E00D0D0D7 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = F03C93BD1E5C234E00D0D0D7 /* AFURLRequestSerialization.m */; };
 		F03C93C61E5C234E00D0D0D7 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = F03C93BF1E5C234E00D0D0D7 /* AFURLResponseSerialization.m */; };
 		F03C93C71E5C234E00D0D0D7 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F03C93C11E5C234E00D0D0D7 /* AFURLSessionManager.m */; };
+		F05739AA1E6405FA00271A31 /* SYHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F05739A81E6405FA00271A31 /* SYHomeViewController.m */; };
+		F05739AB1E6405FA00271A31 /* SYHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F05739A91E6405FA00271A31 /* SYHomeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +103,9 @@
 		F03C93BF1E5C234E00D0D0D7 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		F03C93C01E5C234E00D0D0D7 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		F03C93C11E5C234E00D0D0D7 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		F05739A71E6405FA00271A31 /* SYHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYHomeViewController.h; sourceTree = "<group>"; };
+		F05739A81E6405FA00271A31 /* SYHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYHomeViewController.m; sourceTree = "<group>"; };
+		F05739A91E6405FA00271A31 /* SYHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SYHomeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +160,9 @@
 				F03C92CB1E5AF0F500D0D0D7 /* AppDelegate.m */,
 				F03C92CD1E5AF0F500D0D0D7 /* ViewController.h */,
 				F03C92CE1E5AF0F500D0D0D7 /* ViewController.m */,
+				F05739A71E6405FA00271A31 /* SYHomeViewController.h */,
+				F05739A81E6405FA00271A31 /* SYHomeViewController.m */,
+				F05739A91E6405FA00271A31 /* SYHomeViewController.xib */,
 				F03C92E61E5AF6FD00D0D0D7 /* UIView+SYExtension.h */,
 				F03C92E71E5AF6FD00D0D0D7 /* UIView+SYExtension.m */,
 				F03C92E31E5AF6BB00D0D0D7 /* UIColor+SYExtension.h */,
@@ -306,6 +314,7 @@
 				F03C93771E5BE5FE00D0D0D7 /* gameData.plist in Resources */,
 				F03C937F1E5BF2D200D0D0D7 /* SYGameDetailCell.xib in Resources */,
 				F03C92D71E5AF0F500D0D0D7 /* LaunchScreen.storyboard in Resources */,
+				F05739AB1E6405FA00271A31 /* SYHomeViewController.xib in Resources */,
 				F03C92D41E5AF0F500D0D0D7 /* Assets.xcassets in Resources */,
 				F03C92D21E5AF0F500D0D0D7 /* Main.storyboard in Resources */,
 			);
@@ -323,6 +332,7 @@
 				F03C92CF1E5AF0F500D0D0D7 /* ViewController.m in Sources */,
 				F03C92EF1E5AFC2900D0D0D7 /* SYWebViewController.m in Sources */,
 				F03C92E81E5AF6FD00D0D0D7 /* UIView+SYExtension.m in Sources */,
+				F05739AA1E6405FA00271A31 /* SYHomeViewController.m in Sources */,
 				F03C93C41E5C234E00D0D0D7 /* AFSecurityPolicy.m in Sources */,
 				F03C92E51E5AF6BB00D0D0D7 /* UIColor+SYExtension.m in Sources */,
 				F03C93C51E5C234E00D0D0D7 /* AFURLRequestSerialization.m in Sources */,

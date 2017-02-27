@@ -53,7 +53,6 @@
         NSString *wapUrl = [[[NSUserDefaults standardUserDefaults] objectForKey:kUserInformation] objectForKey:@"wapurl"];
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:wapUrl]];
         [self.webView loadRequest:request];
-        self.title = @"幸运之星";
     }else {
         self.webView.hidden = YES;
         self.tableView.hidden = NO;

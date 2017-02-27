@@ -13,6 +13,7 @@
 #import "SYWebViewController.h"
 #import "SYGameModel.h"
 #import "AFNetworking.h"
+#import "SYHomeViewController.h"
 
 #define URL @"http://appmgr.jwoquxoc.com/frontApi/getAboutUs"
 
@@ -45,23 +46,23 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObjectsFromArray:@[@"text/html", @"text/plain"]];
     [manager POST:URL parameters:@{@"appid":@"amdcapp37"} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        NSMutableDictionary *resulut = [NSMutableDictionary dictionaryWithDictionary:responseObject];
-//        [resulut setObject:@"1" forKey:@"isshowwap"];
-//        responseObject = resulut;
-//        NSLog(@"成功%@",[responseObject objectForKey:@"isshowwap"]);
         NSInteger isshow = [[responseObject objectForKey:@"isshowwap"] integerValue];
         if (isshow == 1) {
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kIsLoadUrl];
             [[NSUserDefaults standardUserDefaults] setObject:responseObject forKey:kUserInformation];
-            SYWebViewController *webVC = [[SYWebViewController alloc] initWithNibName:NSStringFromClass([SYWebViewController class]) bundle:nil];
-            [self.navigationController pushViewController:webVC animated:NO];
+//            SYWebViewController *webVC = [[SYWebViewController alloc] initWithNibName:NSStringFromClass([SYWebViewController class]) bundle:nil];
+//            [self.navigationController pushViewController:webVC animated:NO];
         }else {
             [self.shadowView removeFromSuperview];
             [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kIsLoadUrl];
             [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kUserInformation];
         }
+        
+        SYHomeViewController *webVC = [[SYHomeViewController alloc] initWithNibName:NSStringFromClass([SYHomeViewController class]) bundle:nil];
+        [self.navigationController pushViewController:webVC animated:NO];
+
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"失败%@",error);
         [self.shadowView removeFromSuperview];
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kIsLoadUrl];
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kUserInformation];
