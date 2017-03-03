@@ -57,16 +57,17 @@
             [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kIsLoadUrl];
             [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kUserInformation];
         }
-        
         SYHomeViewController *webVC = [[SYHomeViewController alloc] initWithNibName:NSStringFromClass([SYHomeViewController class]) bundle:nil];
         [self.navigationController pushViewController:webVC animated:NO];
-
-        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [self.shadowView removeFromSuperview];
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kIsLoadUrl];
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kUserInformation];
+        SYHomeViewController *webVC = [[SYHomeViewController alloc] initWithNibName:NSStringFromClass([SYHomeViewController class]) bundle:nil];
+        [self.navigationController pushViewController:webVC animated:NO];
     }];
+    
+    
 }
 
 #pragma mark - UICollectionView dataSource
