@@ -10,8 +10,14 @@
 #import <AVKit/AVKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "SYVideoToolBar.h"
-//#import "UIView+SYExtension.h"
 #import <MediaPlayer/MediaPlayer.h>
+
+typedef NS_ENUM(NSUInteger, SYPanType) {
+    SYPanTypeNULL = 0,
+    SYPanTypeSchedule,//进度
+    SYPanTypeLight,
+    SYPanTypeVoice
+};
 
 @interface SYVideoView ()<SYVideoToolBarDelegate>
 @property (nonatomic, strong) AVPlayer *player;
@@ -28,6 +34,11 @@
 @property (nonatomic, strong) UITapGestureRecognizer *tap;
 @property (nonatomic, strong) UIPanGestureRecognizer *pan;
 @property (nonatomic, assign) CGPoint startPoint;
+@property (nonatomic, strong) UIView *voiceSlider;
+@property (nonatomic, strong) UIView *brightSlider;
+@property (nonatomic, assign) SYPanType panType;
+@property (nonatomic, assign) CGFloat currentLight;
+@property (nonatomic, assign) float currentVoice;
 @end
 
 @implementation SYVideoView
@@ -83,21 +94,6 @@
 }
 - (void)pause {
     [self.player pause];
-}
-
-- (UIImage *)screenShot {
-//    NSURL *url = [NSURL fileURLWithPath:self.videoUrl];
-//    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:url options:nil];
-//    AVAssetImageGenerator *gen = [[AVAssetImageGenerator alloc] initWithAsset:asset];
-//    CMTime time = CMTimeMakeWithSeconds(self.toolBar.currentTime*1.0, self.player.currentItem.duration.timescale);
-//    NSError *error = nil;
-//    CMTime actualTime;
-//    CGImageRef image = [gen copyCGImageAtTime:time actualTime:&actualTime error:&error];
-//    UIImage *img = [[UIImage alloc] initWithCGImage:image];
-//    UIImage *image = [self thumbnailImageForVideo:url atTime:self.toolBar.currentTime];
-//    UIImage *image = [self cutVideoGetImageArrayWithURl:url Second:self.toolBar.currentTime*1.0].firstObject;
-//    return image;
-    return nil;
 }
 
 - (void)setVideoUrl:(NSString *)videoUrl {
@@ -236,20 +232,65 @@
 }
 
 - (void)panAction:(UIPanGestureRecognizer *)pan {
+    
     if (CGRectContainsPoint(self.toolBar.frame, [pan locationInView:self])) {
         return;
     }
     if (pan.state == UIGestureRecognizerStateBegan) {
         self.startPoint = [pan locationInView:self];
-    }
-    if (pan.state == UIGestureRecognizerStateEnded) {
-        [self changeVideoScheduleWithPoint:[pan locationInView:self]];
+        self.currentLight = [[UIScreen mainScreen] brightness];
+        self.currentVoice =  [MPMusicPlayerController applicationMusicPlayer].volume;
+        
+    }else if (pan.state == UIGestureRecognizerStateChanged) {
+        NSLog(@"%@",NSStringFromCGPoint([pan locationInView:self]));
+        CGPoint firstChangePoint = [pan locationInView:self];
+        if (self.panType == SYPanTypeNULL) {
+            if (fabs(self.startPoint.x - firstChangePoint.x) >= fabs(self.startPoint.y - firstChangePoint.y)) {
+                //左右滑动
+                self.panType = SYPanTypeSchedule;
+            }else {
+                //上下滑动
+                self.panType =  self.startPoint.x <= self.frame.size.width * 0.5 ? SYPanTypeLight : SYPanTypeVoice;
+            }
+        }
+        [self changeStatusWithPoint:firstChangePoint];
+    }else if (pan.state == UIGestureRecognizerStateEnded) {
+        [self endVideoScheduleWithPoint:[pan locationInView:self]];
     }
 }
 
-- (void)changeVideoScheduleWithPoint:(CGPoint)point {
-//    NSLog(@"%f",point.x - self.startPoint.x);
-    [self scrollToTime:self.toolBar.currentTime + (point.x - self.startPoint.x)*0.1];
+- (void)changeStatusWithPoint:(CGPoint)point {
+//    NSLog(@"%zd---====%f",self.panType,self.startPoint.y - point.y);
+    if (self.panType == SYPanTypeLight) {
+        
+        CGFloat changeValue = (self.startPoint.y - point.y)/100.0;
+        CGFloat lightValue = self.currentLight + changeValue;
+        NSLog(@"light--%f",lightValue);
+        if (lightValue > 1.0) {
+            lightValue = 1.0;
+        }else if (lightValue < 0) {
+            lightValue = 0;
+        }
+        [[UIScreen mainScreen] setBrightness: lightValue];
+    }else {
+        float changeValue = (self.startPoint.y - point.y)/100.0;
+        float voiceValue = self.currentVoice + changeValue;
+        if (voiceValue > 1.0) {
+            voiceValue = 1.0;
+        }else if (voiceValue < 0) {
+            voiceValue = 0;
+        }
+    
+        [MPMusicPlayerController applicationMusicPlayer].volume = voiceValue;
+    }
+}
+
+- (void)endVideoScheduleWithPoint:(CGPoint)point {
+    NSLog(@"结束%@",NSStringFromCGPoint(point));
+    if (self.panType == SYPanTypeSchedule) {
+        [self scrollToTime:self.toolBar.currentTime + (point.x - self.startPoint.x)*0.1];
+    }
+    self.panType = SYPanTypeNULL;
 }
 
 - (void)remainTime {
@@ -337,6 +378,7 @@
     }
     return _pan;
 }
+
 
 - (void)dealloc {
     NSLog(@"播放器消失");

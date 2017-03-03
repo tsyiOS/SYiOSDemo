@@ -54,8 +54,7 @@
 }
 
 - (void)rightTapAction {
-//    self.imageView.image = [UIImage sy_screenShotImageByView:self.videoView];
-    self.imageView.image = [self.videoView screenShot];
+    
 }
 
 - (void)didReceiveMemoryWarning {

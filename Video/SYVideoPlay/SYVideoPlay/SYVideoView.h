@@ -22,5 +22,4 @@
 
 - (void)play;
 - (void)pause;
-- (UIImage *)screenShot;
 @end
