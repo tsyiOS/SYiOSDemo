@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TrS-8Z-59h">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fyy-At-1cc">
+                                <rect key="frame" x="0.0" y="417" width="187.5" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Skn-g1-E5v"/>
+                                </constraints>
+                                <state key="normal" title="录制"/>
+                                <connections>
+                                    <action selector="recordVideo" destination="BYZ-38-t0r" eventType="touchUpInside" id="KSq-rO-jqc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PkL-fj-2x4">
+                                <rect key="frame" x="187.5" y="417" width="187.5" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="a7X-ck-57X"/>
+                                </constraints>
+                                <state key="normal" title="列表"/>
+                                <connections>
+                                    <action selector="videoList" destination="BYZ-38-t0r" eventType="touchUpInside" id="D50-UN-qG4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Fyy-At-1cc" secondAttribute="bottom" constant="200" id="3kf-we-MOz"/>
+                            <constraint firstAttribute="trailing" secondItem="PkL-fj-2x4" secondAttribute="trailing" id="76G-0o-f9P"/>
+                            <constraint firstItem="PkL-fj-2x4" firstAttribute="leading" secondItem="Fyy-At-1cc" secondAttribute="trailing" id="Ci6-JW-Xtk"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PkL-fj-2x4" secondAttribute="bottom" constant="200" id="EUn-ky-dVd"/>
+                            <constraint firstItem="PkL-fj-2x4" firstAttribute="width" secondItem="Fyy-At-1cc" secondAttribute="width" id="QZE-77-M95"/>
+                            <constraint firstItem="Fyy-At-1cc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="WYA-7A-Wur"/>
+                            <constraint firstItem="PkL-fj-2x4" firstAttribute="height" secondItem="Fyy-At-1cc" secondAttribute="height" id="Ydq-O8-UEO"/>
+                            <constraint firstItem="PkL-fj-2x4" firstAttribute="leading" secondItem="Fyy-At-1cc" secondAttribute="trailing" id="o0v-Rb-j1s"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ca3-2T-Svf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="138.98050974512745"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yaF-m5-Cdh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TrS-8Z-59h" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PfJ-yb-ag6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="jND-Bc-F9Y"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NC1-4D-aub" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="151" y="139"/>
+        </scene>
+    </scenes>
+</document>

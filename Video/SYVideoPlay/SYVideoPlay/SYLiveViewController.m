@@ -10,12 +10,15 @@
 #import <AVFoundation/AVFoundation.h>
 #import "UIView+SYExtension.h"
 
-@interface SYLiveViewController ()
+@interface SYLiveViewController ()<AVCaptureFileOutputRecordingDelegate>
 // AVCaptureSession对象来执行输入设备和输出设备之间的数据传递
 @property (nonatomic, strong)AVCaptureSession *session;
 
 // AVCaptureDeviceInput对象是输入流
 @property (nonatomic, strong)AVCaptureDeviceInput *videoInput;
+
+//视频输出流
+@property (strong,nonatomic) AVCaptureMovieFileOutput *captureMovieFileOutput;
 
 // 照片输出流对象
 @property (nonatomic, strong)AVCaptureStillImageOutput *stillImageOutput;
@@ -35,6 +38,8 @@
 // 用来展示拍照获取的照片
 @property (nonatomic, strong)UIImageView *imageShowView;
 
+@property (assign,nonatomic) UIBackgroundTaskIdentifier backgroundTaskIdentifier;//后台任务标识
+
 @end
 
 @implementation SYLiveViewController
@@ -49,22 +54,71 @@
 - (void)setUpUI {
     self.shutterButton = [UIButton buttonWithType:UIButtonTypeSystem];
     self.shutterButton.frame = CGRectMake(10, 30, 60, 30);
-    self.shutterButton.backgroundColor = [UIColor cyanColor];
+    self.shutterButton.backgroundColor = [UIColor blackColor];
+    [self.shutterButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.shutterButton setTitle:@"拍照" forState:UIControlStateNormal];
     [self.shutterButton addTarget:self action:@selector(shutterCamera) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.shutterButton];
     
     self.toggleButton = [UIButton buttonWithType:UIButtonTypeSystem];
     self.toggleButton.frame = CGRectMake(80, 30, 80, 30);
-    self.toggleButton.backgroundColor = [UIColor cyanColor];
-    [self.toggleButton setTitle:@"切换摄像头" forState:UIControlStateNormal];
-    [self.toggleButton addTarget:self action:@selector(toggleCamera) forControlEvents:UIControlEventTouchUpInside];
+    self.toggleButton.backgroundColor = [UIColor blackColor];
+    [self.toggleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.toggleButton setTitle:@"开始录制" forState:UIControlStateNormal];
+    [self.toggleButton addTarget:self action:@selector(startResume) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.toggleButton];
-    
-//    self.imageShowView = [[UIImageView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 200, 200, 200)];
-//    self.imageShowView.contentMode = UIViewContentModeScaleToFill;
-//    self.imageShowView.backgroundColor = [UIColor whiteColor];
-//    [self.view addSubview:self.imageShowView];
+}
+
+- (void)startResume {
+   
+    //根据设备输出获得连接
+    AVCaptureConnection *captureConnection=[self.captureMovieFileOutput connectionWithMediaType:AVMediaTypeVideo];
+    //根据连接取得设备输出的数据
+    if (![self.captureMovieFileOutput isRecording]) {
+//        //如果支持多任务则则开始多任务
+        if ([[UIDevice currentDevice] isMultitaskingSupported]) {
+            self.backgroundTaskIdentifier=[[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];
+        }
+        //预览图层和视频方向保持一致
+        captureConnection.videoOrientation=[self.previewLayer connection].videoOrientation;
+//        NSString *outputFielPath=[NSHomeDirectory() stringByAppendingString:@"/Library/Caches/mymovie.mp4"];
+//        NSLog(@"save path is :%@",outputFielPath);
+//        NSURL *fileUrl=[NSURL fileURLWithPath:outputFielPath];
+//        NSLog(@"fileUrl:%@",fileUrl);
+//        [self.captureMovieFileOutput startRecordingToOutputFileURL:fileUrl recordingDelegate:self];
+        NSString *outputFielPath=[NSTemporaryDirectory() stringByAppendingString:@"myMovie.mov"];
+        NSLog(@"save path is :%@",outputFielPath);
+        NSURL *fileUrl=[NSURL fileURLWithPath:outputFielPath];
+        NSLog(@"fileUrl:%@",fileUrl);
+        [self.captureMovieFileOutput startRecordingToOutputFileURL:fileUrl recordingDelegate:self];
+    }
+    else{
+        [self.captureMovieFileOutput stopRecording];//停止录制
+    }
+}
+
+#pragma mark - 视频输出代理
+-(void)captureOutput:(AVCaptureFileOutput *)captureOutput didStartRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections{
+    NSLog(@"开始录制...");
+    [self.toggleButton setTitle:@"停止录制" forState:UIControlStateNormal];
+}
+
+- (void)captureOutput:(AVCaptureFileOutput *)captureOutput didPauseRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections {
+    NSLog(@"代理2 %@",connections);
+}
+
+- (void)captureOutput:(AVCaptureFileOutput *)captureOutput didResumeRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections {
+    NSLog(@"代理3 %@",connections);
+}
+
+- (void)captureOutput:(AVCaptureFileOutput *)captureOutput willFinishRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections {
+    NSLog(@"代理4 %@",connections);
+}
+
+
+- (void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error {
+    [self.toggleButton setTitle:@"开始录制" forState:UIControlStateNormal];
+    NSLog(@"代理5 %@",connections);
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -105,6 +159,11 @@
         if ([_session canAddOutput:self.stillImageOutput]) {
             [_session addOutput:self.stillImageOutput];
         }
+        
+        if ([_session canSetSessionPreset:AVCaptureSessionPreset1280x720]) {//设置分辨率
+            _session.sessionPreset=AVCaptureSessionPreset1280x720;
+        }
+        
     }
     return _session;
 }
@@ -199,8 +258,15 @@
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
         UIImage *image = [UIImage imageWithData:imageData];
         NSLog(@"image size = %@", NSStringFromCGSize(image.size));
-        self.imageShowView.image = image;
+        
+        UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), (__bridge void *)self);
+//        self.imageShowView.image = image;
     }];
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
+    
+    NSLog(@"image = %@, error = %@, contextInfo = %@", image, error, contextInfo);
 }
 
 @end

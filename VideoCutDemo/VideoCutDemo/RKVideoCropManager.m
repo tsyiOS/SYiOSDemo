@@ -96,7 +96,7 @@
         _inputPath = savePath;
         _videoUrl = asset.defaultRepresentation.url;
         _outputPath = [NSString stringWithFormat:@"%@/tmp/%@", NSHomeDirectory(), representation.filename];
-        
+        _compressPath = [NSString stringWithFormat:@"%@/tmp/compress%@", NSHomeDirectory(), representation.filename];
         NSDictionary *opts = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:AVURLAssetPreferPreciseDurationAndTimingKey];
         AVURLAsset *urlAsset = [AVURLAsset URLAssetWithURL:asset.defaultRepresentation.url options:opts];
         _totalDuration = (NSInteger)(urlAsset.duration.value / urlAsset.duration.timescale);
@@ -125,16 +125,17 @@
     }
 }
 
-- (void)threadWillExit {
+- (void)threadWillExit{
     if (self.complete) {
+        [NSThread detachNewThreadSelector:@selector(compressVideo) toTarget:self withObject:nil];
         return;
     }
 
     self.complete = YES;
-   [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     dispatch_async(dispatch_get_main_queue(), ^{
         if ([self.delegate respondsToSelector:@selector(cropVideoWithProgress:outputPath:complete:error:)]) {
-            [self.delegate cropVideoWithProgress:1.0 outputPath:self.outputPath complete:YES error:nil];
+            [self.delegate cropVideoWithProgress:1.0 outputPath:self.compressPath complete:YES error:nil];
         }
     });
 }
@@ -144,7 +145,7 @@
     if([[NSFileManager defaultManager] fileExistsAtPath:_outputPath]) {
         [[NSFileManager defaultManager] removeItemAtPath:_outputPath error:nil];
     }
-    
+
     self.start = start;
     self.end = start + duration;
     if (self.start < 0 || self.end <= self.start) {
@@ -182,6 +183,10 @@
 
 void progressCB(int time) {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"RKViedoCutProgress" object:nil userInfo:@{@"currentTime":@(time)}];
+}
+
+void compressCB(int time) {
+    NSLog(@"压缩时间--%d",time);
 }
 
 - (void)cutTimeing:(NSNotification *)noti {
@@ -250,7 +255,7 @@ void progressCB(int time) {
     
     arguments[1] = "-i";
     
-    arguments[2] = (char *)[self.inputPath UTF8String];
+    arguments[2] = (char *)[self.outputPath UTF8String];
     
     arguments[3] = "-r";
     
@@ -260,25 +265,15 @@ void progressCB(int time) {
     
     arguments[6] = "32k";
     
-    arguments[7] = "-vcodec";
+    arguments[7] = (char *)[self.compressPath UTF8String];
+
+    int error = ffmpeg_main(numberOfArgs, arguments,compressCB);
     
-    arguments[8] = "copy";
-    
-    arguments[9] = "-acodec";
-    
-    arguments[10] = "aac";
-    
-    arguments[11] = "-strict";
-    
-    arguments[12] = "-2";
-    
-    arguments[13] = "-b:a";
-    
-    arguments[14] = "32k";
-    
-    arguments[15] = outputPath;
-    
-    int error = ffmpeg_main(numberOfArgs, arguments,progressCB);
+    if (error == 1) {
+        NSLog(@"压缩成功");
+    }else {
+        NSLog(@"压缩失败");
+    }
 }
 
 - (UIImage*) thumbnailImageAtTime:(NSTimeInterval)time {

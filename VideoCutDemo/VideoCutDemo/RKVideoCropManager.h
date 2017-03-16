@@ -35,6 +35,7 @@
  文件路径
  */
 @property (nonatomic, copy) NSString *outputPath;
+@property (nonatomic, copy) NSString *compressPath;
 /**
  开始截取时间
  */
