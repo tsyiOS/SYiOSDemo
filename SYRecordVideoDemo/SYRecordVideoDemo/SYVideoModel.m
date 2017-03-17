@@ -10,6 +10,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import <objc/runtime.h>
 
+#define MaxVideoCount 100
+
 @implementation SYVideoModel
 
 - (NSString *)takeDate {
@@ -22,10 +24,63 @@
     return [NSString stringWithFormat:@"%@年%@月%@日%@:%@:%@",year,month,date,hour,minute,second];
 }
 
+- (void)sy_setImage:(void (^)(UIImage *))block {
+    if (self.defaultImage) {
+        block(self.defaultImage);
+    }else {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            _defaultImage = [self thumbnailImageAtTime:1];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                block(_defaultImage);
+            });
+        });
+    }
+}
+
+- (long long)size {
+    if (_size == 0) {
+        _size = [[NSFileManager defaultManager] attributesOfItemAtPath:self.path error:nil].fileSize;
+    }
+    return _size;
+}
+
+- (NSString *)sizeStr {
+    if (_sizeStr == nil) {
+        if (self.size < 1024) {
+            _sizeStr = [NSString stringWithFormat:@"%lldB",self.size];
+        }else if (self.size/1024 < 1024) {
+            _sizeStr = [NSString stringWithFormat:@"%lldKB",self.size/1024];
+        }else if (self.size/(1024*1024) < 1024){
+            _sizeStr = [NSString stringWithFormat:@"%lldM",self.size/(1024*1024)];
+        }else{
+             _sizeStr = [NSString stringWithFormat:@"%lldG",self.size/(1024*1024*1024)];
+        }
+    }
+    return _sizeStr;
+}
+
 + (void)saveVideo:(SYVideoModel *)video{
     NSMutableArray *tempArray = [NSMutableArray arrayWithArray:[self videoList]];
+    if (tempArray.count > MaxVideoCount) {
+        SYVideoModel *model = tempArray.firstObject;
+        [[NSFileManager defaultManager] removeItemAtPath:model.path error:nil];
+        [tempArray removeObjectAtIndex:0];
+    }
     [tempArray addObject:video];
     [NSKeyedArchiver archiveRootObject:tempArray toFile:[self dataPath]];
+}
+
++ (NSArray *)removeVideo:(SYVideoModel *)video {
+    NSMutableArray *tempArray = [NSMutableArray arrayWithArray:[self videoList]];
+    for (SYVideoModel *model in tempArray) {
+        if ([model.path isEqualToString:video.path]) {
+            [tempArray removeObject:model];
+            [[NSFileManager defaultManager] removeItemAtPath:video.path error:nil];
+            break;
+        }
+    }
+    [NSKeyedArchiver archiveRootObject:tempArray toFile:[self dataPath]];
+    return tempArray;
 }
 
 + (NSArray *)videoList {
@@ -37,6 +92,7 @@
 }
 
 - (UIImage*) thumbnailImageAtTime:(NSTimeInterval)time {
+    
     AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:[NSURL fileURLWithPath:self.path] options:nil];
     NSParameterAssert(asset);
     AVAssetImageGenerator *assetImageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:asset];

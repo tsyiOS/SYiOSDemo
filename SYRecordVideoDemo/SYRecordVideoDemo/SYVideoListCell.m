@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *videoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sizeLabel;
 
 @end
 
@@ -30,9 +31,12 @@
 
 - (void)setModel:(SYVideoModel *)model {
     _model = model;
-    self.videoImageView.image = [model thumbnailImageAtTime:1];
+    [model sy_setImage:^(UIImage *image) {
+        self.videoImageView.image = image;
+    }];
     self.timeLabel.text = [self dutationStr];
     self.nameLabel.text = [@"拍摄时间" stringByAppendingString:[model takeDate]];
+    self.sizeLabel.text = model.sizeStr;
 }
 
 - (NSString *)dutationStr {

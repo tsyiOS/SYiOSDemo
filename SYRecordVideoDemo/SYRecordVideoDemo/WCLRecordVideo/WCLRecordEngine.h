@@ -17,6 +17,7 @@
 @property (atomic, assign) CGFloat maxRecordTime;//录制最长时间
 @property (weak, nonatomic) id<WCLRecordEngineDelegate>delegate;
 @property (atomic, strong) NSString *videoPath;//视频路径
+@property (nonatomic, assign) BOOL isSoundOff;//是否静音 默认否
 
 //捕获到的视频呈现的layer
 - (AVCaptureVideoPreviewLayer *)previewLayer;

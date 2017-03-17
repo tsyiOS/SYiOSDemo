@@ -54,7 +54,7 @@
 {
     self = [super init];
     if (self) {
-        self.maxRecordTime = 120.0f;
+        self.maxRecordTime = 10.0f;
     }
     return self;
 }
@@ -116,8 +116,6 @@
 - (void) stopCaptureHandler:(void (^)(CGFloat totalTime))handler {
     @synchronized(self) {
         if (self.isCapturing) {
-            NSString* path = self.recordEncoder.path;
-//            NSURL* url = [NSURL fileURLWithPath:path];
             self.isCapturing = NO;
             dispatch_async(_captureQueue, ^{
                 [self.recordEncoder finishWithCompletionHandler:^{
@@ -125,18 +123,6 @@
                     self.recordEncoder = nil;
                     self.startTime = CMTimeMake(0, 0);
                     handler(self.currentRecordTime);
-//                    self.currentRecordTime = 0;
-//                    if ([self.delegate respondsToSelector:@selector(recordProgress:)]) {
-//                        dispatch_async(dispatch_get_main_queue(), ^{
-//                            [self.delegate recordProgress:self.currentRecordTime/self.maxRecordTime];
-//                        });
-//                    }
-//                    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-//                        [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:url];
-//                    } completionHandler:^(BOOL success, NSError * _Nullable error) {
-//                        NSLog(@"保存结果----%d-----%@",success,error);
-//                    }];
-//                    [self movieToImageHandler:handler];
                 }];
             });
         }
@@ -390,7 +376,6 @@
 - (NSString *)getVideoCachePath {
 //    NSString *videoCache = [NSTemporaryDirectory() stringByAppendingPathComponent:@"videos"] ;
     NSString *videoCache = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingString:@"/videos"];
-//    NSString *videoCache =  [NSHomeDirectory() stringByAppendingString:@"/Library/Caches/videos"];
     BOOL isDir = NO;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL existed = [fileManager fileExistsAtPath:videoCache isDirectory:&isDir];
@@ -430,14 +415,20 @@
 //            self.videoPath = [[self getVideoCachePath] stringByAppendingPathComponent:videoName];
 //            self.recordEncoder = [WCLRecordEncoder encoderForPath:self.videoPath Height:_cy width:_cx channels:_channels samples:_samplerate];
 //        }
-        
-        if ((self.recordEncoder == nil && self.videoPath == nil)||(self.recordEncoder == nil && !isVideo)) {
+        if (!isVideo) {
+            NSLog(@"音频%f",_samplerate);
+        }
+       
+        if ( _samplerate == 0 && !isVideo) {
                 CMFormatDescriptionRef fmt = CMSampleBufferGetFormatDescription(sampleBuffer);
                 [self setAudioFormat:fmt];
-                NSString *videoName = [self getUploadFile_type:@"video" fileType:@"mp4"];
-                self.videoPath = [[self getVideoCachePath] stringByAppendingPathComponent:videoName];
-                self.recordEncoder = [WCLRecordEncoder encoderForPath:self.videoPath Height:_cy width:_cx channels:_channels samples:_samplerate];
             }
+        
+        if (self.videoPath == nil) {
+            NSString *videoName = [self getUploadFile_type:@"video" fileType:@"mp4"];
+            self.videoPath = [[self getVideoCachePath] stringByAppendingPathComponent:videoName];
+            self.recordEncoder = [WCLRecordEncoder encoderForPath:self.videoPath Height:_cy width:_cx channels:_channels samples:_samplerate];
+        }
         //判断是否中断录制过
         if (self.discont) {
             if (isVideo) {
@@ -502,8 +493,10 @@
         });
     }
     // 进行数据编码
-    BOOL status = [self.recordEncoder encodeFrame:sampleBuffer isVideo:isVideo];
-    NSLog(@"写入%d",status);
+    if (isVideo || !self.isSoundOff) {
+        BOOL status = [self.recordEncoder encodeFrame:sampleBuffer isVideo:isVideo];
+        NSLog(@"写入%@",status?@"成功":@"失败");
+    }
     CFRelease(sampleBuffer);
 }
 

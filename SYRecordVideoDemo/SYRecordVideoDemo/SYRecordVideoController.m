@@ -14,6 +14,7 @@
 
 @interface SYRecordVideoController ()<WCLRecordEngineDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *startBtn;
+@property (weak, nonatomic) IBOutlet UISwitch *soundSwitch;
 @property (strong, nonatomic) WCLRecordEngine *recordEngine;
 @end
 
@@ -41,11 +42,22 @@
 }
 
 - (void)recordProgress:(CGFloat)progress {
-    NSLog(@"录制进度-----%f",progress);
+    if (progress >= 1) {
+        [self cutOutRecord];
+    }
+}
+- (IBAction)switchAction:(UISwitch *)sender {
+    self.recordEngine.isSoundOff = sender.isOn;
 }
 
 - (IBAction)backAction {
-    [self.navigationController popViewControllerAnimated:YES];
+    __weak typeof(self) weakSelf = self;
+    [self.recordEngine stopCaptureHandler:^(CGFloat totalTime) {
+        [weakSelf saveVideoWithTotalTime:totalTime];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+    }];
 }
 - (IBAction)startRecord:(UIButton *)sender {
     sender.selected = !sender.selected;
@@ -59,20 +71,27 @@
         [self.recordEngine pauseCapture];
     }
 }
-- (IBAction)stopRecord {
+
+- (void)cutOutRecord {
     if (_recordEngine.videoPath.length > 0) {
         self.startBtn.selected = NO;
+         __weak typeof(self) weakSelf = self;
         [self.recordEngine stopCaptureHandler:^(CGFloat totalTime) {
-            NSLog(@"url==%@---%f",_recordEngine.videoPath,totalTime);
-            SYVideoModel *model = [[SYVideoModel alloc] init];
-            model.path = _recordEngine.videoPath;
-            model.totalTime = totalTime;
-            [SYVideoModel saveVideo:model];
-            _recordEngine.videoPath = nil;
+            [weakSelf saveVideoWithTotalTime:totalTime];
+            [weakSelf startRecord:self.startBtn];
+            NSLog(@"保存一条数据");
         }];
     }else {
         NSLog(@"请先录制视频~");
     }
+}
+
+- (void)saveVideoWithTotalTime:(CGFloat)totalTime {
+    SYVideoModel *model = [[SYVideoModel alloc] init];
+    model.path = _recordEngine.videoPath;
+    model.totalTime = totalTime;
+    [SYVideoModel saveVideo:model];
+    _recordEngine.videoPath = nil;
 }
 
 - (WCLRecordEngine *)recordEngine {

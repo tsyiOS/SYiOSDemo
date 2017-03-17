@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SYRecordVideoController">
             <connections>
+                <outlet property="soundSwitch" destination="pCs-eE-tR6" id="h1f-EF-bVb"/>
                 <outlet property="startBtn" destination="0Pn-s2-dEZ" id="59O-hl-Vgy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,10 +30,25 @@
                         <action selector="backAction" destination="-1" eventType="touchUpInside" id="av6-4N-cq6"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Pn-s2-dEZ">
-                    <rect key="frame" x="0.0" y="617" width="187.5" height="50"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="静音" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4Z-kJ-Ycd">
+                    <rect key="frame" x="37" y="613" width="42" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="1tH-pm-2Sh"/>
+                        <constraint firstAttribute="width" constant="42" id="bhv-JG-9nb"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pCs-eE-tR6">
+                    <rect key="frame" x="100" y="608" width="51" height="31"/>
+                    <connections>
+                        <action selector="switchAction:" destination="-1" eventType="valueChanged" id="4Hl-Gc-W9j"/>
+                    </connections>
+                </switch>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Pn-s2-dEZ">
+                    <rect key="frame" x="265" y="597" width="74" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="gct-uH-ab3"/>
                     </constraints>
                     <state key="normal" title="开始录制">
                         <color key="titleColor" red="0.96470588239999999" green="0.3294117647" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -42,29 +58,17 @@
                         <action selector="startRecord:" destination="-1" eventType="touchUpInside" id="N8g-RO-dpB"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oP6-Ly-aEz">
-                    <rect key="frame" x="187.5" y="617" width="187.5" height="50"/>
-                    <state key="normal" title="结束">
-                        <color key="titleColor" red="0.96470588239999999" green="0.3294117647" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="startRecord:" destination="-1" eventType="touchUpInside" id="JZn-iY-89a"/>
-                        <action selector="stopRecord" destination="-1" eventType="touchUpInside" id="Rib-u7-QH9"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="0Pn-s2-dEZ" secondAttribute="bottom" id="37z-d0-VGM"/>
-                <constraint firstItem="oP6-Ly-aEz" firstAttribute="leading" secondItem="0Pn-s2-dEZ" secondAttribute="trailing" id="7OH-eq-UT2"/>
-                <constraint firstAttribute="trailing" secondItem="oP6-Ly-aEz" secondAttribute="trailing" id="7wR-sK-zMA"/>
-                <constraint firstItem="0Pn-s2-dEZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ru0-on-inP"/>
-                <constraint firstItem="oP6-Ly-aEz" firstAttribute="width" secondItem="0Pn-s2-dEZ" secondAttribute="width" id="bHm-kq-sQd"/>
-                <constraint firstItem="oP6-Ly-aEz" firstAttribute="height" secondItem="0Pn-s2-dEZ" secondAttribute="height" id="bNh-Lq-8Cb"/>
-                <constraint firstItem="oP6-Ly-aEz" firstAttribute="leading" secondItem="0Pn-s2-dEZ" secondAttribute="trailing" id="dwM-4n-WRL"/>
+                <constraint firstItem="f4Z-kJ-Ycd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="37" id="GFd-lv-tc5"/>
+                <constraint firstAttribute="bottom" secondItem="0Pn-s2-dEZ" secondAttribute="bottom" constant="20" id="Nez-IL-e96"/>
+                <constraint firstItem="pCs-eE-tR6" firstAttribute="leading" secondItem="f4Z-kJ-Ycd" secondAttribute="trailing" constant="21" id="amT-ns-Ukb"/>
+                <constraint firstItem="f4Z-kJ-Ycd" firstAttribute="centerY" secondItem="pCs-eE-tR6" secondAttribute="centerY" id="h5c-Q0-MJ6"/>
                 <constraint firstItem="IfV-5d-y40" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="kWn-0I-hCE"/>
+                <constraint firstAttribute="trailing" secondItem="0Pn-s2-dEZ" secondAttribute="trailing" constant="36" id="mFA-Fo-haa"/>
+                <constraint firstAttribute="bottom" secondItem="pCs-eE-tR6" secondAttribute="bottom" constant="28" id="mUj-sE-NSd"/>
                 <constraint firstItem="IfV-5d-y40" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="quL-aa-gzo"/>
-                <constraint firstAttribute="bottom" secondItem="oP6-Ly-aEz" secondAttribute="bottom" id="rfc-fu-We9"/>
             </constraints>
         </view>
     </objects>
