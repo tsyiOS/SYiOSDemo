@@ -10,6 +10,8 @@
 #import "SYRecordVideoController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "SYVideoListController.h"
+#import "RKCropVideoViewController.h"
+#import "SYVideoModel.h"
 @interface ViewController ()
 
 @end
@@ -18,7 +20,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask , YES)objectAtIndex:0];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSDictionary *fileSysAttributes = [fileManager attributesOfFileSystemForPath:path error:nil];
+    
+    NSNumber *freeSpace = [fileSysAttributes objectForKey:NSFileSystemFreeSize];
+    
+    NSNumber *totalSpace = [fileSysAttributes objectForKey:NSFileSystemSize];
+    
+    
+    
+    NSString *total = [NSString stringWithFormat:@"总空间为:%0.1fG",([totalSpace doubleValue])/1024.0/1024.0/1024.0];
+    
+    NSString *free = [NSString stringWithFormat:@"剩余:%0.1fG",([freeSpace doubleValue])/1024.0/1024.0/1024.0];
+    
+    NSString *use = [NSString stringWithFormat:@"已用:%0.1fG",([totalSpace doubleValue]-[freeSpace doubleValue])/1024.0/1024.0/1024.0];
+    
+    NSLog(@"total : %@, free : %@, use : %@",total,free,use);
+}
+- (IBAction)cropVideo {
+    
+    
+    
+    RKCropVideoViewController *cropVc = [[RKCropVideoViewController alloc] initWithNibName:NSStringFromClass([RKCropVideoViewController class]) bundle:nil];
+    [self.navigationController pushViewController:cropVc animated:YES];
 }
 
 - (IBAction)recordVideo {

@@ -23,6 +23,9 @@
 		F028D4EA1E7A3041003A430D /* SYVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F028D4E91E7A3041003A430D /* SYVideoModel.m */; };
 		F028D4EE1E7A6557003A430D /* SYVideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F028D4EC1E7A6557003A430D /* SYVideoListCell.m */; };
 		F028D4EF1E7A6557003A430D /* SYVideoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F028D4ED1E7A6557003A430D /* SYVideoListCell.xib */; };
+		F0BD3D821E836B6000C3A832 /* RKCropVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0BD3D801E836B6000C3A832 /* RKCropVideoViewController.m */; };
+		F0BD3D831E836B6000C3A832 /* RKCropVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0BD3D811E836B6000C3A832 /* RKCropVideoViewController.xib */; };
+		F0BD3D861E83BAE900C3A832 /* UIColor+SYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F0BD3D851E83BAE900C3A832 /* UIColor+SYExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,11 @@
 		F028D4EB1E7A6557003A430D /* SYVideoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYVideoListCell.h; sourceTree = "<group>"; };
 		F028D4EC1E7A6557003A430D /* SYVideoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYVideoListCell.m; sourceTree = "<group>"; };
 		F028D4ED1E7A6557003A430D /* SYVideoListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SYVideoListCell.xib; sourceTree = "<group>"; };
+		F0BD3D7F1E836B6000C3A832 /* RKCropVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKCropVideoViewController.h; sourceTree = "<group>"; };
+		F0BD3D801E836B6000C3A832 /* RKCropVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKCropVideoViewController.m; sourceTree = "<group>"; };
+		F0BD3D811E836B6000C3A832 /* RKCropVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RKCropVideoViewController.xib; sourceTree = "<group>"; };
+		F0BD3D841E83BAE900C3A832 /* UIColor+SYExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+SYExtension.h"; sourceTree = "<group>"; };
+		F0BD3D851E83BAE900C3A832 /* UIColor+SYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SYExtension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +99,11 @@
 				F028D4BE1E792CBD003A430D /* AppDelegate.m */,
 				F028D4C01E792CBD003A430D /* ViewController.h */,
 				F028D4C11E792CBD003A430D /* ViewController.m */,
+				F0BD3D841E83BAE900C3A832 /* UIColor+SYExtension.h */,
+				F0BD3D851E83BAE900C3A832 /* UIColor+SYExtension.m */,
+				F0BD3D7F1E836B6000C3A832 /* RKCropVideoViewController.h */,
+				F0BD3D801E836B6000C3A832 /* RKCropVideoViewController.m */,
+				F0BD3D811E836B6000C3A832 /* RKCropVideoViewController.xib */,
 				F028D4E81E7A3041003A430D /* SYVideoModel.h */,
 				F028D4E91E7A3041003A430D /* SYVideoModel.m */,
 				F028D4EB1E7A6557003A430D /* SYVideoListCell.h */,
@@ -198,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F028D4E71E7A2BE8003A430D /* SYVideoListController.xib in Resources */,
+				F0BD3D831E836B6000C3A832 /* RKCropVideoViewController.xib in Resources */,
 				F028D4CA1E792CBD003A430D /* LaunchScreen.storyboard in Resources */,
 				F028D4C71E792CBD003A430D /* Assets.xcassets in Resources */,
 				F028D4E21E793319003A430D /* SYRecordVideoController.xib in Resources */,
@@ -216,11 +230,13 @@
 				F028D4C21E792CBD003A430D /* ViewController.m in Sources */,
 				F028D4E61E7A2BE8003A430D /* SYVideoListController.m in Sources */,
 				F028D4BF1E792CBD003A430D /* AppDelegate.m in Sources */,
+				F0BD3D821E836B6000C3A832 /* RKCropVideoViewController.m in Sources */,
 				F028D4D71E792D0E003A430D /* WCLRecordEngine.m in Sources */,
 				F028D4D61E792D0E003A430D /* WCLRecordEncoder.m in Sources */,
 				F028D4EA1E7A3041003A430D /* SYVideoModel.m in Sources */,
 				F028D4E11E793319003A430D /* SYRecordVideoController.m in Sources */,
 				F028D4BC1E792CBD003A430D /* main.m in Sources */,
+				F0BD3D861E83BAE900C3A832 /* UIColor+SYExtension.m in Sources */,
 				F028D4EE1E7A6557003A430D /* SYVideoListCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,6 +396,7 @@
 				F028D4D01E792CBD003A430D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

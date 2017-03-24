@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -41,17 +42,29 @@
                                     <action selector="videoList" destination="BYZ-38-t0r" eventType="touchUpInside" id="D50-UN-qG4"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vf7-Or-hcI">
+                                <rect key="frame" x="70" y="497" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="bUM-pM-QiW"/>
+                                </constraints>
+                                <state key="normal" title="裁剪"/>
+                                <connections>
+                                    <action selector="cropVideo" destination="BYZ-38-t0r" eventType="touchUpInside" id="odH-7Z-9pU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Fyy-At-1cc" secondAttribute="bottom" constant="200" id="3kf-we-MOz"/>
                             <constraint firstAttribute="trailing" secondItem="PkL-fj-2x4" secondAttribute="trailing" id="76G-0o-f9P"/>
+                            <constraint firstItem="vf7-Or-hcI" firstAttribute="top" secondItem="Fyy-At-1cc" secondAttribute="bottom" constant="30" id="7dJ-n9-x8o"/>
                             <constraint firstItem="PkL-fj-2x4" firstAttribute="leading" secondItem="Fyy-At-1cc" secondAttribute="trailing" id="Ci6-JW-Xtk"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PkL-fj-2x4" secondAttribute="bottom" constant="200" id="EUn-ky-dVd"/>
                             <constraint firstItem="PkL-fj-2x4" firstAttribute="width" secondItem="Fyy-At-1cc" secondAttribute="width" id="QZE-77-M95"/>
                             <constraint firstItem="Fyy-At-1cc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="WYA-7A-Wur"/>
                             <constraint firstItem="PkL-fj-2x4" firstAttribute="height" secondItem="Fyy-At-1cc" secondAttribute="height" id="Ydq-O8-UEO"/>
                             <constraint firstItem="PkL-fj-2x4" firstAttribute="leading" secondItem="Fyy-At-1cc" secondAttribute="trailing" id="o0v-Rb-j1s"/>
+                            <constraint firstItem="vf7-Or-hcI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="54" id="wH7-vZ-43S"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ca3-2T-Svf"/>

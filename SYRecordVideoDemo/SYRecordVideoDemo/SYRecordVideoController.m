@@ -52,12 +52,17 @@
 
 - (IBAction)backAction {
     __weak typeof(self) weakSelf = self;
-    [self.recordEngine stopCaptureHandler:^(CGFloat totalTime) {
-        [weakSelf saveVideoWithTotalTime:totalTime];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.navigationController popViewControllerAnimated:YES];
-        });
-    }];
+    if (self.recordEngine.isCapturing) {
+        [self.recordEngine stopCaptureHandler:^(CGFloat totalTime) {
+            [weakSelf saveVideoWithTotalTime:totalTime];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.navigationController popViewControllerAnimated:YES];
+            });
+        }];
+    }else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
 }
 - (IBAction)startRecord:(UIButton *)sender {
     sender.selected = !sender.selected;

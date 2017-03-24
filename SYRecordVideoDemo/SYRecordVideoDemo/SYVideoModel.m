@@ -10,7 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <objc/runtime.h>
 
-#define MaxVideoCount 100
+#define MaxVideoCount 10
 
 @implementation SYVideoModel
 

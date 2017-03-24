@@ -54,7 +54,7 @@
 {
     self = [super init];
     if (self) {
-        self.maxRecordTime = 10.0f;
+        self.maxRecordTime = 700.0f;
     }
     return self;
 }
@@ -415,11 +415,9 @@
 //            self.videoPath = [[self getVideoCachePath] stringByAppendingPathComponent:videoName];
 //            self.recordEncoder = [WCLRecordEncoder encoderForPath:self.videoPath Height:_cy width:_cx channels:_channels samples:_samplerate];
 //        }
-        if (!isVideo) {
-            NSLog(@"音频%f",_samplerate);
-        }
        
         if ( _samplerate == 0 && !isVideo) {
+            NSLog(@"设置音频");
                 CMFormatDescriptionRef fmt = CMSampleBufferGetFormatDescription(sampleBuffer);
                 [self setAudioFormat:fmt];
             }
