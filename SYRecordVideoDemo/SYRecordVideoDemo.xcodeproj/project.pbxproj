@@ -23,6 +23,10 @@
 		F028D4EA1E7A3041003A430D /* SYVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F028D4E91E7A3041003A430D /* SYVideoModel.m */; };
 		F028D4EE1E7A6557003A430D /* SYVideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F028D4EC1E7A6557003A430D /* SYVideoListCell.m */; };
 		F028D4EF1E7A6557003A430D /* SYVideoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F028D4ED1E7A6557003A430D /* SYVideoListCell.xib */; };
+		F04E5C081E88AEA100836945 /* NSTimer+timerBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = F04E5C041E88AEA100836945 /* NSTimer+timerBlock.m */; };
+		F04E5C091E88AEA100836945 /* ZZCircleProgress.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F04E5C051E88AEA100836945 /* ZZCircleProgress.bundle */; };
+		F04E5C0A1E88AEA100836945 /* ZZCircleProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = F04E5C071E88AEA100836945 /* ZZCircleProgress.m */; };
+		F04E5C0D1E88B17000836945 /* RKProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = F04E5C0C1E88B17000836945 /* RKProgressView.m */; };
 		F0BD3D821E836B6000C3A832 /* RKCropVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0BD3D801E836B6000C3A832 /* RKCropVideoViewController.m */; };
 		F0BD3D831E836B6000C3A832 /* RKCropVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0BD3D811E836B6000C3A832 /* RKCropVideoViewController.xib */; };
 		F0BD3D861E83BAE900C3A832 /* UIColor+SYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F0BD3D851E83BAE900C3A832 /* UIColor+SYExtension.m */; };
@@ -55,6 +59,13 @@
 		F028D4EB1E7A6557003A430D /* SYVideoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYVideoListCell.h; sourceTree = "<group>"; };
 		F028D4EC1E7A6557003A430D /* SYVideoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYVideoListCell.m; sourceTree = "<group>"; };
 		F028D4ED1E7A6557003A430D /* SYVideoListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SYVideoListCell.xib; sourceTree = "<group>"; };
+		F04E5C031E88AEA100836945 /* NSTimer+timerBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+timerBlock.h"; sourceTree = "<group>"; };
+		F04E5C041E88AEA100836945 /* NSTimer+timerBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+timerBlock.m"; sourceTree = "<group>"; };
+		F04E5C051E88AEA100836945 /* ZZCircleProgress.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZZCircleProgress.bundle; sourceTree = "<group>"; };
+		F04E5C061E88AEA100836945 /* ZZCircleProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCircleProgress.h; sourceTree = "<group>"; };
+		F04E5C071E88AEA100836945 /* ZZCircleProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCircleProgress.m; sourceTree = "<group>"; };
+		F04E5C0B1E88B17000836945 /* RKProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKProgressView.h; sourceTree = "<group>"; };
+		F04E5C0C1E88B17000836945 /* RKProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKProgressView.m; sourceTree = "<group>"; };
 		F0BD3D7F1E836B6000C3A832 /* RKCropVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKCropVideoViewController.h; sourceTree = "<group>"; };
 		F0BD3D801E836B6000C3A832 /* RKCropVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKCropVideoViewController.m; sourceTree = "<group>"; };
 		F0BD3D811E836B6000C3A832 /* RKCropVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RKCropVideoViewController.xib; sourceTree = "<group>"; };
@@ -94,6 +105,7 @@
 		F028D4B91E792CBD003A430D /* SYRecordVideoDemo */ = {
 			isa = PBXGroup;
 			children = (
+				F04E5C021E88AEA100836945 /* ZZCircleProgress */,
 				F028D4D11E792D0E003A430D /* WCLRecordVideo */,
 				F028D4BD1E792CBD003A430D /* AppDelegate.h */,
 				F028D4BE1E792CBD003A430D /* AppDelegate.m */,
@@ -101,6 +113,8 @@
 				F028D4C11E792CBD003A430D /* ViewController.m */,
 				F0BD3D841E83BAE900C3A832 /* UIColor+SYExtension.h */,
 				F0BD3D851E83BAE900C3A832 /* UIColor+SYExtension.m */,
+				F04E5C0B1E88B17000836945 /* RKProgressView.h */,
+				F04E5C0C1E88B17000836945 /* RKProgressView.m */,
 				F0BD3D7F1E836B6000C3A832 /* RKCropVideoViewController.h */,
 				F0BD3D801E836B6000C3A832 /* RKCropVideoViewController.m */,
 				F0BD3D811E836B6000C3A832 /* RKCropVideoViewController.xib */,
@@ -149,6 +163,18 @@
 				F028D4D91E792D20003A430D /* MobileCoreServices.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F04E5C021E88AEA100836945 /* ZZCircleProgress */ = {
+			isa = PBXGroup;
+			children = (
+				F04E5C031E88AEA100836945 /* NSTimer+timerBlock.h */,
+				F04E5C041E88AEA100836945 /* NSTimer+timerBlock.m */,
+				F04E5C051E88AEA100836945 /* ZZCircleProgress.bundle */,
+				F04E5C061E88AEA100836945 /* ZZCircleProgress.h */,
+				F04E5C071E88AEA100836945 /* ZZCircleProgress.m */,
+			);
+			path = ZZCircleProgress;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +238,7 @@
 			files = (
 				F028D4E71E7A2BE8003A430D /* SYVideoListController.xib in Resources */,
 				F0BD3D831E836B6000C3A832 /* RKCropVideoViewController.xib in Resources */,
+				F04E5C091E88AEA100836945 /* ZZCircleProgress.bundle in Resources */,
 				F028D4CA1E792CBD003A430D /* LaunchScreen.storyboard in Resources */,
 				F028D4C71E792CBD003A430D /* Assets.xcassets in Resources */,
 				F028D4E21E793319003A430D /* SYRecordVideoController.xib in Resources */,
@@ -229,8 +256,11 @@
 			files = (
 				F028D4C21E792CBD003A430D /* ViewController.m in Sources */,
 				F028D4E61E7A2BE8003A430D /* SYVideoListController.m in Sources */,
+				F04E5C0D1E88B17000836945 /* RKProgressView.m in Sources */,
 				F028D4BF1E792CBD003A430D /* AppDelegate.m in Sources */,
+				F04E5C0A1E88AEA100836945 /* ZZCircleProgress.m in Sources */,
 				F0BD3D821E836B6000C3A832 /* RKCropVideoViewController.m in Sources */,
+				F04E5C081E88AEA100836945 /* NSTimer+timerBlock.m in Sources */,
 				F028D4D71E792D0E003A430D /* WCLRecordEngine.m in Sources */,
 				F028D4D61E792D0E003A430D /* WCLRecordEncoder.m in Sources */,
 				F028D4EA1E7A3041003A430D /* SYVideoModel.m in Sources */,

@@ -10,4 +10,12 @@
 
 @interface RKCropVideoViewController : UIViewController
 @property (nonatomic, strong) NSString *path;
+/**
+ 视频的最大长度
+ */
+@property (nonatomic, assign) double maxTime;
+/**
+ 视频的最小长度 
+ */
+@property (nonatomic, assign) double minTime;
 @end

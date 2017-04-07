@@ -9,13 +9,9 @@
 #import "RKCropVideoViewController.h"
 #import "SYVideoModel.h"
 #import <AVFoundation/AVFoundation.h>
-#import "UIColor+SYExtension.h"
+#import "RKProgressView.h"
 
 #define ItemW 60
-//最大录制时长
-#define MaxTime 100
-//最小录制时长
-#define MinTime 60
 //一屏显示的帧数
 #define MaxCount 20
 
@@ -34,7 +30,8 @@
 @property (nonatomic, assign) double startTime;
 @property (nonatomic, assign) double endTime;
 @property (nonatomic, assign) CMTime duration;
-
+@property (nonatomic, strong) RKProgressView *progressView;
+//裁剪
 @property (strong, nonatomic) AVAssetExportSession *exportSession;
 
 @property (nonatomic, strong) NSTimer *timer;
@@ -58,8 +55,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"裁剪视频";
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"裁剪" style:UIBarButtonItemStylePlain target:self action:@selector(cropAction)];
     self.navigationItem.rightBarButtonItem = item;
+    
+    self.minTime = 0;
+    self.maxTime = 60;
     
     NSArray *list = [SYVideoModel videoList];
     SYVideoModel *model = list.firstObject;
@@ -67,15 +68,27 @@
 }
 #pragma mark - 裁剪
 - (void)cropAction {
- 
-    AVAsset *mediaAsset = self.player.currentItem.asset;
+    if (![[NSFileManager defaultManager] fileExistsAtPath:self.path]) {
+        return;
+    }
     
-    self.exportSession = [[AVAssetExportSession alloc] initWithAsset:mediaAsset presetName:AVAssetExportPresetPassthrough];
-    
-    NSString *outPath = [[self.path substringToIndex:self.path.length - 4] stringByAppendingString:@"new.mp4"];
+    if (self.totalTime == 0) {
+        return;
+    }
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask , YES)objectAtIndex:0];
+    NSDictionary *fileSysAttributes = [fileManager attributesOfFileSystemForPath:path error:nil];
+    NSNumber *freeSpace = [fileSysAttributes objectForKey:NSFileSystemFreeSize];
     
+    if([freeSpace doubleValue] < [[NSFileManager defaultManager] attributesOfItemAtPath:self.path error:nil].fileSize) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"无法裁剪" message:@"存储空间不足,请清理后重新剪切!" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
+        [alertView show];
+        return;
+    }
+    AVAsset *mediaAsset = self.player.currentItem.asset;
+    self.exportSession = [[AVAssetExportSession alloc] initWithAsset:mediaAsset presetName:AVAssetExportPresetPassthrough];
+    NSString *outPath = [[self.path substringToIndex:self.path.length - 4] stringByAppendingString:@"new.mp4"];
     [fileManager removeItemAtPath:outPath error:NULL];
     
     //格式的转换
@@ -89,33 +102,42 @@
     //音频的时间范围
     self.exportSession.timeRange = range;
   
-    NSLog(@"exporting to %@",outPath);
-    //异步输出完成后调用
+    [self.cropTimer fire];
+    [self.progressView show];
     
     __weak typeof(self) weakSelf = self;
     [self.exportSession exportAsynchronouslyWithCompletionHandler:^{
         
         if(weakSelf.exportSession.status == AVAssetExportSessionStatusCompleted ) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [fileManager removeItemAtPath:self.path error:NULL];
+                self.progressView.progress = 1.0;
+                [self.progressView dismiss];
+            });
             NSLog(@"裁剪完成");
             SYVideoModel *model = [[SYVideoModel alloc] init];
             model.path = outPath;
             model.totalTime = self.endTime - self.startTime;
             [SYVideoModel saveVideo:model];
             
-        }else if(weakSelf.exportSession.status == AVAssetExportSessionStatusFailed ) {
+        }else {
             NSLog(@"裁剪失败");
+            [fileManager removeItemAtPath:outPath error:NULL];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.progressView dismiss];
+            });
         }
     }];
 }
+
 #pragma mark - 定时器方法
 - (void)updateExportDisplay {
-    NSString *per = [NSString stringWithFormat:@"压缩中(%.0f%%)",self.exportSession.progress *100];
     dispatch_async(dispatch_get_main_queue(), ^{
-    //    [self setBtnType:RKButtonTypeTranscoding title:per];
+        self.progressView.progress = self.exportSession.progress;
     });
-    NSLog(@"----%@",per);
-    if (self.exportSession.progress > .99) {
-        [self.timer invalidate];
+    if (self.exportSession.progress >= 0.99) {
+        [self.cropTimer invalidate];
+        
     }
 }
 
@@ -136,11 +158,11 @@
     _path = path;
     self.totalTime = [self videoTotalTimeWithPath:path];
     self.startTime = 0.0;
-    self.endTime = MIN(self.totalTime, MaxTime);
+    self.endTime = MIN(self.totalTime, self.maxTime);
     if (_totalTime > 0) {
-        if (_totalTime > MaxTime) {
-            NSInteger marginTime = MaxTime/MaxCount;
-            NSInteger count = MaxCount +floor((_totalTime - MaxTime)/marginTime);
+        if (_totalTime > self.maxTime) {
+            NSInteger marginTime = self.maxTime/MaxCount;
+            NSInteger count = MaxCount +floor((_totalTime - self.maxTime)/marginTime);
             for (int i = 0; i < count; i++) {
                 UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*(ScreenW/MaxCount), 0, ItemW, 95)];
                 [self.scrollView addSubview:imageView];
@@ -200,9 +222,9 @@
 - (NSString *)timeStringWithTime:(double)time {
     NSInteger timeInt = (NSInteger)time;
     if (timeInt < 60) {
-        return  [NSString stringWithFormat:@"00:%02d",timeInt];
+        return  [NSString stringWithFormat:@"00:%02zd",timeInt];
     }else {
-        return [NSString stringWithFormat:@"%02d:%02d",timeInt/60,timeInt%60];
+        return [NSString stringWithFormat:@"%02zd:%02zd",timeInt/60,timeInt%60];
     }
 }
 
@@ -220,7 +242,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     self.startTime = (scrollView.contentOffset.x + self.startLabelLeftMargin.constant)/scrollView.contentSize.width * self.totalTime;
-    self.endTime = self.startTime + (ScreenW - self.startLabelLeftMargin.constant - self.endLabelRightMargin.constant)/ScreenW *MaxTime;
+    self.endTime = self.startTime + (ScreenW - self.startLabelLeftMargin.constant - self.endLabelRightMargin.constant)/ScreenW *self.maxTime;
 }
 
 - (IBAction)playAction:(UIButton *)sender {
@@ -240,18 +262,18 @@
     }
   
     CGPoint point = [sender locationInView:sender.view.superview];
-    NSLog(@"左边%f---%d",point.x,self.endTime - self.startTime == MinTime);
-    if ((self.endTime - self.startTime == MinTime && point.x < self.startLabelLeftMargin.constant)||self.endTime - self.startTime > MinTime) {
+    NSLog(@"左边%f---%d",point.x,self.endTime - self.startTime == self.minTime);
+    if ((self.endTime - self.startTime == self.minTime && point.x < self.startLabelLeftMargin.constant)||self.endTime - self.startTime > self.minTime) {
         if (point.x >= 0 && self.totalTime > 0) {
-            self.startLabelLeftMargin.constant = point.x;
-            if (self.totalTime > MaxTime) {
+            self.startLabelLeftMargin.constant = point.x < 3 ? 0:point.x;
+            if (self.totalTime > self.maxTime) {
                 self.startTime = (self.scrollView.contentOffset.x + self.startLabelLeftMargin.constant)/self.scrollView.contentSize.width  * self.totalTime;
             }else {
                 self.startTime = self.startLabelLeftMargin.constant/ScreenW*self.totalTime;
             }
         }
     }else {
-        self.startTime = self.endTime - MinTime;
+        self.startTime = self.endTime - self.minTime;
     }
 }
 - (IBAction)panRigthBtnAction:(UIPanGestureRecognizer *)sender {
@@ -260,18 +282,18 @@
     }
    
     CGPoint point = [sender locationInView:sender.view.superview];
-    NSLog(@"右边%f---%d",point.x,self.endTime - self.startTime == MinTime);
-    if ((self.endTime - self.startTime == MinTime && point.x > ScreenW - self.startLabelLeftMargin.constant)||self.endTime - self.startTime > MinTime) {
+    NSLog(@"右边%f---%d",point.x,self.endTime - self.startTime == self.minTime);
+    if ((self.endTime - self.startTime == self.minTime && point.x > ScreenW - self.startLabelLeftMargin.constant)||self.endTime - self.startTime > self.minTime) {
         if (point.x <= ScreenW && self.totalTime > 0) {
             self.endLabelRightMargin.constant = [UIScreen mainScreen].bounds.size.width -  point.x < 3 ? 0 :  [UIScreen mainScreen].bounds.size.width -  point.x;
-            if (self.totalTime > MaxTime) {
-                self.endTime = self.startTime + (ScreenW - self.startLabelLeftMargin.constant - self.endLabelRightMargin.constant )/ScreenW *MaxTime;
+            if (self.totalTime > self.maxTime) {
+                self.endTime = self.startTime + (ScreenW - self.startLabelLeftMargin.constant - self.endLabelRightMargin.constant )/ScreenW *self.maxTime;
             }else {
                 self.endTime = (1 - self.endLabelRightMargin.constant /ScreenW) *self.totalTime;
             }
         }
      }else {
-         self.endTime = self.startTime + MinTime;
+         self.endTime = self.startTime + self.minTime;
     }
 }
 
@@ -323,6 +345,13 @@
         _cropTimer =  [NSTimer scheduledTimerWithTimeInterval:0.5 target:weakSelf selector:@selector(updateExportDisplay) userInfo:nil repeats:YES];
     }
     return _cropTimer;
+}
+
+- (RKProgressView *)progressView {
+    if (_progressView == nil) {
+        _progressView = [RKProgressView progressView];
+    }
+    return _progressView;
 }
 
 - (void)dealloc {

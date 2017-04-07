@@ -12,8 +12,12 @@
 #import "SYVideoListController.h"
 #import "RKCropVideoViewController.h"
 #import "SYVideoModel.h"
-@interface ViewController ()
+#import "RKProgressView.h"
 
+@interface ViewController ()
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, assign) float num;
+@property (nonatomic, strong) RKProgressView *progress;
 @end
 
 @implementation ViewController
@@ -21,7 +25,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask , YES)objectAtIndex:0];
-    
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     NSDictionary *fileSysAttributes = [fileManager attributesOfFileSystemForPath:path error:nil];
@@ -39,13 +42,13 @@
     NSString *use = [NSString stringWithFormat:@"已用:%0.1fG",([totalSpace doubleValue]-[freeSpace doubleValue])/1024.0/1024.0/1024.0];
     
     NSLog(@"total : %@, free : %@, use : %@",total,free,use);
+    
 }
 - (IBAction)cropVideo {
     
-    
-    
     RKCropVideoViewController *cropVc = [[RKCropVideoViewController alloc] initWithNibName:NSStringFromClass([RKCropVideoViewController class]) bundle:nil];
     [self.navigationController pushViewController:cropVc animated:YES];
+
 }
 
 - (IBAction)recordVideo {
@@ -56,6 +59,7 @@
 - (IBAction)videoList {
     SYVideoListController *videoList = [[SYVideoListController alloc] initWithNibName:NSStringFromClass([SYVideoListController class]) bundle:nil];
     [self.navigationController pushViewController:videoList animated:YES];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,6 +67,25 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)getCurrentTimeWhenPlaying {
+    self.num += 0.01;
+    self.progress.progress = self.num;
+}
+
+- (NSTimer *)timer {
+    if (_timer == nil) {
+        __weak typeof(self) weakSelf = self;
+        _timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:weakSelf selector:@selector(getCurrentTimeWhenPlaying) userInfo:nil repeats:YES];
+    }
+    return _timer;
+}
+
+- (RKProgressView *)progress {
+    if (_progress == nil) {
+        _progress = [RKProgressView progressView];
+    }
+    return _progress;
+}
 
 
 @end

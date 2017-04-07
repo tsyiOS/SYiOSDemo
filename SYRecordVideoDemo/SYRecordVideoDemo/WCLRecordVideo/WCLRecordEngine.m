@@ -390,7 +390,6 @@
     NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyyMMddHHmmss"];
     NSDate * NowDate = [NSDate dateWithTimeIntervalSince1970:now];
-    ;
     NSString * timeStr = [formatter stringFromDate:NowDate];
     NSString *fileName = [NSString stringWithFormat:@"%@_%@.%@",type,timeStr,fileType];
     return fileName;
