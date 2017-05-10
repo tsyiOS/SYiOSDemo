@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>className</key>
+		<string>SYHomeViewController</string>
+		<key>title</key>
+		<string>首页</string>
+		<key>imageName</key>
+		<string>nav_1</string>
+		<key>selectedImageName</key>
+		<string>nav_01</string>
+	</dict>
+	<dict>
+		<key>className</key>
+		<string>SYBuyViewController</string>
+		<key>title</key>
+		<string>购彩</string>
+		<key>imageName</key>
+		<string>nav_2</string>
+		<key>selectedImageName</key>
+		<string>nav_02</string>
+	</dict>
+	<dict>
+		<key>className</key>
+		<string>SYOpenRewardViewController</string>
+		<key>title</key>
+		<string>发奖</string>
+		<key>imageName</key>
+		<string>nav_3</string>
+		<key>selectedImageName</key>
+		<string>nav_03</string>
+	</dict>
+	<dict>
+		<key>className</key>
+		<string>SYTrendViewController</string>
+		<key>title</key>
+		<string>趋势</string>
+		<key>imageName</key>
+		<string>nav_4</string>
+		<key>selectedImageName</key>
+		<string>nav_04</string>
+	</dict>
+	<dict>
+		<key>className</key>
+		<string>SYMineViewController</string>
+		<key>title</key>
+		<string>我的</string>
+		<key>imageName</key>
+		<string>nav_5</string>
+		<key>selectedImageName</key>
+		<string>nav_05</string>
+	</dict>
+</array>
+</plist>

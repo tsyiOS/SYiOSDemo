@@ -17,6 +17,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    if (self.navigationController.viewControllers.count > 1) {
+        UIImage *navImage = [UIImage imageNamed:@"nav-btn-back"];
+        UIColor *color = [UIColor whiteColor];
+        
+        UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithImage:navImage style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClicked)];
+        barItem.tintColor = color;
+        self.navigationItem.leftBarButtonItem = barItem;
+    }
+}
+
+- (void)backButtonClicked{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,4 +38,7 @@
 }
 
 
++ (instancetype)instancetFromNib {
+    return [[self alloc] initWithNibName:NSStringFromClass(self) bundle:nil];
+}
 @end

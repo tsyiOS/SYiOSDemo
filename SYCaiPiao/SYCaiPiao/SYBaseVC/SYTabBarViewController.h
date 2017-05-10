@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@interface SYChildVCModel : NSObject
+@property (nonatomic, copy) NSString *className;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *imageName;
+@property (nonatomic, copy) NSString *selectedImageName;
++ (NSArray *)models;
+@end
+
 @interface SYTabBarViewController : UITabBarController
 
 @end

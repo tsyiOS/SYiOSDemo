@@ -11,26 +11,24 @@
 #import "SYBaseViewController.h"
 
 @interface SYTabBarViewController ()
-
+@property (nonatomic, strong) NSArray *childVCModels;
 @end
 
 @implementation SYTabBarViewController
 
 - (instancetype)init {
     if (self = [super init]) {
-        for (UIView *sub in self.view.subviews) {
-            NSLog(@"====%@",NSStringFromClass([sub class]));
-            if ([sub isKindOfClass:[UITabBar class]]) {
-                __strong sub = [[UITabBar alloc] init];
-            }
-        }
-        NSArray *vcClasses = @[@"SYHomeViewController",@"SYBuyViewController",@"SYOpenRewardViewController",@"SYTrendViewController",@"SYMineViewController"];
         
-        for (NSString *className in vcClasses) {
-            SYBaseViewController *baseVc = [(SYBaseViewController *)[NSClassFromString(className) alloc] initWithNibName:className bundle:nil];
+        self.tabBar.barTintColor = [UIColor blackColor];
+        self.tabBar.tintColor = [UIColor sy_colorWithRGB:0xE8C60D];
+        
+        for (SYChildVCModel *model in self.childVCModels) {
+            SYBaseViewController *baseVc = [(SYBaseViewController *)[NSClassFromString(model.className) alloc] initWithNibName:model.className bundle:nil];
             SYNavgationViewController *nvaVc = [[SYNavgationViewController alloc] initWithRootViewController:baseVc];
-            baseVc.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil image:[[UIImage imageNamed:@"nav_1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"nav_01"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+            baseVc.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil image:[[UIImage imageNamed:model.imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:model.selectedImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
             baseVc.tabBarItem.badgeColor = [UIColor redColor];
+            baseVc.tabBarItem.title = model.title;
+            baseVc.title = model.title;
             [self addChildViewController:nvaVc];
             
         }
@@ -44,7 +42,35 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+- (NSArray *)childVCModels {
+    if (_childVCModels == nil) {
+        _childVCModels = [SYChildVCModel models];
+    }
+    return _childVCModels;
+}
+
+@end
+
+@implementation SYChildVCModel
+
+- (instancetype)initWithDict:(NSDictionary *)dict {
+    if (self = [super init]) {
+        [self setValuesForKeysWithDictionary:dict];
+    }
+    return self;
+}
+
++ (NSArray *)models {
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"SYViewControllerData" ofType:@"plist"];
+    NSArray *array = [NSArray arrayWithContentsOfFile:path];
+    NSMutableArray *tempArray = [NSMutableArray array];
+    for (NSDictionary *dict  in array) {
+        SYChildVCModel *model = [[SYChildVCModel alloc] initWithDict:dict];
+        [tempArray addObject:model];
+    }
+    return tempArray;
 }
 
 @end
