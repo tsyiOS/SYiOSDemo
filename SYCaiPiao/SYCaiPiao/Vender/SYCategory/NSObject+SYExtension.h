@@ -60,12 +60,6 @@
  */
 + (NSDictionary *)sy_classNameInArrayProperty;
 
-/**
- * 属性对象类名
- *
- @return 数组对象里面的类名字典
- */
-+ (NSDictionary *)sy_classNameForPropertyObject;
 @end
 /**
  *  字典对应的模型类类名
