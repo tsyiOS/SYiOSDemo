@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface SYTestModel : NSObject
-@property (nonatomic, assign) NSInteger index;
+@property (nonatomic, copy) NSString *index;
 @end

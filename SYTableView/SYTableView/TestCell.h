@@ -6,8 +6,9 @@
 //  Copyright © 2017年 tsy. All rights reserved.
 //
 
-#import "SYTableViewCell.h"
+#import <UIKit/UIKit.h>
+#import "UITableViewCell+SYExtension.h"
 
-@interface TestCell : SYTableViewCell
+@interface TestCell : UITableViewCell
 
 @end

@@ -21,10 +21,10 @@
 		F0C1CF611EF21D1F00B5C55C /* SYTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C1CF601EF21D1F00B5C55C /* SYTableView.m */; };
 		F0C1CF641EF230B100B5C55C /* SYTableViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C1CF631EF230B100B5C55C /* SYTableViewManager.m */; };
 		F0C1CF661EF2927500B5C55C /* SYRefreshSource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0C1CF651EF2927500B5C55C /* SYRefreshSource.bundle */; };
-		F0C1CF691EF2999A00B5C55C /* SYTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C1CF681EF2999A00B5C55C /* SYTableViewCell.m */; };
 		F0C1CF6C1EF29A1000B5C55C /* TestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C1CF6B1EF29A1000B5C55C /* TestCell.m */; };
 		F0C1CF6E1EF29A2100B5C55C /* TestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0C1CF6D1EF29A2100B5C55C /* TestCell.xib */; };
 		F0C1CF711EF29B9400B5C55C /* SYTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C1CF701EF29B9400B5C55C /* SYTestModel.m */; };
+		F0C1CF741EF3746700B5C55C /* UITableViewCell+SYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C1CF731EF3746700B5C55C /* UITableViewCell+SYExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,13 +53,13 @@
 		F0C1CF621EF230B100B5C55C /* SYTableViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYTableViewManager.h; sourceTree = "<group>"; };
 		F0C1CF631EF230B100B5C55C /* SYTableViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYTableViewManager.m; sourceTree = "<group>"; };
 		F0C1CF651EF2927500B5C55C /* SYRefreshSource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SYRefreshSource.bundle; sourceTree = "<group>"; };
-		F0C1CF671EF2999A00B5C55C /* SYTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYTableViewCell.h; sourceTree = "<group>"; };
-		F0C1CF681EF2999A00B5C55C /* SYTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYTableViewCell.m; sourceTree = "<group>"; };
 		F0C1CF6A1EF29A1000B5C55C /* TestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCell.h; sourceTree = "<group>"; };
 		F0C1CF6B1EF29A1000B5C55C /* TestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCell.m; sourceTree = "<group>"; };
 		F0C1CF6D1EF29A2100B5C55C /* TestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestCell.xib; sourceTree = "<group>"; };
 		F0C1CF6F1EF29B9400B5C55C /* SYTestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYTestModel.h; sourceTree = "<group>"; };
 		F0C1CF701EF29B9400B5C55C /* SYTestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYTestModel.m; sourceTree = "<group>"; };
+		F0C1CF721EF3746700B5C55C /* UITableViewCell+SYExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+SYExtension.h"; sourceTree = "<group>"; };
+		F0C1CF731EF3746700B5C55C /* UITableViewCell+SYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+SYExtension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +98,8 @@
 				F0C1CF401EF21C0400B5C55C /* ViewController.m */,
 				F0C1CF621EF230B100B5C55C /* SYTableViewManager.h */,
 				F0C1CF631EF230B100B5C55C /* SYTableViewManager.m */,
-				F0C1CF671EF2999A00B5C55C /* SYTableViewCell.h */,
-				F0C1CF681EF2999A00B5C55C /* SYTableViewCell.m */,
+				F0C1CF721EF3746700B5C55C /* UITableViewCell+SYExtension.h */,
+				F0C1CF731EF3746700B5C55C /* UITableViewCell+SYExtension.m */,
 				F0C1CF6A1EF29A1000B5C55C /* TestCell.h */,
 				F0C1CF6B1EF29A1000B5C55C /* TestCell.m */,
 				F0C1CF6D1EF29A2100B5C55C /* TestCell.xib */,
@@ -216,8 +216,8 @@
 				F0C1CF5E1EF21C9B00B5C55C /* UIColor+SYExtension.m in Sources */,
 				F0C1CF3E1EF21C0400B5C55C /* AppDelegate.m in Sources */,
 				F0C1CF581EF21C6C00B5C55C /* UIView+SYExtension.m in Sources */,
-				F0C1CF691EF2999A00B5C55C /* SYTableViewCell.m in Sources */,
 				F0C1CF571EF21C6C00B5C55C /* UITableView+SYExtension.m in Sources */,
+				F0C1CF741EF3746700B5C55C /* UITableViewCell+SYExtension.m in Sources */,
 				F0C1CF3B1EF21C0400B5C55C /* main.m in Sources */,
 				F0C1CF641EF230B100B5C55C /* SYTableViewManager.m in Sources */,
 				F0C1CF5B1EF21C7F00B5C55C /* NSDate+SYExtension.m in Sources */,

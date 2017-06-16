@@ -11,7 +11,8 @@
 
 @interface SYTableViewManager : NSObject
 @property (nonatomic, strong) Class cellClass;
-@property (nonatomic, copy) void(^selectedCellAction)(NSIndexPath *indexPath,id model);
+@property (nonatomic, copy) void(^selectedCellAction)(NSIndexPath *indexPath,NSDictionary *jsonDict);
+@property (nonatomic, copy) void(^cellBlock)(NSIndexPath *indexPath,NSDictionary *jsonDict);
 @property (nonatomic, strong) UITableView *tableView;
 - (void)setRequestNetwork:(void (^)(NSInteger page,void (^completion)(NSArray *datas)))requestData;
 @end

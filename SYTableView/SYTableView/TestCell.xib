@@ -27,6 +27,9 @@
                     </label>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3QD-6h-vgj">
                         <rect key="frame" x="234" y="6" width="51" height="31"/>
+                        <connections>
+                            <action selector="switchAction:" destination="zIP-Nm-2fX" eventType="valueChanged" id="nca-vv-iwp"/>
+                        </connections>
                     </switch>
                 </subviews>
                 <constraints>
@@ -38,6 +41,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="nameLabel" destination="Rcu-Io-Zto" id="z65-na-2PS"/>
+                <outlet property="switchbtn" destination="3QD-6h-vgj" id="OlH-dS-n4s"/>
             </connections>
             <point key="canvasLocation" x="16" y="72"/>
         </tableViewCell>

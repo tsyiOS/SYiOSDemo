@@ -8,7 +8,7 @@
 
 #import "SYTableViewManager.h"
 #import "UITableView+SYExtension.h"
-#import "SYTableViewCell.h"
+#import "UITableViewCell+SYExtension.h"
 
 @interface SYTableViewManager ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *datas;
@@ -68,16 +68,23 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    SYTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(self.cellClass)];
-    cell.model = self.datas[indexPath.row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(self.cellClass)];
+    cell.sy_JsonDict = self.datas[indexPath.row];
+    if (self.cellBlock) {
+        __weak typeof(self) weakSelf = self;
+        [cell setSy_cellBlock:^(NSDictionary *jsonDict){
+            weakSelf.cellBlock(indexPath, jsonDict);
+            [weakSelf.datas replaceObjectAtIndex:indexPath.row withObject:jsonDict];
+        }];
+    }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if (self.selectedCellAction) {
-        __weak typeof(self) weakSelf = self;
-        self.selectedCellAction(indexPath, weakSelf.datas[indexPath.row]);
+        self.selectedCellAction(indexPath, cell.sy_JsonDict);
     }
 }
 
