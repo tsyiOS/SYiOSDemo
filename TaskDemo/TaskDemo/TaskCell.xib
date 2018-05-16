@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="203" id="KGk-i7-Jjw" customClass="TaskCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="203"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="202.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQg-8Y-4a8">
+                        <rect key="frame" x="10" y="0.0" width="300" height="202.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.假设有一个池塘,里面有无穷多的水,现有2个空水壶,容积分别为5升和6升?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEs-1h-dy0">
+                                <rect key="frame" x="10" y="10" width="280" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作答:这是答案假设有一个池塘,里面有无穷多的水,现有2个面有无穷多的水,现有2个空水壶,容积分别为5升和6升空水壶,容积分别为5升和6升" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGW-vu-cDc">
+                                <rect key="frame" x="10" y="44" width="280" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qVX-bj-ezS">
+                                <rect key="frame" x="110" y="97" width="90" height="90"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.16078431369999999" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="APW-Kw-Ihy"/>
+                                    <constraint firstAttribute="width" constant="90" id="v2S-rZ-dEP"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AVe-uh-D4a">
+                                <rect key="frame" x="10" y="97" width="90" height="90"/>
+                                <color key="backgroundColor" red="0.8980392157" green="0.16078431369999999" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="36K-QQ-xbZ"/>
+                                    <constraint firstAttribute="width" constant="90" id="gBn-yK-FfN"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qVX-bj-ezS" firstAttribute="leading" secondItem="AVe-uh-D4a" secondAttribute="trailing" constant="10" id="4hB-8F-r9t"/>
+                            <constraint firstAttribute="trailing" secondItem="aGW-vu-cDc" secondAttribute="trailing" constant="10" id="7AR-2P-kXL"/>
+                            <constraint firstItem="AVe-uh-D4a" firstAttribute="top" secondItem="aGW-vu-cDc" secondAttribute="bottom" constant="10" id="BXf-UR-7l4"/>
+                            <constraint firstAttribute="bottom" secondItem="AVe-uh-D4a" secondAttribute="bottom" constant="15" id="L1Q-hQ-0UV"/>
+                            <constraint firstAttribute="trailing" secondItem="aEs-1h-dy0" secondAttribute="trailing" constant="10" id="Li7-LV-ptB"/>
+                            <constraint firstItem="aEs-1h-dy0" firstAttribute="top" secondItem="fQg-8Y-4a8" secondAttribute="top" constant="10" id="M2V-0J-Miy"/>
+                            <constraint firstAttribute="bottom" secondItem="qVX-bj-ezS" secondAttribute="bottom" constant="15" id="g8u-wq-Bha"/>
+                            <constraint firstItem="aEs-1h-dy0" firstAttribute="leading" secondItem="fQg-8Y-4a8" secondAttribute="leading" constant="10" id="nH6-8K-N5M"/>
+                            <constraint firstItem="aGW-vu-cDc" firstAttribute="leading" secondItem="fQg-8Y-4a8" secondAttribute="leading" constant="10" id="qLw-MM-rFw"/>
+                            <constraint firstItem="AVe-uh-D4a" firstAttribute="leading" secondItem="fQg-8Y-4a8" secondAttribute="leading" constant="10" id="rr1-pa-J7D"/>
+                            <constraint firstItem="aGW-vu-cDc" firstAttribute="top" secondItem="aEs-1h-dy0" secondAttribute="bottom" constant="5" id="vtz-bC-G65"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UjS-JG-y5r">
+                        <rect key="frame" x="10" y="0.0" width="300" height="0.5"/>
+                        <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="jjT-bY-ZmJ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="UjS-JG-y5r" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="5On-Vu-YS4"/>
+                    <constraint firstAttribute="trailing" secondItem="UjS-JG-y5r" secondAttribute="trailing" constant="10" id="5sA-wT-Hgh"/>
+                    <constraint firstItem="UjS-JG-y5r" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="VUp-lc-zJf"/>
+                    <constraint firstItem="fQg-8Y-4a8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ajj-lg-WpN"/>
+                    <constraint firstAttribute="trailing" secondItem="fQg-8Y-4a8" secondAttribute="trailing" constant="10" id="asK-vY-wIc"/>
+                    <constraint firstItem="fQg-8Y-4a8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="rSW-7V-fqE"/>
+                    <constraint firstAttribute="bottom" secondItem="fQg-8Y-4a8" secondAttribute="bottom" id="zEi-XK-8ul"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <point key="canvasLocation" x="34" y="-25.5"/>
+        </tableViewCell>
+    </objects>
+</document>

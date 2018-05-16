@@ -10,7 +10,7 @@
 
 @implementation SYHomeDataModel
 + (NSArray *)models {
-    return [self sy_objectArrayWithPlist:@"HomeList"];
+    return [self mj_objectArrayWithFile:@"HomeList.plist"];
 }
 
 + (NSDictionary *)sy_classNameForPropertyObject {

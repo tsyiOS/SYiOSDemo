@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="kth-dw-K7l" customClass="ChineseTextItem">
+            <rect key="frame" x="0.0" y="0.0" width="134" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LI1-KD-LKZ">
+                    <rect key="frame" x="52" y="10" width="31" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxF-hV-3lQ">
+                    <rect key="frame" x="52" y="45.5" width="31" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="XDe-XE-F7f" firstAttribute="bottom" secondItem="kxF-hV-3lQ" secondAttribute="bottom" constant="10" id="FWk-aK-RWX"/>
+                <constraint firstItem="LI1-KD-LKZ" firstAttribute="centerX" secondItem="kth-dw-K7l" secondAttribute="centerX" id="ada-Oj-IF0"/>
+                <constraint firstItem="kxF-hV-3lQ" firstAttribute="centerX" secondItem="kth-dw-K7l" secondAttribute="centerX" id="bLG-aa-tQc"/>
+                <constraint firstItem="LI1-KD-LKZ" firstAttribute="top" secondItem="XDe-XE-F7f" secondAttribute="top" constant="10" id="pnp-QO-4Bu"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="XDe-XE-F7f"/>
+            <connections>
+                <outlet property="chineseLabel" destination="kxF-hV-3lQ" id="Jpu-1q-Vg6"/>
+                <outlet property="pingyinLabel" destination="LI1-KD-LKZ" id="hd4-4p-kGV"/>
+            </connections>
+            <point key="canvasLocation" x="-95" y="-279.5"/>
+        </view>
+    </objects>
+</document>

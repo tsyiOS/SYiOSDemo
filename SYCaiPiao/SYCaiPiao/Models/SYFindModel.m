@@ -10,6 +10,6 @@
 
 @implementation SYFindModel
 + (NSArray *)models {
-    return [self sy_objectArrayWithPlist:@"Find"];
+    return [self mj_objectArrayWithFile:@"Find.plist"];
 }
 @end

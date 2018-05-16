@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskViewController">
+            <connections>
+                <outlet property="dateBtn" destination="cqP-2d-Nb7" id="zfy-nA-4eu"/>
+                <outlet property="tableView" destination="gFD-Lr-24c" id="LSS-lG-aCa"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqP-2d-Nb7">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="b6X-xU-fUL"/>
+                    </constraints>
+                    <state key="normal" title="4月20日">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="datePickerAction" destination="-1" eventType="touchUpInside" id="zq4-6y-wOp"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gFD-Lr-24c">
+                    <rect key="frame" x="0.0" y="50" width="375" height="617"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="lrt-ER-e7q"/>
+                        <outlet property="delegate" destination="-1" id="g2i-kv-fpU"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="gFD-Lr-24c" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="4F2-OC-cMi"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="cqP-2d-Nb7" secondAttribute="trailing" id="CrQ-XP-587"/>
+                <constraint firstItem="cqP-2d-Nb7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ELr-ZF-UT1"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="gFD-Lr-24c" secondAttribute="trailing" id="UKH-aw-70K"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="gFD-Lr-24c" secondAttribute="bottom" id="YkY-nU-mkf"/>
+                <constraint firstItem="gFD-Lr-24c" firstAttribute="top" secondItem="cqP-2d-Nb7" secondAttribute="bottom" id="buH-Zf-ydH"/>
+                <constraint firstItem="cqP-2d-Nb7" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="yVO-pS-GRM"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+        </view>
+    </objects>
+</document>

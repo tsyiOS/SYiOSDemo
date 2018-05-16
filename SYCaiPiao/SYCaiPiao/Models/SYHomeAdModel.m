@@ -10,6 +10,6 @@
 
 @implementation SYHomeAdModel
 + (NSArray *)models {
-    return [self sy_objectArrayWithPlist:@"AdList"];
+    return [self mj_objectArrayWithFile:@"AdList.plist"];
 }
 @end

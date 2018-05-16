@@ -10,16 +10,12 @@
 
 @implementation SYProvinceModel
 
-+ (NSDictionary *)sy_classNameInArrayProperty {
-    return @{@"citys":@"SYCityModel"};
-}
-
 + (NSArray *)provinces {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"citys" ofType:@"plist"];
     NSArray *provinces = [NSArray arrayWithContentsOfFile:path];
     NSMutableArray *tempArray = [NSMutableArray array];
     for (NSDictionary *dict in provinces) {
-        SYProvinceModel *model = [SYProvinceModel sy_objectWithKeyValueDictionary:dict];
+        SYProvinceModel *model = [SYProvinceModel mj_objectWithKeyValues:dict];
         [tempArray addObject:model];
     }
     return tempArray;

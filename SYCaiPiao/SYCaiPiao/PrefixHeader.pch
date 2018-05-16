@@ -14,10 +14,10 @@
 
 #import "UIColor+SYExtension.h"
 #import "FMDB.h"
-#import "NSObject+SYExtension.h"
 #import "AFNetworking.h"
 #import "SYNetworkManager.h"
 #import "UIImageView+WebCache.h"
 #import "UIView+SYExtension.h"
 #import "SYWebViewController.h"
+#import "MJExtension.h"
 #endif /* PrefixHeader_pch */
