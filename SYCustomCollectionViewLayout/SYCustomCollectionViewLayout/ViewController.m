@@ -8,10 +8,12 @@
 
 #import "ViewController.h"
 #import "SYTagsLayout.h"
+#import "NSDate+SYExtension.h"
 
 @interface ViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
-@property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) SYTagsLayout *layout;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+//@property (nonatomic, strong) SYTagsLayout *layout;
+@property (weak, nonatomic) IBOutlet SYTagsLayout *layout;
 @property (nonatomic, strong) NSArray *datas;
 @end
 
@@ -19,10 +21,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    [self.view addSubview:self.collectionView];
+    
+//    [self.view addSubview:self.collectionView];
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([UICollectionViewCell class])];
-//    self.layout.datas = self.datas;
+    self.layout.datas = self.datas;
+    
+//    NSString *str = [NSDate sy_showTimeFromNowTime:@"2018-06-21 14:17:59" toCreateTime:@"2018-06-19 11:05:29"];
+//    NSLog(@"%@",str);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,29 +66,29 @@
     self.layout.datas = self.datas;
 }
 
-- (UICollectionView *)collectionView {
-    if (_collectionView == nil) {
-        _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.layout];
-        _collectionView.dataSource = self;
-        _collectionView.delegate = self;
-        _collectionView.backgroundColor = [UIColor whiteColor];
-        _collectionView.showsVerticalScrollIndicator = NO;
-//        _collectionView.contentInset = UIEdgeInsetsMake(10, 15, 10, 15);
-    }
-    return _collectionView;
-}
+//- (UICollectionView *)collectionView {
+//    if (_collectionView == nil) {
+//        _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.layout];
+//        _collectionView.dataSource = self;
+//        _collectionView.delegate = self;
+//        _collectionView.backgroundColor = [UIColor whiteColor];
+//        _collectionView.showsVerticalScrollIndicator = NO;
+////        _collectionView.contentInset = UIEdgeInsetsMake(10, 15, 10, 15);
+//    }
+//    return _collectionView;
+//}
 
-- (SYTagsLayout *)layout {
-    if (_layout == nil) {
-        _layout = [[SYTagsLayout alloc] init];
-        _layout.minimumLineSpacing = 10;
-        _layout.minimumInteritemSpacing = 5;
-        _layout.datas = self.datas;
-        _layout.sectionInset = UIEdgeInsetsMake(10, 15, 10, 15);
-//        _layout.itemContentInsets = UIEdgeInsetsMake(5, 10, 5, 10);
-    }
-    return _layout;
-}
+//- (SYTagsLayout *)layout {
+//    if (_layout == nil) {
+//        _layout = [[SYTagsLayout alloc] init];
+//        _layout.minimumLineSpacing = 10;
+//        _layout.minimumInteritemSpacing = 5;
+////        _layout.datas = self.datas;
+//        _layout.sectionInset = UIEdgeInsetsMake(10, 15, 10, 15);
+////        _layout.itemContentInsets = UIEdgeInsetsMake(5, 10, 5, 10);
+//    }
+//    return _layout;
+//}
 
 - (NSArray *)datas {
     if (_datas == nil) {

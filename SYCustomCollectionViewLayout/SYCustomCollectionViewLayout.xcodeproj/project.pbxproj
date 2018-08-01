@@ -14,6 +14,7 @@
 		F03CDD291DCC31730072DA01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F03CDD281DCC31730072DA01 /* Assets.xcassets */; };
 		F03CDD2C1DCC31730072DA01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F03CDD2A1DCC31730072DA01 /* LaunchScreen.storyboard */; };
 		F03CDD351DCC326C0072DA01 /* SYTagsLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F03CDD341DCC326C0072DA01 /* SYTagsLayout.m */; };
+		F0AF6FE620DB834C008F89F9 /* NSDate+SYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AF6FE420DB834B008F89F9 /* NSDate+SYExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		F03CDD2D1DCC31730072DA01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F03CDD331DCC326C0072DA01 /* SYTagsLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYTagsLayout.h; sourceTree = "<group>"; };
 		F03CDD341DCC326C0072DA01 /* SYTagsLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYTagsLayout.m; sourceTree = "<group>"; };
+		F0AF6FE420DB834B008F89F9 /* NSDate+SYExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+SYExtension.m"; sourceTree = "<group>"; };
+		F0AF6FE520DB834C008F89F9 /* NSDate+SYExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+SYExtension.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,8 @@
 		F03CDD1B1DCC31730072DA01 /* SYCustomCollectionViewLayout */ = {
 			isa = PBXGroup;
 			children = (
+				F0AF6FE520DB834C008F89F9 /* NSDate+SYExtension.h */,
+				F0AF6FE420DB834B008F89F9 /* NSDate+SYExtension.m */,
 				F03CDD1F1DCC31730072DA01 /* AppDelegate.h */,
 				F03CDD201DCC31730072DA01 /* AppDelegate.m */,
 				F03CDD221DCC31730072DA01 /* ViewController.h */,
@@ -115,6 +120,7 @@
 				TargetAttributes = {
 					F03CDD181DCC31730072DA01 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 5Z3XUN2VRQ;
 					};
 				};
 			};
@@ -158,6 +164,7 @@
 				F03CDD211DCC31730072DA01 /* AppDelegate.m in Sources */,
 				F03CDD351DCC326C0072DA01 /* SYTagsLayout.m in Sources */,
 				F03CDD1E1DCC31730072DA01 /* main.m in Sources */,
+				F0AF6FE620DB834C008F89F9 /* NSDate+SYExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +276,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5Z3XUN2VRQ;
 				INFOPLIST_FILE = SYCustomCollectionViewLayout/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sy.team.SYCustomCollectionViewLayout;
@@ -280,6 +288,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5Z3XUN2VRQ;
 				INFOPLIST_FILE = SYCustomCollectionViewLayout/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sy.team.SYCustomCollectionViewLayout;
@@ -306,6 +315,7 @@
 				F03CDD321DCC31730072DA01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

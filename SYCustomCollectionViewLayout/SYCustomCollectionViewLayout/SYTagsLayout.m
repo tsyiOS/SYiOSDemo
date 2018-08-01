@@ -16,6 +16,7 @@
 @end
 
 @implementation SYTagsLayout
+
 - (instancetype)init {
     if (self = [super init]) {
         self.scrollDirection = UICollectionViewScrollDirectionVertical;
